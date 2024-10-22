@@ -1,0 +1,98 @@
+.product-container {
+    display: flex; /* Sử dụng Flexbox để bố trí */
+  }
+  
+  app-tree-type-menu {
+    flex: 1; /* Chiếm 1 phần của không gian */
+
+  }
+  
+  .sanphamnoibat {
+    flex: 3; /* Chiếm 3 phần của không gian */
+    padding: 20px; /* Thêm padding */
+  }
+  
+
+.product-list {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; /* Cho phép sản phẩm xuống hàng */
+    margin: 0;
+    gap:10px;
+  }
+  
+  .product-item {
+    border: 1px solid #ddd;
+    padding: 5px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Thêm hiệu ứng chuyển động mượt */
+    width: 250px; /* Thiết lập chiều rộng cố định cho mỗi sản phẩm */
+    margin: 10px; /* Khoảng cách giữa các sản phẩm */
+   
+  }
+  .description {
+    font-size: 16px; /* Kích thước chữ cho mô tả tổng quát */
+    color: green;    /* Màu chữ cho mô tả tổng quát */
+    text-align: center;
+    padding: 0px 400px;
+    margin-bottom: 20px; /* Khoảng cách dưới mô tả tổng quát */
+  }
+  
+  .product-item p.product-price {
+    font-size: 18px; /* Kích thước chữ cho giá sản phẩm */
+    color: rgb(12, 95, 52); /* Màu chữ cho giá sản phẩm */
+    padding: 0px;    /* Không có khoảng cách bên trong */
+    margin: 0;       /* Không có khoảng cách bên ngoài */
+    text-align: center; /* Căn giữa cho giá sản phẩm */
+  }
+  
+  .product-item img {
+    width: 150px;
+    height: 200px;
+    margin-bottom: 10px;
+  }
+  .button-container {
+    display: flex;
+    justify-content: center; /* Căn giữa các nút */
+    margin-top: 10px; /* Khoảng cách giữa phần mô tả sản phẩm và nút */
+  }
+  
+  button {
+    margin: 5px;
+    padding: 10px 20px;
+    border: none;
+    background-color: darkgreen;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Thêm hiệu ứng chuyển động cho button */
+  }
+
+
+
+
+  .search-container {
+    display: flex; /* Sử dụng Flexbox cho ô tìm kiếm */
+    margin-bottom: 20px; /* Khoảng cách dưới ô tìm kiếm */
+  }
+  
+  .search-input {
+    margin-left: 40px;
+    padding: 10px; /* Padding cho ô nhập */
+    border: 1px solid #ddd; /* Đường viền cho ô nhập */
+    border-radius: 5px; /* Bo tròn các góc */width: 243px;
+  }
+  
+  .search-btn {
+    padding: 15px 15px; /* Padding cho nút */
+    margin-left: 10px; /* Khoảng cách bên trái cho nút */
+    background-color: #28a745; /* Màu nền cho nút */
+    color: white; /* Màu chữ */
+    border: none; /* Không có đường viền */
+    border-radius: 3px; /* Bo tròn các góc */
+    cursor: pointer; /* Con trỏ chuột khi hover */
+  }
+  
+  .search-btn:hover {
+    background-color: #218838; /* Màu nền khi hover */
+  }
+  

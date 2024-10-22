@@ -1,1 +1,24 @@
-<p>navbar works!</p>
+<nav>
+    <div class="logo">
+      <img src="images/logolala.png" alt="Logo" />
+    </div>
+    <ul>
+      <li (click)="navigateTo('/home')">Trang chủ</li>
+      <li (click)="navigateTo('/gioithieu')">Giới thiệu</li>
+      <li (click)="navigateTo('/sanpham')">Sản phẩm</li>
+      <li (click)="navigateTo('/lienhe')">Liên hệ</li>
+    </ul>
+    <div class="right-menu">
+      <div class="search-container">
+        <input type="text" placeholder="Tìm kiếm..." class="search-input" />
+      </div>
+      <a (click)="navigateTo('/giohang')">
+        <i class="fas fa-shopping-cart"></i> <!-- Biểu tượng giỏ hàng -->
+      </a>
+      <a (click)="navigateTo('/taikhoan')">
+        <i class="fas fa-user"></i> <!-- Biểu tượng tài khoản -->
+      </a>
+      
+    </div>
+  </nav>
+  

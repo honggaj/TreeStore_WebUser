@@ -1,0 +1,189 @@
+.trang-chu {
+  font-family: Arial, sans-serif;
+}
+
+.banner {
+  width: 100%;
+  height: 650px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.banner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.sanphamnoibat {
+  padding: 30px 100px;
+}
+
+/* Sản phẩm nổi bật */
+h1 {
+  font-size: 24px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.product-list {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap; /* Cho phép sản phẩm xuống hàng */
+  margin: 0;
+  gap:10px;
+}
+
+.product-item {
+  border: 1px solid #ddd;
+  padding: 5px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Thêm hiệu ứng chuyển động mượt */
+  width: 250px; /* Thiết lập chiều rộng cố định cho mỗi sản phẩm */
+  margin: 10px; /* Khoảng cách giữa các sản phẩm */
+ 
+}
+.description {
+  font-size: 16px; /* Kích thước chữ cho mô tả tổng quát */
+  color: green;    /* Màu chữ cho mô tả tổng quát */
+  text-align: center;
+  padding: 0px 400px;
+  margin-bottom: 20px; /* Khoảng cách dưới mô tả tổng quát */
+}
+
+.product-item p.product-price {
+  font-size: 18px; /* Kích thước chữ cho giá sản phẩm */
+  color: rgb(12, 95, 52); /* Màu chữ cho giá sản phẩm */
+  padding: 0px;    /* Không có khoảng cách bên trong */
+  margin: 0;       /* Không có khoảng cách bên ngoài */
+  text-align: center; /* Căn giữa cho giá sản phẩm */
+}
+
+.product-item img {
+  width: 150px;
+  height: 200px;
+  margin-bottom: 10px;
+}
+
+h3 {
+  font-size: 20px;
+  margin: 10px 0;
+}
+
+
+
+.button-container {
+  display: flex;
+  justify-content: center; /* Căn giữa các nút */
+  margin-top: 10px; /* Khoảng cách giữa phần mô tả sản phẩm và nút */
+}
+
+button {
+  margin: 5px;
+  padding: 10px 20px;
+  border: none;
+  background-color: darkgreen;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Thêm hiệu ứng chuyển động cho button */
+}
+
+button:hover {
+  background-color: #28a745; /* Thay đổi màu nền khi hover */
+}
+
+.product-item:hover {
+  transform: scale(1.05); /* Khi hover, sản phẩm sẽ phóng to */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Thêm bóng cho sản phẩm */
+}
+/* Dịch vụ */
+
+.dichvu-list {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  background-color: rgb(180, 210, 180);
+  margin: 0 auto;
+  padding: 20px;
+  padding-top: 40px;
+  margin-top: 70px;
+}
+
+.dichvu-item {
+  flex: 1;
+  min-width: 200px;
+  max-width: 300px;
+  margin: 10px;
+  padding: 20px;
+  background-color: #eaeaea;
+  border-radius: 8px;
+  text-align: center;
+  transition: transform 0.2s, background-color 0.2s; /* Thêm hiệu ứng chuyển đổi */
+}
+
+.dichvu-item:hover {
+  background-color: #d0e4d0; /* Thay đổi màu nền khi hover */
+  transform: scale(1.05); /* Phóng to nhẹ khi hover */
+}
+
+.dichvu-item h3 {
+  margin: 0;
+  font-size: 1.5em;
+  color: #333;
+}
+
+.dichvu-item p {
+  margin: 5px 0 0;
+  color: #666;
+}
+
+.footer {
+  background-color: rgb(180, 210, 180);
+  color: #084c2a;
+  
+ 
+}
+
+.footer-container {
+  display: flex;
+  justify-content:space-around;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 20px;
+
+}
+
+.footer-section {
+  
+  min-width: 200px;
+  margin: 10px;
+}
+
+.footer-section h3 {
+  margin-bottom: 10px;
+}
+
+.footer-section p, .footer-section a {
+  color: #084c2a;
+  text-decoration: none;
+}
+
+.footer-section a:hover {
+  color:  #084c2a;
+}
+
+.social-media {
+  list-style-type: none;
+  padding: 0;
+}
+
+.social-media li {
+  margin: 5px 0;
+}
+
+.footer-bottom {
+  text-align: center;
+  padding: 10px 0;
+  background-color: #222;
+  margin-top: 20px;
+}
