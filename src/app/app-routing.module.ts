@@ -4,6 +4,9 @@ import { HomeComponent } from './components/home/home.component'; // Đảm bả
 import { IntroduceComponent } from './components/introduce/introduce.component';
 import { ProductComponent } from './components/product/product.component';
 import { ContactComponent } from './components/contact/contact.component';
+import { CartComponent } from './components/cart/cart.component';
+import { OrderComponent } from './components/order/order.component';
+import { ProductDetailComponent } from './product-detail/product-detail.component';
 
 
 export const routes: Routes = [
@@ -11,6 +14,9 @@ export const routes: Routes = [
   { path: 'gioithieu', component: IntroduceComponent },
   { path: 'sanpham', component: ProductComponent },
   { path: 'lienhe', component: ContactComponent },
+  {path:'giohang',component:CartComponent},
+  {path:'dathang',component:OrderComponent},
+  {path:'xemchitiet',component :ProductDetailComponent},
  
 
   { path: '', redirectTo: '/home', pathMatch: 'full' },

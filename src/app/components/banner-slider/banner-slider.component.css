@@ -1,38 +1,77 @@
-/* src/app/components/banner-slider/banner-slider.component.css */
-
+/* src/app/components/banner-slider/banner-slider.component.scss */
 .banner {
-  position: relative;
-  max-width: 100%; /* Đặt chiều rộng tối đa cho banner */
-  margin: auto; /* Căn giữa banner */
-  overflow: hidden; /* Ẩn các phần bên ngoài của banner */
+  display: flex; /* Use flexbox for layout */
+  align-items: center; /* Center items vertically */
 }
 
 .slide {
-  display: block; /* Hiển thị slide */
+  position: relative; /* Required for absolute positioning of buttons and images */
+  width: 100%; /* Full width for the slide */
 }
 
-img {
+.main-image-wrapper {
+  position: relative; /* Position relative to contain the overlay */
+}
+
+.main-image {
   width: 100%; /* Chiều rộng của ảnh là 100% */
-  height: 650px; /* Chiều cao tự động */
+  height: 450px; /* Chiều cao tự động */
+  margin-right: 20px; /* Space between images */
 }
 
-.prev, .next {
-  cursor: pointer;
+.overlay-image {
+  position: absolute; /* Position the overlay image absolutely */
+  top: 5%; /* Adjust to position within the main image */
+  right: 1%; /* Adjust to position within the main image */
+  width: 40%; /* Adjust size of overlay image as needed */
+  height: auto; /* Maintain aspect ratio */
+}
+
+.secondary-image {
+  max-width: 30%; /* Adjust width as needed */
+}
+
+
+
+/* src/app/components/banner-slider/banner-slider.component.scss */
+.buy-now-btn {
   position: absolute;
-  top: 50%;
-  width: auto;
-  padding: 16px;
-  color: white; /* Màu chữ */
-  font-weight: bold; /* Chữ đậm */
-  font-size: 18px;
-  transition: 0.6s ease; /* Hiệu ứng chuyển tiếp */
-  user-select: none; /* Không cho phép chọn chữ */
+  top: 150px;
+  left: 10%;
+  transform: translateX(-50%);
+  background-color: #085947;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Add transition */
 }
 
-.prev {
-  left: 0; /* Căn trái cho nút trước */
+.buy-now-btn:hover {
+  background-color: #62bc9e;
+  transform: translateX(-50%) scale(1.05); /* Scale effect */
 }
 
-.next {
-  right: 0; /* Căn phải cho nút tiếp */
+/* src/app/components/banner-slider/banner-slider.component.scss */
+.voucher-btn {
+  position: absolute;
+  top: 200px; /* Adjust this value to position it below the other button */
+  left: 10%;
+  transform: translateX(-50%);
+  background-color: #ffffff;/* Example color for voucher button */
+  color:#085947;
+  padding: 10px 20px;
+  border: 1px solid  #085947;
+  border-radius: 2px;
+  cursor: pointer;
+  font-size: 16px;
+  width: 150px;
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Add transition */
+}
+
+.voucher-btn:hover {
+  background-color: #62bc9e;
+  transform: translateX(-50%) scale(1.05); /* Scale effect */
 }

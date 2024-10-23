@@ -1,0 +1,38 @@
+<div class="cart-container">
+    <h2>Giỏ Hàng</h2>
+  
+    <table class="cart-table">
+      <thead>
+        <tr>
+          <th>Hình ảnh</th>
+          <th>Tên sản phẩm</th>
+          <th>Giá</th>
+          <th>Số lượng</th>
+          <th>Tổng</th>
+          <th>Thao tác</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of cartItems">
+          <td>
+            <img [src]="item.imageUrl" alt="{{ item.name }}" class="product-image">
+          </td>
+          <td>{{ item.name }}</td>
+          <td>{{ item.price }}đ</td>
+          <td>
+            <input type="number" [(ngModel)]="item.quantity" min="1" (change)="updateQuantity(item.id, item.quantity)">
+          </td>
+          <td>{{ item.price * item.quantity }}đ</td>
+          <td>
+            <button (click)="removeItem(item.id)"class="delete-button" >Xóa</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <div class="cart-total">
+      <h3>Tổng cộng: {{ total }}đ</h3>
+      <button (click)="clearCart()" class="delete-button" >Xóa giỏ hàng</button>
+      <button (click)="buyNow()" class="buy-button">Mua hàng</button> <!-- Nút Mua hàng -->
+    </div>
+</div>

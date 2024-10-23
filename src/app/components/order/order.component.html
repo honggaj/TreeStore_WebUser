@@ -1,0 +1,45 @@
+<div class="order-container">
+    <h2>Đặt Hàng</h2>
+    
+    <table class="order-table">
+      <thead>
+        <tr>
+          <th>Hình ảnh</th>
+          <th>Tên sản phẩm</th>
+          <th>Giá</th>
+          <th>Số lượng</th>
+          <th>Tổng</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of cartItems">
+          <td>
+            <img [src]="item.imageUrl" alt="{{ item.name }}" class="product-image">
+          </td>
+          <td>{{ item.name }}</td>
+          <td>{{ item.price }}đ</td>
+          <td>{{ item.quantity }}</td>
+          <td>{{ item.price * item.quantity }}đ</td>
+        </tr>
+      </tbody>
+    </table>
+  
+  <!-- order.component.html -->
+<div class="shipping-info">
+    <h3>Thông tin giao hàng</h3>
+    <label for="name">Họ và tên:</label>
+    <input type="text" id="name" [(ngModel)]="shippingInfo.name" required>
+
+    <label for="phone">Số điện thoại:</label>
+    <input type="text" id="phone" [(ngModel)]="shippingInfo.phone" required>
+
+    <label for="address">Địa chỉ giao hàng:</label>
+    <input type="text" id="address" [(ngModel)]="shippingInfo.address" required>
+</div>
+
+  
+    <div class="order-total">
+      <h3>Tổng cộng: {{ total }}đ</h3>
+      <button (click)="submitOrder()" class="submit-button">Xác nhận đơn hàng</button>
+    </div>
+</div>

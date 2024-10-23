@@ -1,6 +1,7 @@
 // src/app/components/banner-slider/banner-slider.component.ts
 
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-banner-slider',
@@ -9,10 +10,11 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
   styleUrls: ['./banner-slider.component.css']
 })
 export class BannerSliderComponent implements OnInit, OnDestroy {
+  constructor(private router: Router) {}
   images: string[] = [
-    'images/banner1.jpg',
-    'images/banner2.jpg',
-    'images/banner3.jpg'
+    'images/banner6.png',
+    'images/banner6.png',
+    'images/banner6.png'
   ];
   
   currentIndex: number = 0;
@@ -43,5 +45,9 @@ export class BannerSliderComponent implements OnInit, OnDestroy {
     this.intervalId = setInterval(() => {
       this.plusSlides(1); // Tự động chuyển slide mỗi 3 giây
     }, 3000); // Thay đổi mỗi 3000ms = 3 giây
+  }
+  viewProduct() {
+    // Điều hướng tới trang chi tiết sản phẩm với Router
+    this.router.navigate(['/sanpham']);
   }
 }

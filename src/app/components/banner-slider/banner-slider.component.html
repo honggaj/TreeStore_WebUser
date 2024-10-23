@@ -1,8 +1,14 @@
 <!-- src/app/components/banner-slider/banner-slider.component.html -->
 <div class="banner">
   <div class="slide fade">
-    <img [src]="getCurrentImage()" alt="Banner" />
+    <div class="main-image-wrapper">
+      <img [src]="getCurrentImage()" alt="Banner" class="main-image" />
+      <img src="images/bannerTree.png" alt="Overlay Image" class="overlay-image" /> <!-- New overlay image -->
+    </div>
+    <button (click)="viewProduct()" class="buy-now-btn">Mua hàng ngay</button>
+    <button class="voucher-btn">Nhận voucher</button> <!-- New button added here -->
+    
+    <!-- New image on the right -->
+   
   </div>
-  <a class="prev" (click)="plusSlides(-1)">&#10094;</a>
-  <a class="next" (click)="plusSlides(1)">&#10095;</a>
 </div>

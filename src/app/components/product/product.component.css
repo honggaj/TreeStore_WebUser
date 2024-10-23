@@ -1,98 +1,120 @@
 .product-container {
     display: flex; /* Sử dụng Flexbox để bố trí */
+    background-color:#f9f9f9;
+
   }
   
   app-tree-type-menu {
+    padding-top: 35px;
     flex: 1; /* Chiếm 1 phần của không gian */
 
   }
   
-  .sanphamnoibat {
-    flex: 3; /* Chiếm 3 phần của không gian */
-    padding: 20px; /* Thêm padding */
-  }
-  
+ 
+.sanphamnoibat {
+  padding: 30px 30px;
+}
+
+/* Sản phẩm nổi bật */
+h1 {
+  font-size: 24px;
+  text-align: center;
+  margin-bottom: 20px;
+}
 
 .product-list {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap; /* Cho phép sản phẩm xuống hàng */
-    margin: 0;
-    gap:10px;
-  }
-  
-  .product-item {
-    border: 1px solid #ddd;
-    padding: 5px;
-    text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Thêm hiệu ứng chuyển động mượt */
-    width: 250px; /* Thiết lập chiều rộng cố định cho mỗi sản phẩm */
-    margin: 10px; /* Khoảng cách giữa các sản phẩm */
-   
-  }
-  .description {
-    font-size: 16px; /* Kích thước chữ cho mô tả tổng quát */
-    color: green;    /* Màu chữ cho mô tả tổng quát */
-    text-align: center;
-    padding: 0px 400px;
-    margin-bottom: 20px; /* Khoảng cách dưới mô tả tổng quát */
-  }
-  
-  .product-item p.product-price {
-    font-size: 18px; /* Kích thước chữ cho giá sản phẩm */
-    color: rgb(12, 95, 52); /* Màu chữ cho giá sản phẩm */
-    padding: 0px;    /* Không có khoảng cách bên trong */
-    margin: 0;       /* Không có khoảng cách bên ngoài */
-    text-align: center; /* Căn giữa cho giá sản phẩm */
-  }
-  
-  .product-item img {
-    width: 150px;
-    height: 200px;
-    margin-bottom: 10px;
-  }
-  .button-container {
-    display: flex;
-    justify-content: center; /* Căn giữa các nút */
-    margin-top: 10px; /* Khoảng cách giữa phần mô tả sản phẩm và nút */
-  }
-  
-  button {
-    margin: 5px;
-    padding: 10px 20px;
-    border: none;
-    background-color: darkgreen;
-    color: white;
-    cursor: pointer;
-    transition: background-color 0.3s ease; /* Thêm hiệu ứng chuyển động cho button */
-  }
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap; /* Cho phép sản phẩm xuống hàng */
+  margin: 0;
+  gap:10px;
+}
+
+.product-item {
+  border: 1px solid #ddd;
+  padding: 5px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Thêm hiệu ứng chuyển động mượt */
+  width: 180px; /* Thiết lập chiều rộng cố định cho mỗi sản phẩm */
+  margin: 10px; /* Khoảng cách giữa các sản phẩm */
+  height: 305px;
+ 
+}
+.description {
+  font-size: 16px; /* Kích thước chữ cho mô tả tổng quát */
+  color: green;    /* Màu chữ cho mô tả tổng quát */
+  text-align: center;
+  padding: 0px 350px;
+  margin-bottom: 20px; /* Khoảng cách dưới mô tả tổng quát */
+}
+
+.product-item p.product-price {
+  font-size: 16px; /* Kích thước chữ cho giá sản phẩm */
+  color: rgb(12, 95, 52); /* Màu chữ cho giá sản phẩm */
+  padding: 0px;    /* Không có khoảng cách bên trong */
+  margin: 0;       /* Không có khoảng cách bên ngoài */
+  text-align: center; /* Căn giữa cho giá sản phẩm */
+}
+
+.product-item img {
+  width: 150px;
+  height: 200px;
+  margin-bottom: 10px;
+}
+
+h4 {
+  margin: 5px 0;
+}
 
 
 
+.button-container {
+  display: flex;
+  justify-content: center; /* Căn giữa các nút */
+  margin-top: 10px; /* Khoảng cách giữa phần mô tả sản phẩm và nút */
+}
 
-  .search-container {
-    display: flex; /* Sử dụng Flexbox cho ô tìm kiếm */
-    margin-bottom: 20px; /* Khoảng cách dưới ô tìm kiếm */
-  }
-  
-  .search-input {
-    margin-left: 40px;
-    padding: 10px; /* Padding cho ô nhập */
-    border: 1px solid #ddd; /* Đường viền cho ô nhập */
-    border-radius: 5px; /* Bo tròn các góc */width: 243px;
-  }
-  
-  .search-btn {
-    padding: 15px 15px; /* Padding cho nút */
-    margin-left: 10px; /* Khoảng cách bên trái cho nút */
-    background-color: #28a745; /* Màu nền cho nút */
-    color: white; /* Màu chữ */
-    border: none; /* Không có đường viền */
-    border-radius: 3px; /* Bo tròn các góc */
-    cursor: pointer; /* Con trỏ chuột khi hover */
-  }
-  
-  .search-btn:hover {
-    background-color: #218838; /* Màu nền khi hover */
-  }
-  
+button {
+  margin: 5px;
+  padding: 10px 10px;
+  border-radius: 2px;
+  border: none;
+  background-color: darkgreen;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Thêm hiệu ứng chuyển động cho button */
+}
+
+button:hover {
+  background-color: #28a745; /* Thay đổi màu nền khi hover */
+}
+
+.product-item:hover {
+  transform: scale(1.05); /* Khi hover, sản phẩm sẽ phóng to */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Thêm bóng cho sản phẩm */
+  background-color: #a7c4b6;
+
+}
+
+.search-container {
+  display: flex;
+  align-items: center; /* Căn giữa thanh tìm kiếm */
+  margin-right: 20px; /* Khoảng cách giữa thanh tìm kiếm và các biểu tượng */
+}
+
+.search-input {
+  margin-left: 20px;
+  padding: 10px; /* Padding cho input */
+  border: 1px solid #ccc; /* Đường viền */
+  border-radius: 3px; /* Bo tròn các góc */
+  outline: none; /* Bỏ đường viền khi chọn */
+  transition: border-color 0.3s; /* Hiệu ứng chuyển đổi cho màu đường viền */
+}
+
+.search-input::placeholder {
+  color: #aaa; /* Màu chữ placeholder */
+}
+
+.search-input:hover {
+  border-color: #ffcc00; /* Màu đường viền khi hover */
+}

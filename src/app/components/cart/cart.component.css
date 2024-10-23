@@ -1,0 +1,79 @@
+.cart-container {
+    max-width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .cart-table {
+    width: 100%; /* Đảm bảo bảng sử dụng toàn bộ chiều rộng của .cart-container */
+    border-collapse: collapse;
+  }
+  
+  .cart-table th,
+  .cart-table td {
+    border-bottom: 1px solid #ddd; /* Chỉ có đường viền dưới */
+    padding: 10px;
+    text-align: center; /* Căn giữa nội dung trong ô */
+  }
+  
+  .cart-table th {
+    border-top: 1px solid #ddd; /* Đường viền trên cho tiêu đề */
+  }
+  
+  .cart-table tr:hover {
+    background-color: #f1f1f1; /* Thay đổi màu nền khi hover trên hàng */
+  }
+  
+  
+  .cart-total {
+    margin-top: 20px;
+    text-align: right;
+  }
+  
+  .delete-button {
+    padding: 10px;
+    background-color: #b22626;
+    color: white;
+    border: none;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .delete-button:hover {
+    background-color: #d06966;
+  }
+  .cart-table input[type="number"] {
+    width: 60px; /* Chiều rộng của khung nhập số lượng */
+    text-align: center; /* Căn giữa nội dung trong khung */
+  }
+  
+  
+  .product-image {
+    width: 50px; /* Chiều rộng của hình ảnh */
+    height: auto; /* Giữ tỉ lệ hình ảnh */
+    border-radius: 5px; /* Bo góc cho hình ảnh */
+}
+.buy-button {
+    padding: 10px;
+ 
+    color: rgb(20, 137, 74);
+    border: 1px solid rgb(4, 68, 39);
+    border-radius: 2px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-left: 10px; /* Khoảng cách với nút Xóa giỏ hàng */
+}
+
+.buy-button:hover {
+    color: white;
+    background-color:rgb(4, 68, 39);
+}

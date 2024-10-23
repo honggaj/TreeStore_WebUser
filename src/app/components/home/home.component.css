@@ -2,21 +2,9 @@
   font-family: Arial, sans-serif;
 }
 
-.banner {
-  width: 100%;
-  height: 650px;
-  overflow: hidden;
-  margin-bottom: 20px;
-}
-
-.banner img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
 
 .sanphamnoibat {
-  padding: 30px 100px;
+  padding: 10px 30px;
 }
 
 /* Sản phẩm nổi bật */
@@ -39,20 +27,21 @@ h1 {
   padding: 5px;
   text-align: center;
   transition: transform 0.3s ease, box-shadow 0.3s ease; /* Thêm hiệu ứng chuyển động mượt */
-  width: 250px; /* Thiết lập chiều rộng cố định cho mỗi sản phẩm */
+  width: 180px; /* Thiết lập chiều rộng cố định cho mỗi sản phẩm */
   margin: 10px; /* Khoảng cách giữa các sản phẩm */
+  height: 305px;
  
 }
 .description {
   font-size: 16px; /* Kích thước chữ cho mô tả tổng quát */
   color: green;    /* Màu chữ cho mô tả tổng quát */
   text-align: center;
-  padding: 0px 400px;
+  padding: 0px 350px;
   margin-bottom: 20px; /* Khoảng cách dưới mô tả tổng quát */
 }
 
 .product-item p.product-price {
-  font-size: 18px; /* Kích thước chữ cho giá sản phẩm */
+  font-size: 16px; /* Kích thước chữ cho giá sản phẩm */
   color: rgb(12, 95, 52); /* Màu chữ cho giá sản phẩm */
   padding: 0px;    /* Không có khoảng cách bên trong */
   margin: 0;       /* Không có khoảng cách bên ngoài */
@@ -65,9 +54,8 @@ h1 {
   margin-bottom: 10px;
 }
 
-h3 {
-  font-size: 20px;
-  margin: 10px 0;
+h4 {
+  margin: 5px 0;
 }
 
 
@@ -80,7 +68,8 @@ h3 {
 
 button {
   margin: 5px;
-  padding: 10px 20px;
+  padding: 10px 10px;
+  border-radius: 2px;
   border: none;
   background-color: darkgreen;
   color: white;
@@ -95,6 +84,8 @@ button:hover {
 .product-item:hover {
   transform: scale(1.05); /* Khi hover, sản phẩm sẽ phóng to */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Thêm bóng cho sản phẩm */
+  background-color: #a7c4b6;
+
 }
 /* Dịch vụ */
 
