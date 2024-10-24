@@ -19,12 +19,14 @@
   
   .cart-table th,
   .cart-table td {
-    border-bottom: 1px solid #ddd; /* Chỉ có đường viền dưới */
+   border:none;
     padding: 10px;
+    border-bottom: 1px solid #ddd; /* Chỉ có đường viền dưới */
     text-align: center; /* Căn giữa nội dung trong ô */
   }
   
   .cart-table th {
+    border-bottom: 1px solid #ddd; /* Chỉ có đường viền dưới */
     border-top: 1px solid #ddd; /* Đường viền trên cho tiêu đề */
   }
   

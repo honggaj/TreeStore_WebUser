@@ -1,6 +1,42 @@
 .trang-chu {
   font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+
 }
+
+.gioithieu {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(135deg, rgb(202, 215, 202), rgb(73, 159, 73)); /* Gradient từ xanh nhạt đến xanh đậm hơn */
+  margin-top: 0px;
+}
+
+.text-gioithieu {
+  display: flex;
+  flex-direction: column;
+  padding: 0 150px;
+}
+
+.image-gioithieu img {
+  width: 250px; /* Adjust the size as needed */
+  height: auto;
+}
+.moving-image {
+  animation: move 2s infinite alternate ease-in-out;
+}
+
+@keyframes move {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(50px); /* Điều chỉnh khoảng cách di chuyển */
+  }
+}
+
+
 
 
 .sanphamnoibat {
@@ -29,7 +65,7 @@ h1 {
   transition: transform 0.3s ease, box-shadow 0.3s ease; /* Thêm hiệu ứng chuyển động mượt */
   width: 180px; /* Thiết lập chiều rộng cố định cho mỗi sản phẩm */
   margin: 10px; /* Khoảng cách giữa các sản phẩm */
-  height: 305px;
+  height: 325px;
  
 }
 .description {

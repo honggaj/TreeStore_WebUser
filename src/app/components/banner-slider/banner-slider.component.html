@@ -1,14 +1,10 @@
-<!-- src/app/components/banner-slider/banner-slider.component.html -->
 <div class="banner">
   <div class="slide fade">
     <div class="main-image-wrapper">
       <img [src]="getCurrentImage()" alt="Banner" class="main-image" />
-      <img src="images/bannerTree.png" alt="Overlay Image" class="overlay-image" /> <!-- New overlay image -->
+      <img [src]="getCurrentOverlayImage()" [ngClass]="getOverlayClass()" alt="Overlay Image" class="overlay-image" /> <!-- Lớp overlay khác nhau cho từng ảnh -->
     </div>
     <button (click)="viewProduct()" class="buy-now-btn">Mua hàng ngay</button>
-    <button class="voucher-btn">Nhận voucher</button> <!-- New button added here -->
-    
-    <!-- New image on the right -->
-   
+    <button class="voucher-btn">Nhận voucher</button>
   </div>
 </div>

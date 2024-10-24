@@ -1,106 +1,89 @@
-.cart-container {
-    max-width: 80%;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  h2 {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
-  .cart-table {
-    width: 100%; /* Đảm bảo bảng sử dụng toàn bộ chiều rộng của .cart-container */
-    border-collapse: collapse;
-  }
-  
-  .cart-table th,
-  .cart-table td {
-    border-bottom: 1px solid #ddd; /* Chỉ có đường viền dưới */
-    padding: 10px;
-    text-align: center; /* Căn giữa nội dung trong ô */
-  }
-  
-  .cart-table th {
-    border-top: 1px solid #ddd; /* Đường viền trên cho tiêu đề */
-  }
-  
-  .cart-table tr:hover {
-    background-color: #f1f1f1; /* Thay đổi màu nền khi hover trên hàng */
-  }
-  
-  
-  .cart-total {
-    margin-top: 20px;
-    text-align: right;
-  }
-  
-  .delete-button {
-    padding: 10px;
-    background-color: #b22626;
-    color: white;
-    border: none;
-    border-radius: 2px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  .delete-button:hover {
-    background-color: #d06966;
-  }
-  .cart-table input[type="number"] {
-    width: 60px; /* Chiều rộng của khung nhập số lượng */
-    text-align: center; /* Căn giữa nội dung trong khung */
-  }
-  
-  
-  .product-image {
-    width: 50px; /* Chiều rộng của hình ảnh */
-    height: auto; /* Giữ tỉ lệ hình ảnh */
-    border-radius: 5px; /* Bo góc cho hình ảnh */
-}
-.buy-button {
-    padding: 10px;
- 
-    color: rgb(20, 137, 74);
-    border: 1px solid rgb(4, 68, 39);
-    border-radius: 2px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    margin-left: 10px; /* Khoảng cách với nút Xóa giỏ hàng */
+.order-container {
+  max-width: 80%;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.buy-button:hover {
-    color: white;
-    background-color:rgb(4, 68, 39);
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
 }
 
-/* order.component.css */
-
-/* Tùy chỉnh cho label */
-label {
-    font-weight: bold;           /* Đậm chữ */
-    font-size: 1rem;            /* Kích thước chữ */
-    color: #333;                /* Màu chữ */
-    margin-bottom: 5px;         /* Khoảng cách dưới label */
-    display: block;             /* Hiển thị theo dạng block */
+.order-table {
+  width: 100%;
+  margin-bottom: 20px;
+  border-collapse: collapse; /* Thêm để bỏ khoảng cách giữa các ô */
 }
 
-/* Tùy chỉnh cho input bên dưới label */
-input {
-    width: 100%;                /* Chiều rộng full */
-    padding: 8px;              /* Khoảng cách bên trong */
-    border: 1px solid #ccc;    /* Viền xung quanh */
-    border-radius: 4px;        /* Bo tròn góc */
-    font-size: 1rem;           /* Kích thước chữ */
-    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1); /* Đổ bóng */
+.order-table th,
+.order-table td {
+  border: none; /* Bỏ viền bên, chỉ giữ viền dưới */
+  border-bottom: 1px solid #ddd; /* Chỉ có đường viền dưới */
+  padding: 10px;
+  text-align: center;
 }
 
-input:focus {
-    border-color: #66afe9;     /* Đổi màu viền khi focus */
-    outline: none;             /* Xóa outline mặc định */
-    box-shadow: 0 0 5px rgba(102, 175, 233, .8); /* Đổ bóng khi focus */
+.order-table th {
+  border-bottom: 1px solid #ddd; /* Chỉ có đường viền dưới cho header */
+  background-color: #f1f1f1;
+}
+
+.order-table td {
+  border-bottom: 1px solid #ddd; /* Chỉ có đường viền dưới cho các ô dữ liệu */
+}
+
+.product-image {
+  width: 50px;
+  height: auto;
+  border-radius: 5px;
+}
+
+.shipping-info {
+  margin: 20px 0;
+}
+
+.shipping-info h3 {
+  margin-bottom: 15px;
+}
+
+.shipping-info label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.shipping-info input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 15px;
+}
+
+.order-total {
+  text-align: right;
+  margin-top: 20px;
+}
+
+.order-total h3 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.submit-button {
+  margin: 5px;
+  padding: 10px 10px;
+  border-radius: 2px;
+  border: none;
+  background-color: darkgreen;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Thêm hiệu ứng chuyển động cho button */
+}
+
+.submit-button:hover {
+  background-color: #28a745; /* Thay đổi màu nền khi hover */
 }
