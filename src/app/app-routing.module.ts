@@ -6,7 +6,8 @@ import { ProductComponent } from './components/product/product.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { CartComponent } from './components/cart/cart.component';
 import { OrderComponent } from './components/order/order.component';
-import { ProductDetailComponent } from './product-detail/product-detail.component';
+import { ProductDetailComponent } from './components/product-detail/product-detail.component';
+import { AccountComponent } from './components/account/account.component';
 
 
 export const routes: Routes = [
@@ -17,6 +18,7 @@ export const routes: Routes = [
   {path:'giohang',component:CartComponent},
   {path:'dathang',component:OrderComponent},
   {path:'xemchitiet',component :ProductDetailComponent},
+  {path:'taikhoan',component:AccountComponent},
  
 
   { path: '', redirectTo: '/home', pathMatch: 'full' },

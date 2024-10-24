@@ -37,7 +37,7 @@ h1 {
   transition: transform 0.3s ease, box-shadow 0.3s ease; /* Thêm hiệu ứng chuyển động mượt */
   width: 180px; /* Thiết lập chiều rộng cố định cho mỗi sản phẩm */
   margin: 10px; /* Khoảng cách giữa các sản phẩm */
-  height: 305px;
+  height: 325px;
  
 }
 .description {

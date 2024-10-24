@@ -14,9 +14,9 @@
 }
 
 .text-gioithieu {
-  display: flex;
+ 
   flex-direction: column;
-  padding: 0 150px;
+  padding: 10px 150px;
 }
 
 .image-gioithieu img {
