@@ -29,10 +29,10 @@
 
 @keyframes move {
   0% {
-    transform: translateX(0);
+    transform: translateX(-100px);
   }
   100% {
-    transform: translateX(50px); /* Điều chỉnh khoảng cách di chuyển */
+    transform: translateX(100px); /* Điều chỉnh khoảng cách di chuyển */
   }
 }
 
