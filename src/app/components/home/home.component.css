@@ -5,6 +5,29 @@
 
 }
 
+.chat-icon {
+  position: fixed; /* Định vị biểu tượng chat */
+  top: 20%; /* Cách dưới 20% */
+  right: 20px; /* Cách bên phải 20px */
+  background-color: #fff; /* Nền trắng cho biểu tượng */
+  border-radius: 50%; /* Tạo hình tròn */
+  padding: 10px; /* Padding cho biểu tượng */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Đổ bóng cho biểu tượng */
+  cursor: pointer; /* Hiển thị con trỏ như nút */
+  transition: transform 0.3s ease; /* Hiệu ứng chuyển tiếp */
+  z-index: 2; /* Thêm z-index cho biểu tượng chat */
+}
+.chat-icon:hover {
+  transform: scale(1.1); /* Phóng to khi hover */
+}
+
+.chat-icon i {
+  font-size: 24px; /* Kích thước biểu tượng */
+  color: #229e6a; /* Màu cho biểu tượng */
+}
+
+
+
 .gioithieu {
   display: flex;
   align-items: center;
@@ -180,6 +203,7 @@ button:hover {
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  z-index: 1; /* Thêm z-index cho banner */
 }
 
 .banner-image {
