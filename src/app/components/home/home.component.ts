@@ -11,4 +11,5 @@ import {ImageSliderComponent} from '../image-slider/image-slider.component'
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
+  
 }

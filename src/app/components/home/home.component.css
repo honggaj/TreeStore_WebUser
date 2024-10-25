@@ -13,10 +13,19 @@
   margin-top: 0px;
 }
 
-.text-gioithieu {
+.text-gioithieu p {
+ padding: 30px;
+ border-radius: 25px;
  
-  flex-direction: column;
-  padding: 10px 150px;
+ 
+ background-color: #e9efec;
+ margin: 20px 100px;
+}
+
+.text-gioithieu text-gioithieu1{
+  background-color: #333;
+  width: 100px;
+  height: 100px;
 }
 
 .image-gioithieu img {
@@ -63,9 +72,9 @@ h1 {
   padding: 5px;
   text-align: center;
   transition: transform 0.3s ease, box-shadow 0.3s ease; /* Thêm hiệu ứng chuyển động mượt */
-  width: 180px; /* Thiết lập chiều rộng cố định cho mỗi sản phẩm */
+  width: 260px; /* Thiết lập chiều rộng cố định cho mỗi sản phẩm */
   margin: 10px; /* Khoảng cách giữa các sản phẩm */
-  height: 325px;
+  height: 380px;
  
 }
 .description {
@@ -85,8 +94,8 @@ h1 {
 }
 
 .product-item img {
-  width: 150px;
-  height: 200px;
+  width: 200px;
+  height: 250px;
   margin-bottom: 10px;
 }
 
@@ -99,12 +108,12 @@ h4 {
 .button-container {
   display: flex;
   justify-content: center; /* Căn giữa các nút */
-  margin-top: 10px; /* Khoảng cách giữa phần mô tả sản phẩm và nút */
+  margin-top: 20px; /* Khoảng cách giữa phần mô tả sản phẩm và nút */
 }
 
 button {
   margin: 5px;
-  padding: 10px 10px;
+  padding: 15px 20px;
   border-radius: 2px;
   border: none;
   background-color: darkgreen;
@@ -129,7 +138,7 @@ button:hover {
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
-  background-color: rgb(180, 210, 180);
+  background-color: #229e6a;
   margin: 0 auto;
   padding: 20px;
   padding-top: 40px;
@@ -163,10 +172,69 @@ button:hover {
   margin: 5px 0 0;
   color: #666;
 }
+.banner-sale {
+  position: relative;
+  width: 100%;
+  height: 550px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.banner-image {
+  width: 100%;
+  height: 100%;
+ 
+}
+
+.floating-image-container {
+  position: absolute;
+  top: 120px;
+  left: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: float 2s infinite alternate ease-in-out;
+}
+
+.floating-image {
+  width: 500px;
+}
+.floating-image-container:hover {
+  transform: scale(1.1); /* Phóng to lên 110% */
+  filter: brightness(1.2); /* Tăng độ sáng của ảnh */
+  cursor: pointer;
+}
+
+.floating-text {
+  position: absolute;
+  color: #fff;
+  font-size: 50px;
+  font-weight: bold;
+  padding-left: 20px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Animation cho floating-image-container với hiệu ứng phóng to nhỏ */
+@keyframes float {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.2);
+  }
+}
+
+
+
 
 .footer {
-  background-color: rgb(180, 210, 180);
-  color: #084c2a;
+  background: linear-gradient(to bottom right, #229e6a, #23925b); /* Gradient từ trên trái đến dưới phải */
+  color: #ffffff;
   
  
 }
@@ -175,6 +243,7 @@ button:hover {
   display: flex;
   justify-content:space-around;
   max-width: 100%;
+  
   margin: 0 auto;
   padding: 0 20px;
 
@@ -191,7 +260,7 @@ button:hover {
 }
 
 .footer-section p, .footer-section a {
-  color: #084c2a;
+  color: #d2e6dc;
   text-decoration: none;
 }
 
