@@ -1,0 +1,97 @@
+
+.login {
+    background-image: url('/images/loginpage.jpg'); /* Đường dẫn tới hình ảnh */
+    width: 100%;
+    height: 100vh; /* Chiều cao 100% viewport */
+    background-size: cover; /* Đảm bảo hình ảnh phủ toàn bộ */
+    background-position: center; /* Canh giữa hình ảnh */
+    display: flex; /* Sử dụng flex để căn giữa nội dung */
+    align-items: center; /* Căn giữa theo chiều dọc */
+    justify-content: center; /* Căn giữa theo chiều ngang */
+}
+
+.login-container {
+    width: 100%;
+    max-width: 600px; /* Đặt chiều rộng tối đa cho form */
+    padding: 50px 20px ; /* Thêm khoảng cách bên trong */
+ 
+    background-color: rgba(255, 255, 255,0.8); /* Màu nền trắng với độ trong suốt */
+    border-radius: 8px; /* Bo góc */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Đổ bóng cho form */
+}
+.forgot-password-container {
+    text-align: right; /* Căn phải cho liên kết */
+    margin-top: 10px; /* Khoảng cách phía trên */
+}
+
+.forgot-password {
+    color: #007bff; /* Màu chữ liên kết */
+    text-decoration: none; /* Bỏ gạch chân */
+}
+
+.forgot-password:hover {
+    text-decoration: underline; /* Gạch chân khi di chuột qua */
+}
+
+h2 {
+    text-align: center; /* Canh giữa tiêu đề */
+}
+
+.input-group {
+    margin-bottom: 15px; /* Khoảng cách giữa các ô nhập */
+}
+
+label {
+    display: block; /* Hiển thị label như một khối */
+    margin-bottom: 5px; /* Khoảng cách dưới label */
+}
+
+input {
+    width: 100%; /* Đặt chiều rộng 100% cho ô nhập */
+    background-color: rgba(255, 255, 255, 0.3); /* Màu nền trong suốt cho ô nhập */
+    border: none; /* Không viền */
+    border-bottom: 2px solid #0391ad; /* Gạch chân màu */
+    padding: 10px 30px; /* Khoảng cách bên trong */
+    font-size: 16px; /* Kích thước chữ */
+    outline: none; /* Bỏ viền khi ô nhập được chọn */
+}
+
+input:focus {
+    border-bottom: 2px solid #09745b; /* Đổi màu gạch chân khi ô nhập được chọn */
+}
+
+button {
+    width: 100%; /* Đặt chiều rộng 100% cho nút */
+    padding: 10px; /* Thêm khoảng cách bên trong */
+    background-color: #19cca2; /* Màu nền nút */
+    color: white; /* Màu chữ */
+    border: none; /* Không viền */
+    border-radius: 5px; /* Bo góc */
+    cursor: pointer; /* Con trỏ chuột thành hình bàn tay */
+}
+
+button:hover {
+    background-color: #109066; /* Đổi màu khi di chuột qua */
+}
+
+.button-login{
+  
+    padding: 0 200px;
+}
+
+.social-icons{
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+.social-icons i {
+    font-size: 24px; /* Kích thước biểu tượng */
+    margin: 0 20px; /* Khoảng cách giữa các biểu tượng */
+    color: #333; /* Màu sắc biểu tượng */
+}
+
+.login-container h2 i {
+    margin-left: 8px; /* Khoảng cách giữa tiêu đề và biểu tượng */
+    color: #007bff; /* Màu sắc biểu tượng */
+}

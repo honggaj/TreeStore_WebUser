@@ -1,6 +1,8 @@
 .product-container {
     display: flex; /* Sử dụng Flexbox để bố trí */
     background-color:#f9f9f9;
+    width: 100%;
+    height: auto;
 
   }
   

@@ -1,0 +1,38 @@
+<div class="login">
+    <div class="login-container">
+        <h2>Đăng Nhập </h2>
+        <form>
+            <div class="input-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" placeholder="Nhập email của bạn" required />
+            </div>
+            <div class="input-group">
+                <label for="password">Mật Khẩu</label>
+                <input type="password" id="password" placeholder="Nhập mật khẩu" required />
+            </div>
+           <div class="button-login">
+            <button type="submit">Đăng Nhập</button>
+           </div>
+        </form>
+       
+        <div class="login-options">
+            <div class="forgot-password-container">
+                <p>Chưa có tài khoản? <a (click)="goToRegister()">Đăng Ký</a></p>
+                <a href="/forgot-password" class="forgot-password">Quên Mật Khẩu?</a>
+            </div>
+            <p>Hoặc đăng nhập bằng:</p>
+            <div class="social-icons">
+                <a href="https://github.com" target="_blank">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://facebook.com" target="_blank">
+                    <i class="fab fa-facebook"></i>
+                </a>
+                <a href="https://google.com" target="_blank">
+                    <i class="fab fa-google"></i>
+                </a>
+            </div>
+        </div>
+      
+    </div>
+</div>
