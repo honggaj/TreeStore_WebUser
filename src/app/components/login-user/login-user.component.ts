@@ -12,4 +12,12 @@ export class LoginUserComponent {
   goToRegister(): void {
     this.router.navigate(['/dangky']); // Điều hướng chính xác đến '/dangky'
   }
+  isPasswordVisible: boolean = false;
+
+togglePasswordVisibility() {
+    this.isPasswordVisible = !this.isPasswordVisible;
+    const passwordInput = document.getElementById('password') as HTMLInputElement;
+    passwordInput.type = this.isPasswordVisible ? 'text' : 'password';
+}
+
 }

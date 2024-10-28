@@ -14,6 +14,7 @@ import { RegisterUserComponent } from './components/register-user/register-user.
 
 export const routes: Routes = [
   {path:'dangnhap',component:LoginUserComponent},
+  {path:'dangky',component:RegisterUserComponent},
   { path: 'home', component: HomeComponent },
   { path: 'gioithieu', component: IntroduceComponent },
   { path: 'sanpham', component: ProductComponent },
@@ -23,15 +24,13 @@ export const routes: Routes = [
   {path:'xemchitiet',component :ProductDetailComponent},
   {path:'taikhoan',component:AccountComponent},
  
-  {path:'dangky',component:RegisterUserComponent},
- 
 
   { path: '', redirectTo: '/home', pathMatch: 'full' },
-  { path: '**', redirectTo: '/home' } // Đảm bảo trang không tìm thấy sẽ điều hướng về home
+  { path: '**', redirectTo: '/home' }, // Đảm bảo trang không tìm thấy sẽ điều hướng về home
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class AppRoutingModule {}

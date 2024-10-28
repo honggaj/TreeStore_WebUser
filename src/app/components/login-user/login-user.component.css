@@ -1,6 +1,6 @@
 
 .login {
-    background-image: url('/images/loginpage.jpg'); /* Đường dẫn tới hình ảnh */
+    background-image: url('/images/loginPage1.jpg'); /* Đường dẫn tới hình ảnh */
     width: 100%;
     height: 100vh; /* Chiều cao 100% viewport */
     background-size: cover; /* Đảm bảo hình ảnh phủ toàn bộ */
@@ -15,7 +15,7 @@
     max-width: 600px; /* Đặt chiều rộng tối đa cho form */
     padding: 50px 20px ; /* Thêm khoảng cách bên trong */
  
-    background-color: rgba(255, 255, 255,0.8); /* Màu nền trắng với độ trong suốt */
+    background-color: rgba(255, 255, 255,0.7); /* Màu nền trắng với độ trong suốt */
     border-radius: 8px; /* Bo góc */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Đổ bóng cho form */
 }
@@ -25,12 +25,13 @@
 }
 
 .forgot-password {
-    color: #007bff; /* Màu chữ liên kết */
+    color:#19cca2; 
     text-decoration: none; /* Bỏ gạch chân */
 }
 
 .forgot-password:hover {
     text-decoration: underline; /* Gạch chân khi di chuột qua */
+    color: #109066;
 }
 
 h2 {
@@ -94,4 +95,40 @@ button:hover {
 .login-container h2 i {
     margin-left: 8px; /* Khoảng cách giữa tiêu đề và biểu tượng */
     color: #007bff; /* Màu sắc biểu tượng */
+}
+.login-options p {
+    text-align: center;
+    padding-top: 20px;
+}
+.login-options p a{
+    cursor: pointer;
+    color: #19cca2;
+}
+.login-options p a:hover{
+    color:  #109066;
+    cursor: pointer;
+    text-decoration: underline; /* Gạch chân khi di chuột qua */
+}
+
+.input-icon {
+    position: relative; /* Để biểu tượng có thể được đặt bên trong ô nhập */
+    width: 100%; /* Đảm bảo ô chứa biểu tượng có chiều rộng đầy đủ */
+}
+
+.input-icon input {
+    padding-left: 40px; /* Thêm khoảng cách bên trái cho ô nhập để không bị che bởi biểu tượng */
+}
+
+.input-icon i {
+    position: absolute; /* Đặt biểu tượng ở vị trí tuyệt đối */
+    right: 10px; /* Khoảng cách từ bên trái */
+    top: 50%; /* Đặt ở giữa theo chiều dọc */
+    transform: translateY(-50%); /* Căn giữa theo chiều dọc */
+    color: #0391ad; /* Màu sắc của biểu tượng */
+    font-size: 20px; /* Kích thước của biểu tượng */
+}
+.input-icon .fas.fa-eye {
+    right: 10px; /* Khoảng cách từ bên phải cho biểu tượng mắt */
+    cursor: pointer; /* Đổi con trỏ thành bàn tay khi di chuột qua biểu tượng */
+    color: #0391ad; /* Màu sắc của biểu tượng mắt */
 }
