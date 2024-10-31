@@ -7,6 +7,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./tree-type-menu.component.scss']
 })
 export class TreeTypeMenuComponent {
-  // Dữ liệu giả cho các loại cây
- 
+  activeButton: string = ''; // Biến để theo dõi nút active
+
+  // Phương thức để thiết lập nút active
+  setActive(buttonName: string): void {
+    this.activeButton = buttonName; // Cập nhật nút active
+  }
 }

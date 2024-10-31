@@ -1,21 +1,10 @@
 <div class="tree-type-menu">
-    <h2>Loại cây</h2>
-    <ul>
-      <li>
-        <a href="#">Cây nội thất</a>
-      </li>
-      <li>
-        <a href="#">Cây Bonsai</a>
-      </li>
-      <li>
-        <a href="#">Cây trang trí</a>
-      </li>
-      <li>
-        <a href="#">Cây bóng mát</a>
-      </li>
-      <li>
-        <a href="#">Cây văn phòng</a>
-      </li>
-    </ul>
-  </div>
-  
+  <h3>Loại cây</h3>
+  <ul>
+    <li><button class="menu-button" [class.active]="activeButton === 'Cây nội thất'" (click)="setActive('Cây nội thất')">Cây nội thất</button></li>
+    <li><button class="menu-button" [class.active]="activeButton === 'Cây Bonsai'" (click)="setActive('Cây Bonsai')">Cây Bonsai</button></li>
+    <li><button class="menu-button" [class.active]="activeButton === 'Cây trang trí'" (click)="setActive('Cây trang trí')">Cây trang trí</button></li>
+    <li><button class="menu-button" [class.active]="activeButton === 'Cây bóng mát'" (click)="setActive('Cây bóng mát')">Cây bóng mát</button></li>
+    <li><button class="menu-button" [class.active]="activeButton === 'Cây văn phòng'" (click)="setActive('Cây văn phòng')">Cây văn phòng</button></li>
+  </ul>
+</div>
