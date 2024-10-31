@@ -12,6 +12,7 @@ import { LoginUserComponent } from './components/login-user/login-user.component
 import { RegisterUserComponent } from './components/register-user/register-user.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+
 export const routes: Routes = [
   {path:'dangnhap',component:LoginUserComponent},
   {path:'dangky',component:RegisterUserComponent},
@@ -30,7 +31,7 @@ export const routes: Routes = [
 ];
 
 @NgModule({
-  declarations :[AccountComponent ],
+
     
   imports: [RouterModule.forRoot(routes),
     FormsModule ,

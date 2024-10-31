@@ -7,7 +7,7 @@ export interface OrderReponse {
   customerId?: number;
   note?: string | null;
   orderId?: number;
-  promotionId?: number | null;
+  promotionCode?: string | null;
   state?: number;
   totalAmount?: number;
 }

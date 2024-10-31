@@ -10,7 +10,7 @@ export interface PromotionResponse {
   isActive?: boolean;
   minimumPurchaseAmount?: number;
   programName?: string | null;
-  promotionId?: string | null;
+  promotionCode?: string | null;
   startDate?: string;
   usageLimit?: number | null;
 }

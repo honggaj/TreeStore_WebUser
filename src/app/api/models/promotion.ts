@@ -14,7 +14,7 @@ export interface Promotion {
   order?: Order;
   orderId?: number | null;
   programName?: string | null;
-  promotionId?: string | null;
+  promotionCode?: string | null;
   startDate?: string;
   usageLimit?: number | null;
 }

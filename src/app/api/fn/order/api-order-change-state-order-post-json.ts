@@ -8,16 +8,18 @@ import { filter, map } from 'rxjs/operators';
 import { StrictHttpResponse } from '../../strict-http-response';
 import { RequestBuilder } from '../../request-builder';
 
-import { DetailOrderReponseResultCustomModel } from '../../models/detail-order-reponse-result-custom-model';
+import { BooleanResultCustomModel } from '../../models/boolean-result-custom-model';
 
-export interface ApiOrderListDetailOrderGet$Json$Params {
+export interface ApiOrderChangeStateOrderPost$Json$Params {
   orderId?: number;
+  stateId?: number;
 }
 
-export function apiOrderListDetailOrderGet$Json(http: HttpClient, rootUrl: string, params?: ApiOrderListDetailOrderGet$Json$Params, context?: HttpContext): Observable<StrictHttpResponse<DetailOrderReponseResultCustomModel>> {
-  const rb = new RequestBuilder(rootUrl, apiOrderListDetailOrderGet$Json.PATH, 'get');
+export function apiOrderChangeStateOrderPost$Json(http: HttpClient, rootUrl: string, params?: ApiOrderChangeStateOrderPost$Json$Params, context?: HttpContext): Observable<StrictHttpResponse<BooleanResultCustomModel>> {
+  const rb = new RequestBuilder(rootUrl, apiOrderChangeStateOrderPost$Json.PATH, 'post');
   if (params) {
     rb.query('orderId', params.orderId, {});
+    rb.query('stateId', params.stateId, {});
   }
 
   return http.request(
@@ -25,9 +27,9 @@ export function apiOrderListDetailOrderGet$Json(http: HttpClient, rootUrl: strin
   ).pipe(
     filter((r: any): r is HttpResponse<any> => r instanceof HttpResponse),
     map((r: HttpResponse<any>) => {
-      return r as StrictHttpResponse<DetailOrderReponseResultCustomModel>;
+      return r as StrictHttpResponse<BooleanResultCustomModel>;
     })
   );
 }
 
-apiOrderListDetailOrderGet$Json.PATH = '/api/Order/ListDetailOrder';
+apiOrderChangeStateOrderPost$Json.PATH = '/api/Order/ChangeStateOrder';
