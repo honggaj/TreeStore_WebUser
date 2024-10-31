@@ -1,24 +1,27 @@
 <nav>
-    <div class="logo">
-      <img src="images/logolala.png" alt="Logo" />
-    </div>
+  <div class="logo">
+    <img src="images/logolala.png" alt="Logo" />
+  </div>
+  <ul>
+    <li (click)="navigateTo('/home')">TRANG CHỦ</li>
+    <li (click)="navigateTo('/gioithieu')">GIỚI THIỆU </li>
+    <li (click)="navigateTo('/sanpham')">SẢN PHẨM</li>
+    <li (click)="navigateTo('/lienhe')">LIÊN HỆ</li>
+  </ul>
+  <div class="right-menu">
     <ul>
-      <li (click)="navigateTo('/home')">Trang chủ</li>
-      <li (click)="navigateTo('/gioithieu')">Giới thiệu</li>
-      <li (click)="navigateTo('/sanpham')">Sản phẩm</li>
-      <li (click)="navigateTo('/lienhe')">Liên hệ</li>
-    </ul>
-    <div class="right-menu">
-      <div class="search-container">
-        <input type="text" placeholder="Tìm kiếm..." class="search-input" />
-      </div>
-      <a (click)="navigateTo('/giohang')">
-        <i class="fas fa-shopping-cart"></i> <!-- Biểu tượng giỏ hàng -->
-      </a>
-      <a (click)="navigateTo('/taikhoan')">
-        <i class="fas fa-user"></i> <!-- Biểu tượng tài khoản -->
-      </a>
+      <li (click)="navigateTo('/dangnhap')">ĐĂNG NHẬP</li>
       
-    </div>
-  </nav>
-  
+    </ul>
+  <!--  <div class="search-container">
+      <input type="text" placeholder="Tìm kiếm..." class="search-input" />
+    </div> -->
+    <a (click)="navigateTo('/giohang')">
+      <i class="fas fa-shopping-cart"></i> <!-- Biểu tượng giỏ hàng -->
+    </a>
+    <a (click)="navigateTo('/taikhoan')">
+      <i class="fas fa-user"></i> <!-- Biểu tượng tài khoản -->
+    </a>
+    
+  </div>
+</nav>

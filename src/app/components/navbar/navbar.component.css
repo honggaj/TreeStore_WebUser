@@ -1,64 +1,65 @@
 nav {
-    background-color: #ffffff; /* Màu nền nav */
-    padding: 1em;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
+  background-color: #ffffff; /* Màu nền nav */
+  padding: 1em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   
-  .logo img {
-    height: 50px; /* Kích thước logo */
-  }
-  
-  ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    gap: 30px; /* Khoảng cách giữa các liên kết */
-  }
-  
-  li {
-    color: rgb(7, 90, 63); /* Màu chữ của liên kết */
-    text-decoration: none; /* Bỏ gạch dưới */
-    font-weight: bold; /* Đậm chữ */
-    cursor: pointer; /* Đổi con trỏ khi hover */
-  }
-  
-  li:hover {
-    color: #45d4a2; /* Màu chữ khi hover */
-  }
-  
-  .right-menu {
-    display: flex;
-    align-items: center; /* Căn giữa theo chiều dọc */
-  }
-  
-  .search-container {
-    display: flex;
-    align-items: center; /* Căn giữa thanh tìm kiếm */
-    margin-right: 20px; /* Khoảng cách giữa thanh tìm kiếm và các biểu tượng */
-  }
-  
-  .search-input {
-    padding: 10px; /* Padding cho input */
-    border: 1px solid #ccc; /* Đường viền */
-    border-radius: 20px; /* Bo tròn các góc */
-    outline: none; /* Bỏ đường viền khi chọn */
-    transition: border-color 0.3s; /* Hiệu ứng chuyển đổi cho màu đường viền */
-  }
-  
-  .search-input::placeholder {
-    color: #aaa; /* Màu chữ placeholder */
-  }
-  
-  .search-input:hover {
-    border-color: #ffcc00; /* Màu đường viền khi hover */
-  }
-  
-  .right-menu a {
-    color: rgb(7, 90, 63); /* Màu mặc định cho biểu tượng */
-    margin-left: 20px; /* Khoảng cách giữa các biểu tượng */
-    font-size: 1.5em; /* Kích thước biểu tượng */
-  }
-  
+}
+
+.logo img {
+  height: 50px; /* Kích thước logo */
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 50px; /* Khoảng cách giữa các liên kết */
+}
+
+li {
+  color: rgb(7, 90, 63); /* Màu chữ của liên kết */
+  text-decoration: none; /* Bỏ gạch dưới */
+  font-weight: bold; /* Đậm chữ */
+  cursor: pointer; /* Đổi con trỏ khi hover */
+  font-size: 22px;
+}
+
+li:hover {
+  color: #45d4a2; /* Màu chữ khi hover */
+}
+
+.right-menu {
+  display: flex;
+  align-items: center; /* Căn giữa theo chiều dọc */
+}
+
+.search-container {
+  display: flex;
+  align-items: center; /* Căn giữa thanh tìm kiếm */
+  margin-right: 20px; /* Khoảng cách giữa thanh tìm kiếm và các biểu tượng */
+}
+
+.search-input {
+  padding: 10px; /* Padding cho input */
+  border: 1px solid #ccc; /* Đường viền */
+  border-radius: 20px; /* Bo tròn các góc */
+  outline: none; /* Bỏ đường viền khi chọn */
+  transition: border-color 0.3s; /* Hiệu ứng chuyển đổi cho màu đường viền */
+}
+
+.search-input::placeholder {
+  color: #aaa; /* Màu chữ placeholder */
+}
+
+.search-input:hover {
+  border-color: #ffcc00; /* Màu đường viền khi hover */
+}
+
+.right-menu a {
+  color: rgb(7, 90, 63); /* Màu mặc định cho biểu tượng */
+  margin-left: 20px; /* Khoảng cách giữa các biểu tượng */
+  font-size: 1.5em; /* Kích thước biểu tượng */
+}

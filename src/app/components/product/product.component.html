@@ -1,57 +1,25 @@
 <div class="product-container">
-    <app-tree-type-menu></app-tree-type-menu>
-    
-    <div class="sanphamnoibat">
-        <div class="search-container">
-            <input type="text" placeholder="Tìm kiếm sản phẩm..." class="search-input">
-            <button class="search-btn">Tìm kiếm</button>
+  <app-tree-type-menu></app-tree-type-menu>
+  <div class="sanphamnoibat">
+    <h1 class="title">Danh sách sản phẩm</h1>
+    <div class="product-list">
+      <!-- Kiểm tra xem có sản phẩm nào không -->
+      <ng-container *ngIf="products && products.length > 0; else noProducts">
+        <div class="product-item" *ngFor="let product of products">
+          <img [src]="rootUrl + '/' + product.img" alt="{{ product.productName }}" />
+          <h4>{{ product.productName }}</h4>
+          <p class="product-price">{{ product.priceOutput | number }} VNĐ</p>
+          <div class="button-container">
+            <button (click)="addToCart()">Thêm vào giỏ </button>
+            <button (click)="viewDetail()">Xem </button>
           </div>
-
-      <div class="product-list">
-        <div class="product-item">
-          <img src="images/cayluoiho.png" alt="Cây lưỡi hổ">
-          <h4>Cây lưỡi hổ</h4>
-          <p class="product-price">Giá: 100,000 VND</p>
-          <button (click)="viewDetail()">Xem</button>
-          <button (click)="addToCart()">Thêm vào giỏ</button>
         </div>
-        
-        <div class="product-item">
-          <img src="images/cayluoiho.png" alt="Tên cây 1">
-          <h4>Cây lưỡi hổ</h4>
-          <p class="product-price">Giá: 100,000 VND</p>
-          <button class="view-btn">Xem</button>
-          <button class="add-to-cart-btn">Thêm vào giỏ</button>
-        </div>
-        <div class="product-item">
-          <img src="images/cayluoiho.png" alt="Tên cây 1">
-          <h4>Cây lưỡi hổ</h4>
-          <p class="product-price">Giá: 100,000 VND</p>
-          <button class="view-btn">Xem</button>
-          <button class="add-to-cart-btn">Thêm vào giỏ</button>
-        </div>
-        <div class="product-item">
-          <img src="images/cayluoiho.png" alt="Tên cây 1">
-          <h4>Cây lưỡi hổ</h4>
-          <p class="product-price">Giá: 100,000 VND</p>
-          <button class="view-btn">Xem</button>
-          <button class="add-to-cart-btn">Thêm vào giỏ</button>
-        </div>
-        <div class="product-item">
-          <img src="images/cayluoiho.png" alt="Tên cây 1">
-          <h4>Cây lưỡi hổ</h4>
-          <p class="product-price">Giá: 100,000 VND</p>
-          <button class="view-btn">Xem</button>
-          <button class="add-to-cart-btn">Thêm vào giỏ</button>
-        </div>
-        <div class="product-item">
-          <img src="images/cayluoiho.png" alt="Tên cây 1">
-          <h4>Cây lưỡi hổ</h4>
-          <p class="product-price">Giá: 100,000 VND</p>
-          <button class="view-btn">Xem</button>
-          <button class="add-to-cart-btn">Thêm vào giỏ</button>
-        </div>
-      </div>
+      </ng-container>
     </div>
+    
+    <!-- Thông báo nếu không có sản phẩm nào -->
+    <ng-template #noProducts>
+      <p>Không có sản phẩm nào được tìm thấy.</p>
+    </ng-template>
   </div>
-  
+</div>
