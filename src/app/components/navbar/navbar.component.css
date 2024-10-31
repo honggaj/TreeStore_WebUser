@@ -4,6 +4,7 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    
   }
   
   .logo img {
@@ -15,7 +16,7 @@ nav {
     margin: 0;
     padding: 0;
     display: flex;
-    gap: 30px; /* Khoảng cách giữa các liên kết */
+    gap: 50px; /* Khoảng cách giữa các liên kết */
   }
   
   li {
@@ -23,6 +24,7 @@ nav {
     text-decoration: none; /* Bỏ gạch dưới */
     font-weight: bold; /* Đậm chữ */
     cursor: pointer; /* Đổi con trỏ khi hover */
+    font-size: 22px;
   }
   
   li:hover {

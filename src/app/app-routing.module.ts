@@ -8,8 +8,12 @@ import { CartComponent } from './components/cart/cart.component';
 import { OrderComponent } from './components/order/order.component';
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
 import { AccountComponent } from './components/account/account.component';
+import { LoginUserComponent } from './components/login-user/login-user.component';
+import { RegisterUserComponent } from './components/register-user/register-user.component';
 
 export const routes: Routes = [
+  {path:'dangnhap',component:LoginUserComponent},
+  {path:'dangky',component:RegisterUserComponent},
   { path: 'home', component: HomeComponent },
   { path: 'gioithieu', component: IntroduceComponent },
   { path: 'sanpham', component: ProductComponent },

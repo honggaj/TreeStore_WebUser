@@ -1,14 +1,14 @@
 .tree-type-menu {
     width: 200px; /* Đặt chiều rộng cho menu */
-    background-color: #f9f9f9; /* Màu nền menu */
-    border: 1px solid #ddd; /* Đường viền */
+    background-color: #ffffff; /* Màu nền menu */
+   
     padding: 15px; /* Khoảng cách bên trong */
    margin-left: 60px;
     border-radius: 4px;
     left: 0; /* Đặt ở cạnh phải */
     top: 100px; /* Đặt khoảng cách từ trên xuống */
   
-    h3 {
+    h2 {
       margin-bottom: 40px; /* Khoảng cách dưới tiêu đề */
     }
   
@@ -23,6 +23,7 @@
       a {
         text-decoration: none; /* Không gạch chân */
         color: #333; /* Màu chữ */
+        font-size: 20px;
         
         &:hover {
           color: #28a745; /* Màu khi di chuột */

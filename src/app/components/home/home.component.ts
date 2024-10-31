@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BannerSliderComponent } from '../banner-slider/banner-slider.component';
 import { ImageSliderComponent } from '../image-slider/image-slider.component';
 import { ProductService } from '../../api/services';
+import { Router } from '@angular/router';
 // Kiểm tra đường dẫn chính xác
 
 @Component({
@@ -12,6 +13,9 @@ import { ProductService } from '../../api/services';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
+  
+
+
   constructor(private _productService: ProductService) {}
 
   ngOnInit(): void {
@@ -21,4 +25,7 @@ export class HomeComponent implements OnInit {
         console.log(rs);
       });
   }
+  
+
+
 }
