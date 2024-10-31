@@ -33,10 +33,6 @@ import { apiCustomerLoginPost$Json } from '../fn/customer/api-customer-login-pos
 import { ApiCustomerLoginPost$Json$Params } from '../fn/customer/api-customer-login-post-json';
 import { apiCustomerLoginPost$Plain } from '../fn/customer/api-customer-login-post-plain';
 import { ApiCustomerLoginPost$Plain$Params } from '../fn/customer/api-customer-login-post-plain';
-import { apiCustomerRegisterPost$Json } from '../fn/customer/api-customer-register-post-json';
-import { ApiCustomerRegisterPost$Json$Params } from '../fn/customer/api-customer-register-post-json';
-import { apiCustomerRegisterPost$Plain } from '../fn/customer/api-customer-register-post-plain';
-import { ApiCustomerRegisterPost$Plain$Params } from '../fn/customer/api-customer-register-post-plain';
 import { apiCustomerSearchByNameGet } from '../fn/customer/api-customer-search-by-name-get';
 import { ApiCustomerSearchByNameGet$Params } from '../fn/customer/api-customer-search-by-name-get';
 import { apiCustomerUpdateCustomerPut$Json } from '../fn/customer/api-customer-update-customer-put-json';
@@ -336,53 +332,6 @@ export class CustomerService extends BaseService {
   apiCustomerSearchByNameGet(params?: ApiCustomerSearchByNameGet$Params, context?: HttpContext): Observable<void> {
     return this.apiCustomerSearchByNameGet$Response(params, context).pipe(
       map((r: StrictHttpResponse<void>): void => r.body)
-    );
-  }
-
-  /** Path part for operation `apiCustomerRegisterPost()` */
-  static readonly ApiCustomerRegisterPostPath = '/api/Customer/Register';
-
-  /**
-   * This method provides access to the full `HttpResponse`, allowing access to response headers.
-   * To access only the response body, use `apiCustomerRegisterPost$Plain()` instead.
-   *
-   * This method sends `application/*+json` and handles request body of type `application/*+json`.
-   */
-  apiCustomerRegisterPost$Plain$Response(params?: ApiCustomerRegisterPost$Plain$Params, context?: HttpContext): Observable<StrictHttpResponse<CustomerResponseResultCustomModel>> {
-    return apiCustomerRegisterPost$Plain(this.http, this.rootUrl, params, context);
-  }
-
-  /**
-   * This method provides access only to the response body.
-   * To access the full response (for headers, for example), `apiCustomerRegisterPost$Plain$Response()` instead.
-   *
-   * This method sends `application/*+json` and handles request body of type `application/*+json`.
-   */
-  apiCustomerRegisterPost$Plain(params?: ApiCustomerRegisterPost$Plain$Params, context?: HttpContext): Observable<CustomerResponseResultCustomModel> {
-    return this.apiCustomerRegisterPost$Plain$Response(params, context).pipe(
-      map((r: StrictHttpResponse<CustomerResponseResultCustomModel>): CustomerResponseResultCustomModel => r.body)
-    );
-  }
-
-  /**
-   * This method provides access to the full `HttpResponse`, allowing access to response headers.
-   * To access only the response body, use `apiCustomerRegisterPost$Json()` instead.
-   *
-   * This method sends `application/*+json` and handles request body of type `application/*+json`.
-   */
-  apiCustomerRegisterPost$Json$Response(params?: ApiCustomerRegisterPost$Json$Params, context?: HttpContext): Observable<StrictHttpResponse<CustomerResponseResultCustomModel>> {
-    return apiCustomerRegisterPost$Json(this.http, this.rootUrl, params, context);
-  }
-
-  /**
-   * This method provides access only to the response body.
-   * To access the full response (for headers, for example), `apiCustomerRegisterPost$Json$Response()` instead.
-   *
-   * This method sends `application/*+json` and handles request body of type `application/*+json`.
-   */
-  apiCustomerRegisterPost$Json(params?: ApiCustomerRegisterPost$Json$Params, context?: HttpContext): Observable<CustomerResponseResultCustomModel> {
-    return this.apiCustomerRegisterPost$Json$Response(params, context).pipe(
-      map((r: StrictHttpResponse<CustomerResponseResultCustomModel>): CustomerResponseResultCustomModel => r.body)
     );
   }
 

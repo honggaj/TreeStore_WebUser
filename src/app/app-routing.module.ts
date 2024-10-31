@@ -10,6 +10,7 @@ import { ProductDetailComponent } from './components/product-detail/product-deta
 import { AccountComponent } from './components/account/account.component';
 import { LoginUserComponent } from './components/login-user/login-user.component';
 import { RegisterUserComponent } from './components/register-user/register-user.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 export const routes: Routes = [
   {path:'dangnhap',component:LoginUserComponent},
@@ -29,7 +30,13 @@ export const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule],
+  declarations :[AccountComponent ],
+    
+  imports: [RouterModule.forRoot(routes),
+    FormsModule ,
+    ReactiveFormsModule
+
+  ],
+  exports: [RouterModule ],
 })
 export class AppRoutingModule {}

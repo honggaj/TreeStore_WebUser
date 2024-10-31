@@ -4,24 +4,21 @@
   </div>
   <ul>
     <li (click)="navigateTo('/home')">TRANG CHỦ</li>
-    <li (click)="navigateTo('/gioithieu')">GIỚI THIỆU </li>
+    <li (click)="navigateTo('/gioithieu')">GIỚI THIỆU</li>
     <li (click)="navigateTo('/sanpham')">SẢN PHẨM</li>
     <li (click)="navigateTo('/lienhe')">LIÊN HỆ</li>
   </ul>
   <div class="right-menu">
     <ul>
-      <li (click)="navigateTo('/dangnhap')">ĐĂNG NHẬP</li>
-      
+      <li *ngIf="!isLoggedIn" (click)="navigateTo('/dangnhap')">ĐĂNG NHẬP</li>
     </ul>
-  <!--  <div class="search-container">
-      <input type="text" placeholder="Tìm kiếm..." class="search-input" />
-    </div> -->
     <a (click)="navigateTo('/giohang')">
-      <i class="fas fa-shopping-cart"></i> <!-- Biểu tượng giỏ hàng -->
+      <i class="fas fa-shopping-cart"></i>
     </a>
-    <a (click)="navigateTo('/taikhoan')">
-      <i class="fas fa-user"></i> <!-- Biểu tượng tài khoản -->
-    </a>
-    
+    <div class="navigation">
+      <a (click)="navigateToAccount()" style="cursor: pointer;">
+        <i class="fas fa-user"></i>  <!-- Biểu tượng tài khoản -->
+      </a>
+    </div>
   </div>
 </nav>

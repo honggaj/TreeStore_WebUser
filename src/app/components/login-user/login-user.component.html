@@ -1,50 +1,56 @@
 
 <div class="login">
-    <div class="login-container">
-        <h2>Đăng Nhập </h2>
-        <form>
-            <div class="input-group">
-                <label for="email">Email</label>
-                <div class="input-icon">
-                    <input type="email" id="email" placeholder="Nhập email của bạn" required />
-                    <i class="fas fa-envelope"></i>
-                </div>
-            </div>
-            <div class="input-group">
-                <label for="password">Mật Khẩu</label>
-                <div class="input-icon">
-                    <input type="password" id="password" placeholder="Nhập mật khẩu" required />
-                    <i class="fas fa-eye toggle-password" (click)="togglePasswordVisibility()"></i>
-                  
-                </div>
-            </div>
-            
-            
-            
-           <div class="button-login">
-            <button type="submit">Đăng Nhập</button>
-           </div>
-        </form>
-       
-        <div class="login-options">
-            <div class="forgot-password-container">
-               
-                <a href="/forgot-password" class="forgot-password">Quên Mật Khẩu?</a>
-            </div>
-            <div class="social-icons">
-                <a href="https://github.com" target="_blank">
-                    <i class="fab fa-github"></i>
-                </a>
-                <a href="https://facebook.com" target="_blank">
-                    <i class="fab fa-facebook"></i>
-                </a>
-                <a href="https://google.com" target="_blank">
-                    <i class="fab fa-google"></i>
-                </a>
-            </div>
-            <p>Chưa có tài khoản? <a (click)="goToRegister()" >Đăng Ký</a></p>
-
+  <div class="login-container">
+    <h2 *ngIf="!isLoggedIn">Đăng Nhập</h2> <!-- Chữ "Đăng Nhập" chỉ hiển thị khi người dùng chưa đăng nhập -->
+    <form [formGroup]="loginForm" (ngSubmit)="login()">
+      <div class="input-group">
+        <label for="email">Email</label>
+        <div class="input-icon">
+          <input
+            type="email"
+            id="email"
+            placeholder="Nhập email của bạn"
+            required
+            formControlName="email"
+          />
+          <i class="fas fa-envelope"></i>
         </div>
-      
+      </div>
+      <div class="input-group">
+        <label for="password">Mật Khẩu</label>
+        <div class="input-icon">
+          <input
+            [type]="isPasswordVisible ? 'text' : 'password'"
+            id="password"
+            placeholder="Nhập mật khẩu"
+            required
+            formControlName="password"
+          />
+          <i class="fas fa-eye toggle-password" (click)="togglePasswordVisibility()"></i>
+        </div>
+      </div>
+      <div class="button-login">
+        <button type="submit" [disabled]="loginForm.invalid">Đăng Nhập</button>
+      </div>
+    </form>
+    <div class="login-options">
+      <div class="forgot-password-container">
+        <a href="/forgot-password" class="forgot-password">Quên Mật Khẩu?</a>
+      </div>
+      <div class="social-icons">
+        <a href="https://github.com" target="_blank">
+          <i class="fab fa-github"></i>
+        </a>
+        <a href="https://facebook.com" target="_blank">
+          <i class="fab fa-facebook"></i>
+        </a>
+        <a href="https://google.com" target="_blank">
+          <i class="fab fa-google"></i>
+        </a>
+      </div>
+      <p>
+        Chưa có tài khoản? <a (click)="goToRegister()">Đăng Ký</a>
+      </p>
     </div>
+  </div>
 </div>
