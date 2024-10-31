@@ -18,10 +18,11 @@ export const routes: Routes = [
   { path: 'gioithieu', component: IntroduceComponent },
   { path: 'sanpham', component: ProductComponent },
   { path: 'lienhe', component: ContactComponent },
-  { path: 'giohang', component: CartComponent },
-  { path: 'dathang', component: OrderComponent },
-  { path: 'xemchitiet', component: ProductDetailComponent },
-  { path: 'taikhoan', component: AccountComponent },
+  {path:'giohang',component:CartComponent},
+  {path:'dathang',component:OrderComponent},
+  {path:'xemchitiet',component :ProductDetailComponent},
+  {path:'taikhoan',component:AccountComponent},
+ 
 
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', redirectTo: '/home' }, // Đảm bảo trang không tìm thấy sẽ điều hướng về home

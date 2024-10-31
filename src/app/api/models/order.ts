@@ -18,5 +18,5 @@ export interface Order {
   state?: number;
   totalAmount?: number;
   user?: User;
-  userId?: number;
+  userId?: number | null;
 }

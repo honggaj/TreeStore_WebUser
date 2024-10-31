@@ -7,11 +7,9 @@ import { Product } from '../models/product';
 export interface ProductOrder {
   order?: Order;
   orderId?: number;
-  priceInput?: number;
-  priceOutput?: number;
+  price?: number;
   product?: Product;
   productId?: number;
   productOrderId?: number;
   quantity?: number;
-  saleOff?: number;
 }
