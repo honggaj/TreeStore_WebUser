@@ -1,23 +1,19 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Router } from '@angular/router'; // Import Router
+import { Router } from '@angular/router'; 
 
 @Component({
   selector: 'app-cart',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports:[FormsModule,CommonModule],
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.css']
 })
 export class CartComponent {
-  cartItems = [
-    { id: 1, name: 'Cây trúc bách hợp', price: 100000, quantity: 1, imageUrl: 'images/trucbachhop.png' },
-    { id: 2, name: 'Cây lưỡi hổ', price: 150000, quantity: 1, imageUrl: 'images/cayluoiho.png' },
-    { id: 3, name: 'Cây ngọc vân', price: 200000, quantity: 1, imageUrl: 'images/ngocvan.png' },
-  ];
+  cartItems: any[] = JSON.parse(localStorage.getItem('cartItems') || '[]'); // Lấy sản phẩm từ localStorage
 
-  constructor(private router: Router) {} // Inject Router vào constructor
+  constructor(private router: Router) {}
 
   get total() {
     return this.cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
@@ -25,22 +21,23 @@ export class CartComponent {
 
   removeItem(itemId: number) {
     this.cartItems = this.cartItems.filter(item => item.id !== itemId);
+    localStorage.setItem('cartItems', JSON.stringify(this.cartItems)); // Cập nhật lại localStorage
   }
 
   updateQuantity(itemId: number, quantity: number) {
     const item = this.cartItems.find(item => item.id === itemId);
     if (item) {
       item.quantity = quantity;
+      localStorage.setItem('cartItems', JSON.stringify(this.cartItems)); // Cập nhật lại localStorage
     }
   }
 
   clearCart() {
-    this.cartItems = [];
+    this.cartItems = []; // Xóa giỏ hàng
+    localStorage.removeItem('cartItems'); // Xóa giỏ hàng trong localStorage
   }
 
   buyNow() {
-    // Điều hướng đến OrderComponent với cartItems trong state
     this.router.navigate(['/dathang'], { state: { cartItems: this.cartItems } });
-
   }
 }

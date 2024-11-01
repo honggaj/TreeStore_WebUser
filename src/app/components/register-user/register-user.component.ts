@@ -3,10 +3,11 @@ import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms'; // Thay đổi ở đây
 import { CustomerService } from '../../api/services';
 import { CustomerRequest } from '../../api/models';
+import { CommonModule } from '@angular/common';
 
 @Component({
   standalone: true, // Khai báo Standalone Component
-  imports: [ReactiveFormsModule], // Thay đổi ở đây
+  imports: [ReactiveFormsModule,CommonModule], // Thay đổi ở đây
   selector: 'app-register-user',
   templateUrl: './register-user.component.html',
   styleUrls: ['./register-user.component.css']

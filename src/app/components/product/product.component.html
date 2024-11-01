@@ -1,5 +1,5 @@
 <div class="product-container">
-  <app-tree-type-menu></app-tree-type-menu>
+  <app-tree-type-menu (categorySelected)="filterProductsByCategory($event)"></app-tree-type-menu>
   <div class="product-content">
     <div class="search-container">
       <input type="text" placeholder="Tìm kiếm sản phẩm..." class="search-input" [(ngModel)]="searchTerm" (input)="onSearch()">
@@ -14,7 +14,7 @@
           <p class="product-price">{{ product.priceOutput | number }} VNĐ</p>
           <div class="button-container">
             <button (click)="addToCart()">Thêm vào giỏ</button>
-            <button (click)="viewDetail()">Xem</button>
+            <button (click)="viewDetail(product)">Xem</button> <!-- Chuyển product vào phương thức -->
           </div>
         </div>
       </ng-container>

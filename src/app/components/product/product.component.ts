@@ -4,22 +4,23 @@ import { ProductService } from '../../api/services';
 import { GetListProductSpResult } from '../../api/models';
 import { TreeTypeMenuComponent } from '../tree-type-menu/tree-type-menu.component';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms'; // Import FormsModule
+import { FormsModule } from '@angular/forms';
 import { ApiConfiguration } from '../../api/api-configuration';
 
 @Component({
   selector: 'app-product',
   standalone: true,
-  imports: [CommonModule, FormsModule,TreeTypeMenuComponent], // Add FormsModule here
+  imports: [CommonModule, FormsModule, TreeTypeMenuComponent],
   templateUrl: './product.component.html',
   styleUrls: ['./product.component.css']
 })
 export class ProductComponent implements OnInit {
-  products: GetListProductSpResult[] = []; // Danh sách sản phẩm
-  filteredProducts: GetListProductSpResult[] = []; // Danh sách sản phẩm đã lọc
-  currentPage: number = 1; // Trang hiện tại
-  itemsPerPage: number = 10; // Số sản phẩm mỗi trang
+  products: GetListProductSpResult[] = [];
+  filteredProducts: GetListProductSpResult[] = [];
+  currentPage: number = 1;
+  itemsPerPage: number = 10;
   searchTerm: string = '';
+  selectedCategory: string = ''; // Lưu loại cây được chọn
 
   constructor(
     private router: Router,
@@ -40,12 +41,11 @@ export class ProductComponent implements OnInit {
       (rs) => {
         const response = rs.body;
         if (response.success) {
-          this.products = response.data ?? []; // Khởi tạo danh sách sản phẩm
-          this.filteredProducts = this.products; // Khởi tạo filteredProducts bằng toàn bộ sản phẩm
-          console.log("Products:", this.products);
+          this.products = response.data ?? [];
+          this.filteredProducts = this.products;
         } else {
           this.products = [];
-          this.filteredProducts = []; // Không có sản phẩm nào
+          this.filteredProducts = [];
         }
       }
     );
@@ -72,25 +72,35 @@ export class ProductComponent implements OnInit {
     return Math.ceil(this.filteredProducts.length / this.itemsPerPage);
   }
 
-  viewDetail(): void {
-    this.router.navigate(['/xemchitiet']);
+  viewDetail(product: GetListProductSpResult): void {
+    // Chuyển hướng đến trang chi tiết sản phẩm và truyền thông tin sản phẩm
+    this.router.navigate(['/xemchitiet', product.productId]); // Thay đổi product.id thành ID của sản phẩm
   }
 
   addToCart(): void {
     alert('Sản phẩm đã được thêm vào giỏ hàng!');
   }
-  
+
   onSearch(): void {
     if (this.searchTerm.trim() === '') {
-      // Nếu không có từ khóa tìm kiếm, tải lại toàn bộ sản phẩm
-      this.filteredProducts = this.products; // Reset filteredProducts
-      return;
+      this.filteredProducts = this.products;
+    } else {
+      this.filteredProducts = this.products.filter(product =>
+        product.productName?.toLowerCase().includes(this.searchTerm.toLowerCase())
+      );
     }
-
-    // Lọc danh sách sản phẩm theo tên sản phẩm
-    this.filteredProducts = this.products.filter(product =>
-      product.productName?.toLowerCase().includes(this.searchTerm.toLowerCase()) // Optional chaining to handle null
-    );
-    this.currentPage = 1; // Reset lại trang khi tìm kiếm
+    this.currentPage = 1;
   }
+
+  // Phương thức để lọc sản phẩm theo loại cây
+  filterProductsByCategory(category: string): void {
+    console.log('Loại cây nhận được từ sự kiện:', category); // Log để kiểm tra
+    this.selectedCategory = category;
+    this.filteredProducts = this.products.filter(product =>
+      product.categoryName === this.selectedCategory
+    );
+    console.log('Sản phẩm sau khi lọc:', this.filteredProducts); // Log để kiểm tra danh sách sản phẩm sau khi lọc
+    this.currentPage = 1;
+  }
+  
 }

@@ -53,6 +53,7 @@ app-tree-type-menu {
   width: 150px;
   height: 200px;
   margin-bottom: 10px;
+  mix-blend-mode:darken;
 }
 
 h4 {
@@ -136,8 +137,8 @@ button:hover {
   margin: 0 5px;
   border: none;
   border-radius: 3px;
-  background-color: darkgreen;
-  color: white;
+  background-color: rgb(240, 244, 34);
+  color: rgb(97, 79, 15);
   cursor: pointer;
 }
 
