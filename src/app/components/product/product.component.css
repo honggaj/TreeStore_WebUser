@@ -1,92 +1,147 @@
 .product-container {
-    display: flex; /* Sử dụng Flexbox để bố trí */
-    background-color:#f9f9f9;
-    width: 100%;
-    height: auto;
-
-  }
-  
-  app-tree-type-menu {
-    padding-top: 35px;
-    flex: 1; /* Chiếm 1 phần của không gian */
-
-  }
-  
- 
-.sanphamnoibat {
-  padding: 30px 30px;
-  display: flex; /* Sử dụng flexbox để sắp xếp các phần tử con */
-  background-color: #ffffff; /* Màu nền cho container */
+  display: flex; /* Sử dụng Flexbox để bố trí */
+  background-color: #f9f9f9;
+  padding: 30px 0px;
+  width: 100%;
+  height: auto;
 }
 
 app-tree-type-menu {
-  padding-top: 35px; /* Khoảng cách phía trên cho menu */
-  flex: 1; /* Để phần này chiếm 1 phần không gian */
+  padding-top: 0px;
+  flex: 1; /* Chiếm 1 phần của không gian */
 }
 
-.sanphamnoibat {
-  padding: 30px; /* Khoảng cách cho phần sản phẩm */
-  flex: 3; /* Để phần này chiếm nhiều không gian hơn so với menu */
-}
-
-.title {
-  font-size: 24px; /* Kích thước chữ cho tiêu đề */
-  text-align: left; /* Căn trái cho tiêu đề */
-  margin-bottom: 20px; /* Khoảng cách phía dưới tiêu đề */
+.product-content {
+  padding-left: 20px;
+  flex: 5; /* Chiếm 3 phần của không gian */
 }
 
 .product-list {
-  display: flex; /* Sử dụng flexbox để sắp xếp sản phẩm */
-  justify-content: center; /* Căn giữa danh sách sản phẩm */
-  flex-wrap: wrap; /* Cho phép các phần tử xuống dòng khi không còn chỗ */
-  margin: 0; /* Xóa khoảng cách mặc định */
-  gap: 10px; /* Khoảng cách giữa các sản phẩm */
+  display: flex;
+  justify-content: start;
+  flex-wrap: wrap; /* Cho phép sản phẩm xuống hàng */
+  margin: 0;
+  gap: 20px; /* Khoảng cách giữa các sản phẩm */
 }
 
 .product-item {
-  border: 1px solid #ddd; /* Đường viền xung quanh sản phẩm */
-  padding: 5px; /* Khoảng cách bên trong sản phẩm */
-  text-align: center; /* Căn giữa nội dung bên trong sản phẩm */
-  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Hiệu ứng chuyển động cho hover */
-  width: 180px; /* Độ rộng cố định cho sản phẩm */
+  border: 1px solid #ddd;
+  padding: 5px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Thêm hiệu ứng chuyển động mượt */
+  width: 230px; /* Thiết lập chiều rộng cố định cho mỗi sản phẩm */
   margin: 10px; /* Khoảng cách giữa các sản phẩm */
-  height: 325px; /* Chiều cao cố định cho sản phẩm */
+  height: 350px;
+}
+
+.description {
+  font-size: 16px; /* Kích thước chữ cho mô tả tổng quát */
+  color: green;    /* Màu chữ cho mô tả tổng quát */
+  text-align: center;
+  margin-bottom: 20px; /* Khoảng cách dưới mô tả tổng quát */
+}
+
+.product-item p.product-price {
+  font-size: 16px; /* Kích thước chữ cho giá sản phẩm */
+  color: rgb(12, 95, 52); /* Màu chữ cho giá sản phẩm */
+  padding: 0px;    /* Không có khoảng cách bên trong */
+  margin: 0;       /* Không có khoảng cách bên ngoài */
+  text-align: center; /* Căn giữa cho giá sản phẩm */
 }
 
 .product-item img {
-  width: 150px; /* Độ rộng cho hình ảnh sản phẩm */
-  height: 200px; /* Chiều cao cho hình ảnh sản phẩm */
-  margin-bottom: 10px; /* Khoảng cách phía dưới hình ảnh */
+  width: 150px;
+  height: 200px;
+  margin-bottom: 10px;
 }
 
-.product-price {
-  font-size: 16px; /* Kích thước chữ cho giá sản phẩm */
-  color: rgb(12, 95, 52); /* Màu sắc cho giá sản phẩm */
+h4 {
+  margin: 5px 0;
 }
 
 .button-container {
-  display: flex; /* Sử dụng flexbox để sắp xếp nút */
+  display: flex;
   justify-content: center; /* Căn giữa các nút */
-  margin-top: 10px; /* Khoảng cách phía trên cho button container */
+  margin-top: 10px; /* Khoảng cách giữa phần mô tả sản phẩm và nút */
 }
 
 button {
-  margin: 5px; /* Khoảng cách giữa các nút */
-  padding: 10px; /* Khoảng cách bên trong nút */
-  border-radius: 2px; /* Bo góc cho nút */
-  border: none; /* Xóa viền mặc định của nút */
-  background-color: darkgreen; /* Màu nền cho nút */
-  color: white; /* Màu chữ cho nút */
-  cursor: pointer; /* Hiển thị con trỏ như là một nút có thể nhấn */
-  transition: background-color 0.3s ease; /* Hiệu ứng chuyển động cho màu nền */
+  margin: 5px;
+  padding: 10px 20px;
+  border-radius: 2px;
+  border: none;
+  background-color: darkgreen;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Thêm hiệu ứng chuyển động cho button */
 }
 
 button:hover {
-  background-color: #28a745; /* Thay đổi màu nền khi hover vào nút */
+  background-color: #28a745; /* Thay đổi màu nền khi hover */
 }
 
 .product-item:hover {
-  transform: scale(1.05); /* Phóng to sản phẩm khi hover */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Hiệu ứng bóng cho sản phẩm */
-  background-color: #a7c4b6; /* Thay đổi màu nền khi hover vào sản phẩm */
+  transform: scale(1.05); /* Khi hover, sản phẩm sẽ phóng to */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Thêm bóng cho sản phẩm */
+  background-color: #a7c4b6;
+}
+
+.search-container {
+  display: flex;
+  margin-bottom: 20px; /* Khoảng cách giữa thanh tìm kiếm và danh sách sản phẩm */
+  gap:5px
+}
+
+.search-input {
+  margin-left: 10px; /* Khoảng cách từ nút tìm kiếm */
+  padding: 10px 30px; /* Padding cho input */
+  border: 1px solid #ccc; /* Đường viền */
+  border-radius: 3px; /* Bo tròn các góc */
+  outline: none; /* Bỏ đường viền khi chọn */
+  transition: border-color 0.3s; /* Hiệu ứng chuyển đổi cho màu đường viền */
+}
+
+.search-input::placeholder {
+  color: #aaa; /* Màu chữ placeholder */
+}
+
+.search-input:hover {
+  border-color: #ffcc00; /* Màu đường viền khi hover */
+}
+
+.search-btn {
+  background-color: rgb(16, 65, 172);
+}
+
+.search-btn:hover {
+  background-color: rgb(27, 117, 228);
+}
+
+.search-btn:active {
+  background-color: rgb(27, 117, 228);
+  transform: scale(0.95);
+  box-shadow: #ddd;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  flex-wrap: wrap; /* Cho phép phần tử trong pagination xuống hàng nếu cần */
+}
+
+.pagination button {
+  padding: 10px;
+  margin: 0 5px;
+  border: none;
+  border-radius: 3px;
+  background-color: darkgreen;
+  color: white;
+  cursor: pointer;
+}
+
+.pagination button:disabled {
+  background-color: grey;
+  cursor: not-allowed;
 }
