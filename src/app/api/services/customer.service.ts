@@ -33,6 +33,8 @@ import { apiCustomerLoginPost$Json } from '../fn/customer/api-customer-login-pos
 import { ApiCustomerLoginPost$Json$Params } from '../fn/customer/api-customer-login-post-json';
 import { apiCustomerLoginPost$Plain } from '../fn/customer/api-customer-login-post-plain';
 import { ApiCustomerLoginPost$Plain$Params } from '../fn/customer/api-customer-login-post-plain';
+import { apiCustomerLogoutPost } from '../fn/customer/api-customer-logout-post';
+import { ApiCustomerLogoutPost$Params } from '../fn/customer/api-customer-logout-post';
 import { apiCustomerRegisterPost$Json } from '../fn/customer/api-customer-register-post-json';
 import { ApiCustomerRegisterPost$Json$Params } from '../fn/customer/api-customer-register-post-json';
 import { apiCustomerRegisterPost$Plain } from '../fn/customer/api-customer-register-post-plain';
@@ -430,6 +432,31 @@ export class CustomerService extends BaseService {
   apiCustomerLoginPost$Json(params?: ApiCustomerLoginPost$Json$Params, context?: HttpContext): Observable<CustomerResponseResultCustomModel> {
     return this.apiCustomerLoginPost$Json$Response(params, context).pipe(
       map((r: StrictHttpResponse<CustomerResponseResultCustomModel>): CustomerResponseResultCustomModel => r.body)
+    );
+  }
+
+  /** Path part for operation `apiCustomerLogoutPost()` */
+  static readonly ApiCustomerLogoutPostPath = '/api/Customer/Logout';
+
+  /**
+   * This method provides access to the full `HttpResponse`, allowing access to response headers.
+   * To access only the response body, use `apiCustomerLogoutPost()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  apiCustomerLogoutPost$Response(params?: ApiCustomerLogoutPost$Params, context?: HttpContext): Observable<StrictHttpResponse<void>> {
+    return apiCustomerLogoutPost(this.http, this.rootUrl, params, context);
+  }
+
+  /**
+   * This method provides access only to the response body.
+   * To access the full response (for headers, for example), `apiCustomerLogoutPost$Response()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  apiCustomerLogoutPost(params?: ApiCustomerLogoutPost$Params, context?: HttpContext): Observable<void> {
+    return this.apiCustomerLogoutPost$Response(params, context).pipe(
+      map((r: StrictHttpResponse<void>): void => r.body)
     );
   }
 

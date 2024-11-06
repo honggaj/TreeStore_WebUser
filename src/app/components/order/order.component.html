@@ -17,27 +17,35 @@
           <img [src]="item.imageUrl" alt="{{ item.name }}" class="product-image">
         </td>
         <td>{{ item.name }}</td>
-        <td>{{ item.price }}đ</td>
+        <td>{{ formatCurrency(item.price) }}</td>
         <td>{{ item.quantity }}</td>
-        <td>{{ item.price * item.quantity }}đ</td>
+        <td>{{ formatCurrency(item.price * item.quantity)}}</td>
       </tr>
     </tbody>
   </table>
 
   <div class="shipping-info">
     <h3>Thông tin giao hàng</h3>
-    <label for="name">Họ và tên:</label>
-    <input type="text" id="name" [(ngModel)]="shippingInfo.name" required>
-
-    <label for="phone">Số điện thoại:</label>
-    <input type="text" id="phone" [(ngModel)]="shippingInfo.phone" required>
-
-    <label for="address">Địa chỉ giao hàng:</label>
-    <input type="text" id="address" [(ngModel)]="shippingInfo.address" required>
+    <p>Họ và tên: {{ shippingInfo.name }}</p>
+    <p>Số điện thoại: {{ shippingInfo.phone }}</p>
+    <p>Địa chỉ: {{ shippingInfo.address }}</p>
   </div>
+  <div>
+    <div class="form-row">
+      <div class="note-container">
+        <label for="note">Ghi chú</label>
+        <textarea id="note" [(ngModel)]="orderNote" name="note" placeholder="Nhập ghi chú cho đơn hàng"></textarea>
+      </div>
+  
+      <div class="promotion-container">
+        <label for="promotionCode">Mã giảm giá</label>
+        <input type="text" id="promotionCode" [(ngModel)]="promotionCode" name="promotionCode" placeholder="Nhập mã giảm giá">
+      </div>
+    </div>
+  
 
   <div class="order-total">
-    <h3>Tổng cộng: {{ total }}đ</h3>
+    <h3 style="margin-bottom: 10px;">Tổng cộng: {{ formatCurrency(total) }}</h3>
     <button (click)="submitOrder()" class="submit-button">Xác nhận đơn hàng</button>
   </div>
 </div>

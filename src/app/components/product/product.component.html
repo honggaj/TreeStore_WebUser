@@ -1,25 +1,34 @@
 <div class="product-container">
-  <app-tree-type-menu></app-tree-type-menu>
-  <div class="sanphamnoibat">
-    <h1 class="title">Danh sách sản phẩm</h1>
+  <app-tree-type-menu (categorySelected)="filterProductsByCategory($event)"></app-tree-type-menu>
+  <div class="product-content">
+    <div class="search-container">
+      <input type="text" placeholder="Tìm kiếm sản phẩm..." class="search-input" [(ngModel)]="searchTerm" (input)="onSearch()">
+      <button class="search-btn" (click)="onSearch()">Tìm kiếm</button>
+    </div>
+
     <div class="product-list">
-      <!-- Kiểm tra xem có sản phẩm nào không -->
-      <ng-container *ngIf="products && products.length > 0; else noProducts">
-        <div class="product-item" *ngFor="let product of products">
+      <ng-container *ngIf="filteredProducts && filteredProducts.length > 0; else noProducts">
+        <div class="product-item" *ngFor="let product of paginatedProducts()">
           <img [src]="rootUrl + '/' + product.img" alt="{{ product.productName }}" />
           <h4>{{ product.productName }}</h4>
           <p class="product-price">{{ product.priceOutput | number }} VNĐ</p>
           <div class="button-container">
-            <button (click)="addToCart()">Thêm vào giỏ </button>
-            <button (click)="viewDetail()">Xem </button>
+            <button (click)="addToCart(product)">Thêm vào giỏ</button>
+            <button (click)="viewDetail(product)">Xem</button> <!-- Chuyển product vào phương thức -->
           </div>
         </div>
       </ng-container>
     </div>
     
-    <!-- Thông báo nếu không có sản phẩm nào -->
     <ng-template #noProducts>
       <p>Không có sản phẩm nào được tìm thấy.</p>
     </ng-template>
+    
+    <!-- Phân trang -->
+    <div class="pagination">
+      <button (click)="prevPage()" [disabled]="currentPage === 1">Trang trước</button>
+      <span>Trang {{ currentPage }} / {{ totalPages }}</span>
+      <button (click)="nextPage()" [disabled]="currentPage === totalPages">Trang sau</button>
+    </div>
   </div>
 </div>
