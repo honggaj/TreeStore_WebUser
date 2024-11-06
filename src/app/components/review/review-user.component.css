@@ -1,0 +1,29 @@
+/* Thêm vào tệp CSS của bạn */
+.form-label {
+    margin-bottom: 1px ; 
+    /* Giảm khoảng cách dưới nhãn */
+    margin-right: 15px ;
+}
+
+.form-control {
+    margin-bottom: 1rem; /* Tăng khoảng cách dưới trường nhập */
+}
+.container 
+{
+    margin-left: 400px ;
+} 
+.custom-btn {
+    background-color: #007bff; /* Màu nền chính */
+    border: none; /* Xóa viền nút */
+    color: white; /* Màu chữ */
+    padding: 10px 20px; /* Khoảng cách trong nút */
+    font-size: 16px; /* Kích thước chữ */
+    border-radius: 5px; /* Bo tròn góc */
+    transition: background-color 0.3s, transform 0.3s; /* Hiệu ứng chuyển tiếp */
+  }
+  
+  .custom-btn:hover {
+    background-color: #0056b3; /* Màu nền khi hover */
+    transform: scale(1.05); /* Tăng kích thước nút khi hover */
+  }
+  

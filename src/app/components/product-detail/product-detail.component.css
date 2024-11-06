@@ -72,10 +72,57 @@
     border: none;
     border-radius: 2px;
     font-size: 20px;
-    cursor: pointer;
+    cursor: pointer;  
+      width: 100%; /* Chiều rộng 100% để nút có chiều rộng đầy đủ */
+      padding: 10px; /* Padding cho nút */
+      font-size: 16px; /* Kích thước chữ */
+      border-radius: 5px; /* Bo góc */
   }
+  
   
   .add-to-cart-btn:hover {
     background-color: #76d0c4;
   }
   
+  .review-btn {
+    font-size: 18px; /* Kích thước chữ lớn hơn */
+    padding: 10px 20px; /* Thêm padding để làm cho nút dài hơn */
+    border-radius: 5px; /* Làm mềm các góc của nút */
+    transition: background-color 0.3s ease; /* Hiệu ứng chuyển đổi màu nền */
+}
+
+.review-btn:hover {
+    background-color: #ffc107; /* Màu nền khi di chuột */
+}
+
+
+
+  .mt-2 {
+    margin-top: 15px; /* Bạn có thể điều chỉnh giá trị này theo ý muốn */
+}
+
+.review-list {
+  text-align: left; /* Căn chỉnh văn bản về bên trái */
+}
+
+.review-item {
+  margin-bottom: 20px; /* Khoảng cách giữa các đánh giá */
+}
+
+.review-comment {
+  font-size: 16px; /* Kích thước chữ */
+  line-height: 1.5; /* Khoảng cách dòng */
+}
+.btn-custom {
+  background-color: red; /* Màu nền của nút */
+  color: white; /* Màu chữ */
+  padding: 10px 15px; /* Kích thước nút lớn hơn */
+  border: none; /* Bỏ viền */
+  border-radius: 5px; /* Bo góc */
+  transition: background-color 0.3s, transform 0.3s; /* Hiệu ứng chuyển đổi */
+}
+
+.btn-custom:hover {
+  background-color: darkred; /* Màu nền khi hover */
+  transform: scale(1.05); /* Tăng kích thước khi hover */
+}

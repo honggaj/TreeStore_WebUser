@@ -5,7 +5,7 @@
 
   <div class="product-info">
     <h1 class="product-title">{{ product.productName }}</h1>
-    <p class="product-description">{{ product.description }}</p> <!-- Thay đổi nếu cần -->
+    <p class="product-description">{{ product.description }}</p>
     <p class="product-price">{{ product.priceOutput | number }} VNĐ</p>
 
     <div class="product-quantity">
@@ -13,7 +13,31 @@
       <input type="number" id="quantity" name="quantity" min="1" value="1" />
     </div>
 
-    <button class="add-to-cart-btn" (click)="addToCart()">Thêm vào giỏ hàng</button>
-
+    <button class="add-to-cart-btn btn btn-primary" (click)="addToCart()">Thêm vào giỏ hàng</button>
+<div class="mt-2"></div>
+<button class="review-btn btn btn-warning btn-lg" (click)="navigateToReview()" style="width: 100%;">
+  Đánh giá sản phẩm
+</button>
   </div>
 </div>
+<!-- Danh sách bình luận -->
+<div class="review-list p-3 rounded shadow-sm" style="text-align: left; margin-left: 100px ;">
+  <h2 class="text-start mb-4" style="font-weight: bold; font-size: 24px;">Đánh giá sản phẩm</h2>
+
+<!-- Hiển thị khi không có đánh giá -->
+<div *ngIf="listReviewDB.length === 0" class="text-center p-3" style="font-style: italic; color: #888;">
+  <p>Chưa có đánh giá nào cho sản phẩm này.</p>
+</div>
+
+<!-- Danh sách đánh giá -->
+<div *ngFor="let review of listReviewDB" class="review-item mb-4 p-3 border rounded" style="display: flex; justify-content: space-between; align-items: center;">
+  <p class="review-comment mb-2" style="font-size: 16px; line-height: 1.5; margin: 0;">
+    {{ review.comment }}
+  </p>
+  <button class="btn btn-custom btn-sm" (click)="deleteReview(review.reviewId)">
+    Xóa
+  </button>
+  
+  
+</div>
+

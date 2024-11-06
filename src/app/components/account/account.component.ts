@@ -77,7 +77,7 @@ export class AccountComponent implements OnInit {
         phone: this.editAccountForm.get('phone')?.value,
         email: this.editAccountForm.get('email')?.value,
         address: this.editAccountForm.get('address')?.value,
-        avatar:this.editAccountForm.get('avatar')?.value ,
+       
    // Lấy tên file avatar
       };
   

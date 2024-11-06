@@ -11,6 +11,8 @@ import { AccountComponent } from './components/account/account.component';
 import { LoginUserComponent } from './components/login-user/login-user.component';
 import { RegisterUserComponent } from './components/register-user/register-user.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ReviewUserComponent } from './components/review/review-user.component';
+import { AppComponent } from './app.component';
 
 
 export const routes: Routes = [
@@ -27,18 +29,20 @@ export const routes: Routes = [
     loadComponent: () => import('./components/product-detail/product-detail.component').then((c) => c.ProductDetailComponent)
   },
   {path:'taikhoan',component:AccountComponent},
- 
+  {path:'danhgia/:id',
+    loadComponent: () => import('./components/review/review-user.component').then((c) => c.ReviewUserComponent ) },
 
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', redirectTo: '/home' }, // Đảm bảo trang không tìm thấy sẽ điều hướng về home
 ];
 
 @NgModule({
-
+   
     
   imports: [RouterModule.forRoot(routes),
     FormsModule ,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+  
 
   ],
   exports: [RouterModule ],

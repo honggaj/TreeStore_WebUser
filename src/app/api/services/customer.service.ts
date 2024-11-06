@@ -21,6 +21,10 @@ import { apiCustomerChangeActivePost$Plain } from '../fn/customer/api-customer-c
 import { ApiCustomerChangeActivePost$Plain$Params } from '../fn/customer/api-customer-change-active-post-plain';
 import { apiCustomerDeactivateAccountPost } from '../fn/customer/api-customer-deactivate-account-post';
 import { ApiCustomerDeactivateAccountPost$Params } from '../fn/customer/api-customer-deactivate-account-post';
+import { apiCustomerGetCurrentCustomerIdGet$Json } from '../fn/customer/api-customer-get-current-customer-id-get-json';
+import { ApiCustomerGetCurrentCustomerIdGet$Json$Params } from '../fn/customer/api-customer-get-current-customer-id-get-json';
+import { apiCustomerGetCurrentCustomerIdGet$Plain } from '../fn/customer/api-customer-get-current-customer-id-get-plain';
+import { ApiCustomerGetCurrentCustomerIdGet$Plain$Params } from '../fn/customer/api-customer-get-current-customer-id-get-plain';
 import { apiCustomerGetCustomerByIdGet$Json } from '../fn/customer/api-customer-get-customer-by-id-get-json';
 import { ApiCustomerGetCustomerByIdGet$Json$Params } from '../fn/customer/api-customer-get-customer-by-id-get-json';
 import { apiCustomerGetCustomerByIdGet$Plain } from '../fn/customer/api-customer-get-customer-by-id-get-plain';
@@ -33,6 +37,8 @@ import { apiCustomerLoginPost$Json } from '../fn/customer/api-customer-login-pos
 import { ApiCustomerLoginPost$Json$Params } from '../fn/customer/api-customer-login-post-json';
 import { apiCustomerLoginPost$Plain } from '../fn/customer/api-customer-login-post-plain';
 import { ApiCustomerLoginPost$Plain$Params } from '../fn/customer/api-customer-login-post-plain';
+import { apiCustomerLogoutPost } from '../fn/customer/api-customer-logout-post';
+import { ApiCustomerLogoutPost$Params } from '../fn/customer/api-customer-logout-post';
 import { apiCustomerRegisterPost$Json } from '../fn/customer/api-customer-register-post-json';
 import { ApiCustomerRegisterPost$Json$Params } from '../fn/customer/api-customer-register-post-json';
 import { apiCustomerRegisterPost$Plain } from '../fn/customer/api-customer-register-post-plain';
@@ -46,6 +52,7 @@ import { ApiCustomerUpdateCustomerPut$Plain$Params } from '../fn/customer/api-cu
 import { BooleanResultCustomModel } from '../models/boolean-result-custom-model';
 import { CustomerResponseListResultCustomModel } from '../models/customer-response-list-result-custom-model';
 import { CustomerResponseResultCustomModel } from '../models/customer-response-result-custom-model';
+import { Int32ResultCustomModel } from '../models/int-32-result-custom-model';
 import { StringResultCustomModel } from '../models/string-result-custom-model';
 
 @Injectable({ providedIn: 'root' })
@@ -98,6 +105,53 @@ export class CustomerService extends BaseService {
   apiCustomerListCustomerGet$Json(params?: ApiCustomerListCustomerGet$Json$Params, context?: HttpContext): Observable<CustomerResponseListResultCustomModel> {
     return this.apiCustomerListCustomerGet$Json$Response(params, context).pipe(
       map((r: StrictHttpResponse<CustomerResponseListResultCustomModel>): CustomerResponseListResultCustomModel => r.body)
+    );
+  }
+
+  /** Path part for operation `apiCustomerGetCurrentCustomerIdGet()` */
+  static readonly ApiCustomerGetCurrentCustomerIdGetPath = '/api/Customer/GetCurrentCustomerId';
+
+  /**
+   * This method provides access to the full `HttpResponse`, allowing access to response headers.
+   * To access only the response body, use `apiCustomerGetCurrentCustomerIdGet$Plain()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  apiCustomerGetCurrentCustomerIdGet$Plain$Response(params?: ApiCustomerGetCurrentCustomerIdGet$Plain$Params, context?: HttpContext): Observable<StrictHttpResponse<Int32ResultCustomModel>> {
+    return apiCustomerGetCurrentCustomerIdGet$Plain(this.http, this.rootUrl, params, context);
+  }
+
+  /**
+   * This method provides access only to the response body.
+   * To access the full response (for headers, for example), `apiCustomerGetCurrentCustomerIdGet$Plain$Response()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  apiCustomerGetCurrentCustomerIdGet$Plain(params?: ApiCustomerGetCurrentCustomerIdGet$Plain$Params, context?: HttpContext): Observable<Int32ResultCustomModel> {
+    return this.apiCustomerGetCurrentCustomerIdGet$Plain$Response(params, context).pipe(
+      map((r: StrictHttpResponse<Int32ResultCustomModel>): Int32ResultCustomModel => r.body)
+    );
+  }
+
+  /**
+   * This method provides access to the full `HttpResponse`, allowing access to response headers.
+   * To access only the response body, use `apiCustomerGetCurrentCustomerIdGet$Json()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  apiCustomerGetCurrentCustomerIdGet$Json$Response(params?: ApiCustomerGetCurrentCustomerIdGet$Json$Params, context?: HttpContext): Observable<StrictHttpResponse<Int32ResultCustomModel>> {
+    return apiCustomerGetCurrentCustomerIdGet$Json(this.http, this.rootUrl, params, context);
+  }
+
+  /**
+   * This method provides access only to the response body.
+   * To access the full response (for headers, for example), `apiCustomerGetCurrentCustomerIdGet$Json$Response()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  apiCustomerGetCurrentCustomerIdGet$Json(params?: ApiCustomerGetCurrentCustomerIdGet$Json$Params, context?: HttpContext): Observable<Int32ResultCustomModel> {
+    return this.apiCustomerGetCurrentCustomerIdGet$Json$Response(params, context).pipe(
+      map((r: StrictHttpResponse<Int32ResultCustomModel>): Int32ResultCustomModel => r.body)
     );
   }
 
@@ -430,6 +484,31 @@ export class CustomerService extends BaseService {
   apiCustomerLoginPost$Json(params?: ApiCustomerLoginPost$Json$Params, context?: HttpContext): Observable<CustomerResponseResultCustomModel> {
     return this.apiCustomerLoginPost$Json$Response(params, context).pipe(
       map((r: StrictHttpResponse<CustomerResponseResultCustomModel>): CustomerResponseResultCustomModel => r.body)
+    );
+  }
+
+  /** Path part for operation `apiCustomerLogoutPost()` */
+  static readonly ApiCustomerLogoutPostPath = '/api/Customer/Logout';
+
+  /**
+   * This method provides access to the full `HttpResponse`, allowing access to response headers.
+   * To access only the response body, use `apiCustomerLogoutPost()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  apiCustomerLogoutPost$Response(params?: ApiCustomerLogoutPost$Params, context?: HttpContext): Observable<StrictHttpResponse<void>> {
+    return apiCustomerLogoutPost(this.http, this.rootUrl, params, context);
+  }
+
+  /**
+   * This method provides access only to the response body.
+   * To access the full response (for headers, for example), `apiCustomerLogoutPost$Response()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  apiCustomerLogoutPost(params?: ApiCustomerLogoutPost$Params, context?: HttpContext): Observable<void> {
+    return this.apiCustomerLogoutPost$Response(params, context).pipe(
+      map((r: StrictHttpResponse<void>): void => r.body)
     );
   }
 
