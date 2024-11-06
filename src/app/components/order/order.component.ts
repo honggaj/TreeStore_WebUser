@@ -50,22 +50,16 @@ export class OrderComponent implements OnInit {
   submitOrder() {
     // Lấy Customer ID từ localStorage và chuyển đổi sang số nguyên
     const customerId = parseInt(localStorage.getItem('customerId') || '0');
-  
+    
     // Kiểm tra Customer ID hợp lệ
     if (!customerId || isNaN(customerId)) {
       console.error('Customer ID không hợp lệ');
       return; // Dừng nếu Customer ID không hợp lệ
     }
-  
-    // Kiểm tra và chuyển đổi promotionCode thành số nếu có, nếu không có mã giảm giá thì gán promotionId = 0
-    const promotionId = this.promotionCode ? parseInt(this.promotionCode) : 0;
-  
-    // Kiểm tra nếu promotionCode không phải là một số hợp lệ
-    if (this.promotionCode && isNaN(promotionId)) {
-      console.error('Mã giảm giá không hợp lệ');
-      return; // Dừng nếu mã giảm giá không hợp lệ
-    }
-  
+    
+    // Chuyển promotionCode thành chuỗi nếu có, nếu không có mã giảm giá thì gán promotionCode = ''
+    const promotionCode = this.promotionCode || ''; // Sử dụng chuỗi rỗng nếu không có mã giảm giá
+    
     // Tạo đối tượng đơn hàng
     const orderRequest: CreateOrderRequest = {
       cartItems: this.cartItems.map(item => ({
@@ -74,9 +68,9 @@ export class OrderComponent implements OnInit {
       })),
       customerId, // ID khách hàng
       note: this.orderNote, // Ghi chú đơn hàng
-      promotionId, // Mã khuyến mãi (sẽ là 0 nếu không có mã giảm giá hợp lệ)
+      promotionCode, // Mã khuyến mãi (sẽ là chuỗi rỗng nếu không có mã giảm giá hợp lệ)
     };
-  
+    
     // Xác nhận đặt hàng qua SweetAlert2
     Swal.fire({
       title: 'Xác nhận đặt hàng',
@@ -89,7 +83,7 @@ export class OrderComponent implements OnInit {
       if (result.isConfirmed) {
         // Gọi API để tạo đơn hàng khi người dùng xác nhận
         console.log('Đơn hàng gửi đi:', orderRequest); // In ra đơn hàng để kiểm tra
-  
+    
         // Gọi API để tạo đơn hàng
         this.orderService.apiOrderCreatePost$Json$Response({ body: orderRequest }).subscribe(
           (response: StrictHttpResponse<BooleanResultCustomModel>) => {
