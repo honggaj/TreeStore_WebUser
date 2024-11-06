@@ -3,15 +3,13 @@ $light-green-color: #c8e6c9;
 $hover-color: darken($green-color, 10%);
 $border-radius: 5px;
 
-
 .account-page {
     height: 100vh; 
-    margin: 0; // Xóa khoảng cách mặc định
-    background-color: #f0f0f0; // Màu nền xám cho toàn bộ trang  
+    margin: 0; // Remove default margin
+    background-color: #f0f0f0; // Gray background for the whole page  
     display: flex;
-    justify-content: center; // Căn giữa
+    justify-content: center; // Center content
     padding: 20px;
-
 
     .sidebar {
         width: 220px;
@@ -20,7 +18,7 @@ $border-radius: 5px;
         padding: 10px;
         border-radius: $border-radius;
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-        margin-right: 20px; // Khoảng cách giữa sidebar và container
+        margin-right: 20px; // Space between sidebar and container
 
         ul {
             list-style: none;
@@ -49,7 +47,7 @@ $border-radius: 5px;
 
     .account-container {
         flex: 1;
-        max-width: 1000px; // Giảm chiều rộng tối đa của container
+        max-width: 1000px; // Reduce max width of the container
         max-height: fit-content;
         background-color: #ffffff;
         padding: 20px;
@@ -90,23 +88,29 @@ $border-radius: 5px;
             display: flex;
             gap: 10px;
 
-            .btn-save {
-                background-color: $green-color;
+            button {
                 color: white;
                 border: none;
                 padding: 10px 15px;
                 border-radius: $border-radius;
                 cursor: pointer;
                 transition: background-color 0.3s;
-            }
 
-            .btn-cancel {
-                background-color: #f44336;
-                color: white;
-                border: none;
-                padding: 10px 15px;
-                border-radius: $border-radius;
-                cursor: pointer;
+                &.btn-save {
+                    background-color: $green-color;
+
+                    &:hover {
+                        background-color: darken($green-color, 5%);
+                    }
+                }
+
+                &.btn-cancel {
+                    background-color: #f44336;
+
+                    &:hover {
+                        background-color: darken(#f44336, 5%);
+                    }
+                }
             }
         }
     }

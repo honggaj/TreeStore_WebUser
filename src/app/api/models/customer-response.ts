@@ -4,6 +4,7 @@
 
 export interface CustomerResponse {
   address?: string | null;
+  avatar?: string | null;
   customerId?: number;
   email?: string | null;
   fullname?: string | null;

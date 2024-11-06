@@ -10,7 +10,7 @@ import Swal from 'sweetalert2';
   imports: [ReactiveFormsModule, CommonModule],
   selector: 'app-account',
   templateUrl: './account.component.html',
-  styleUrls: ['./account.component.css']
+  styleUrls: ['./account.component.scss']
 })
 export class AccountComponent implements OnInit {
   customerId!: number; 
