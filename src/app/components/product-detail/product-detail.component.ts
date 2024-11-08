@@ -1,23 +1,25 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProductService, ReviewService } from '../../api/services';
-import { BooleanResultCustomModel, GetListProductSpResult, ProductResponseResultCustomModel, Review, ReviewResponse } from '../../api/models';
+import { BooleanResultCustomModel, ProductResponse, Review } from '../../api/models';
 import { CommonModule } from '@angular/common';
 import { ApiConfiguration } from '../../api/api-configuration';
 import { StrictHttpResponse } from '../../api/strict-http-response';
 import Swal from 'sweetalert2';
+import { ReviewComponent } from '../review/review-user.component';
+
 
 
 @Component({
   selector: 'app-product-detail',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, ReviewComponent],
   templateUrl: './product-detail.component.html',
   styleUrls: ['./product-detail.component.css']
 })
 export class ProductDetailComponent implements OnInit {
   productId: number = 0; 
-  product!: GetListProductSpResult; 
+  product!: ProductResponse; 
   rootUrl: string; 
   quantity: number = 1;
   listReviewDB: Review[] = [];
@@ -42,7 +44,7 @@ export class ProductDetailComponent implements OnInit {
   loadProductDetail(): void {
     const params = { productId: this.productId };
 
-    this.productService.apiProductGetProductByIdGet$Json(params).subscribe((response: ProductResponseResultCustomModel) => { 
+    this.productService.apiProductGetProductByIdGet$Json(params).subscribe((response) => { 
         if (response.success && response.data) { 
             this.product = response.data; 
             console.log('Thông tin sản phẩm:', this.product);
@@ -57,7 +59,7 @@ export class ProductDetailComponent implements OnInit {
   addToCart() {
     const item = {
       id: this.productId,
-      name: this.product.productName,
+      name: this.product.name,
       price: this.product.priceOutput,
       quantity: this.quantity,
       imageUrl: this.rootUrl + '/' + this.product.img
@@ -93,57 +95,45 @@ export class ProductDetailComponent implements OnInit {
             console.error('Lỗi khi lấy danh sách review:', error);
         }
     );
-}
-deleteReview(reviewId: number | undefined): void {
-  // Kiểm tra reviewId có hợp lệ không
-  if (!reviewId || reviewId <= 0) { // Kiểm tra reviewId hợp lệ
-    console.error('reviewId không hợp lệ:', reviewId);
-    Swal.fire('Lỗi!', 'ID đánh giá không hợp lệ.', 'error');
-    return; // Thoát khỏi phương thức nếu reviewId không hợp lệ
   }
 
-  Swal.fire({
-    title: 'Bạn có chắc chắn muốn xóa review này?',
-    text: "Hành động này không thể hoàn tác!",
-    icon: 'warning',
-    showCancelButton: true,
-    confirmButtonColor: '#3085d6',
-    cancelButtonColor: '#d33',
-    confirmButtonText: 'Xóa',
-    cancelButtonText: 'Hủy'
-  }).then((result) => {
-    if (result.isConfirmed) {
-      this.reviewService.apiReviewDeleteReviewGetIdDelete$Json$Response({ 
-        reviewId, 
-        GetId: reviewId.toString() // Thêm thuộc tính GetId vào đây
-      })
-      .subscribe({
-        next: (response: StrictHttpResponse<BooleanResultCustomModel>) => {
-          const responseBody = response.body;
-
-          console.log(responseBody); // In ra toàn bộ phản hồi
-
-          // Kiểm tra thuộc tính 'success' trong responseBody
-          if (responseBody && responseBody.success) {
-            Swal.fire('Đã xóa!', 'Review đã được xóa thành công.', 'success');
-            this.loadReviews(); // Tải lại danh sách review
-          } else {
-            Swal.fire('Lỗi!', responseBody.message || 'Xóa review không thành công.', 'error');
-          }
-        },
-        error: (error) => {
-          console.error('Lỗi khi xóa review:', error); // In lỗi nếu có
-          Swal.fire('Lỗi!', 'Có lỗi xảy ra khi xóa review.', 'error');
-        }
-      });
+  deleteReview(reviewId: number | undefined): void {
+    if (!reviewId || reviewId <= 0) { 
+      console.error('reviewId không hợp lệ:', reviewId);
+      Swal.fire('Lỗi!', 'ID đánh giá không hợp lệ.', 'error');
+      return; 
     }
-  });
-}
 
-
-
-
-
+    Swal.fire({
+      title: 'Bạn có chắc chắn muốn xóa review này?',
+      text: "Hành động này không thể hoàn tác!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Xóa',
+      cancelButtonText: 'Hủy'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.reviewService.apiReviewDeleteReviewGetIdDelete$Json$Response({ reviewId, GetId: reviewId.toString() })
+        .subscribe({
+          next: (response: StrictHttpResponse<BooleanResultCustomModel>) => {
+            const responseBody = response.body;
+            if (responseBody && responseBody.success) {
+              Swal.fire('Đã xóa!', 'Review đã được xóa thành công.', 'success');
+              this.loadReviews(); // Tải lại danh sách review
+            } else {
+              Swal.fire('Lỗi!', responseBody.message || 'Xóa review không thành công.', 'error');
+            }
+          },
+          error: (error) => {
+            console.error('Lỗi khi xóa review:', error); 
+            Swal.fire('Lỗi!', 'Có lỗi xảy ra khi xóa review.', 'error');
+          }
+        });
+      }
+    });
+  }
 
   navigateToReview() {
     this.router.navigate(['/danhgia', this.productId]); // Điều hướng đến trang đánh giá với productId

@@ -7,15 +7,16 @@ import { ReviewRequest } from "../../api/models";
 import { CommonModule } from "@angular/common";
 
 @Component({
-    selector: 'app-review-user',
+    selector: 'app-review',
     standalone: true,
     imports: [CommonModule, ReactiveFormsModule],
     templateUrl: './review-user.component.html',
     styleUrls: ['./review-user.component.scss']
 })
-export class ReviewUserComponent implements OnInit {
+export class ReviewComponent implements OnInit {
     editReviewUser: FormGroup;
     productId: number | undefined;
+    showReviewForm: boolean = false;
 
     constructor(
         private router: Router,
@@ -36,6 +37,15 @@ export class ReviewUserComponent implements OnInit {
             this.productId = params['id'];
             this.editReviewUser.patchValue({ productid: this.productId });
         });
+
+        const customerId = this.getCustomerId();
+        if (customerId) {
+            this.editReviewUser.patchValue({ customerid: customerId });
+        }
+    }
+
+    toggleReviewForm() {
+        this.showReviewForm = !this.showReviewForm;
     }
 
     onSubmit() {
