@@ -9,6 +9,7 @@ export interface PromotionResponse {
   endDate?: string;
   isActive?: boolean;
   minimumPurchaseAmount?: number;
+  orderId?: number | null;
   programName?: string | null;
   promotionCode?: string | null;
   startDate?: string;

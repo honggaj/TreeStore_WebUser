@@ -23,6 +23,8 @@ import { apiOrderGetOrderByIdGet$Json } from '../fn/order/api-order-get-order-by
 import { ApiOrderGetOrderByIdGet$Json$Params } from '../fn/order/api-order-get-order-by-id-get-json';
 import { apiOrderGetOrderByIdGet$Plain } from '../fn/order/api-order-get-order-by-id-get-plain';
 import { ApiOrderGetOrderByIdGet$Plain$Params } from '../fn/order/api-order-get-order-by-id-get-plain';
+import { apiOrderGetRevenueLast7DaysGet } from '../fn/order/api-order-get-revenue-last-7-days-get';
+import { ApiOrderGetRevenueLast7DaysGet$Params } from '../fn/order/api-order-get-revenue-last-7-days-get';
 import { apiOrderListDetailOrderGet$Json } from '../fn/order/api-order-list-detail-order-get-json';
 import { ApiOrderListDetailOrderGet$Json$Params } from '../fn/order/api-order-list-detail-order-get-json';
 import { apiOrderListDetailOrderGet$Plain } from '../fn/order/api-order-list-detail-order-get-plain';
@@ -274,6 +276,31 @@ export class OrderService extends BaseService {
   apiOrderChangeStateOrderPost$Json(params?: ApiOrderChangeStateOrderPost$Json$Params, context?: HttpContext): Observable<BooleanResultCustomModel> {
     return this.apiOrderChangeStateOrderPost$Json$Response(params, context).pipe(
       map((r: StrictHttpResponse<BooleanResultCustomModel>): BooleanResultCustomModel => r.body)
+    );
+  }
+
+  /** Path part for operation `apiOrderGetRevenueLast7DaysGet()` */
+  static readonly ApiOrderGetRevenueLast7DaysGetPath = '/api/Order/GetRevenueLast7Days';
+
+  /**
+   * This method provides access to the full `HttpResponse`, allowing access to response headers.
+   * To access only the response body, use `apiOrderGetRevenueLast7DaysGet()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  apiOrderGetRevenueLast7DaysGet$Response(params?: ApiOrderGetRevenueLast7DaysGet$Params, context?: HttpContext): Observable<StrictHttpResponse<void>> {
+    return apiOrderGetRevenueLast7DaysGet(this.http, this.rootUrl, params, context);
+  }
+
+  /**
+   * This method provides access only to the response body.
+   * To access the full response (for headers, for example), `apiOrderGetRevenueLast7DaysGet$Response()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  apiOrderGetRevenueLast7DaysGet(params?: ApiOrderGetRevenueLast7DaysGet$Params, context?: HttpContext): Observable<void> {
+    return this.apiOrderGetRevenueLast7DaysGet$Response(params, context).pipe(
+      map((r: StrictHttpResponse<void>): void => r.body)
     );
   }
 

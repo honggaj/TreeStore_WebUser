@@ -25,10 +25,10 @@ import { apiPromotionCreatePost$Plain } from '../fn/promotion/api-promotion-crea
 import { ApiPromotionCreatePost$Plain$Params } from '../fn/promotion/api-promotion-create-post-plain';
 import { apiPromotionDeactivatePromotionPost } from '../fn/promotion/api-promotion-deactivate-promotion-post';
 import { ApiPromotionDeactivatePromotionPost$Params } from '../fn/promotion/api-promotion-deactivate-promotion-post';
-import { apiPromotionGetPromotionByIdPromotionIdGet$Json } from '../fn/promotion/api-promotion-get-promotion-by-id-promotion-id-get-json';
-import { ApiPromotionGetPromotionByIdPromotionIdGet$Json$Params } from '../fn/promotion/api-promotion-get-promotion-by-id-promotion-id-get-json';
-import { apiPromotionGetPromotionByIdPromotionIdGet$Plain } from '../fn/promotion/api-promotion-get-promotion-by-id-promotion-id-get-plain';
-import { ApiPromotionGetPromotionByIdPromotionIdGet$Plain$Params } from '../fn/promotion/api-promotion-get-promotion-by-id-promotion-id-get-plain';
+import { apiPromotionGetPromotionByIdPromotionCodeGet$Json } from '../fn/promotion/api-promotion-get-promotion-by-id-promotion-code-get-json';
+import { ApiPromotionGetPromotionByIdPromotionCodeGet$Json$Params } from '../fn/promotion/api-promotion-get-promotion-by-id-promotion-code-get-json';
+import { apiPromotionGetPromotionByIdPromotionCodeGet$Plain } from '../fn/promotion/api-promotion-get-promotion-by-id-promotion-code-get-plain';
+import { ApiPromotionGetPromotionByIdPromotionCodeGet$Plain$Params } from '../fn/promotion/api-promotion-get-promotion-by-id-promotion-code-get-plain';
 import { apiPromotionListPromotionGet$Json } from '../fn/promotion/api-promotion-list-promotion-get-json';
 import { ApiPromotionListPromotionGet$Json$Params } from '../fn/promotion/api-promotion-list-promotion-get-json';
 import { apiPromotionListPromotionGet$Plain } from '../fn/promotion/api-promotion-list-promotion-get-plain';
@@ -95,49 +95,49 @@ export class PromotionService extends BaseService {
     );
   }
 
-  /** Path part for operation `apiPromotionGetPromotionByIdPromotionIdGet()` */
-  static readonly ApiPromotionGetPromotionByIdPromotionIdGetPath = '/api/Promotion/GetPromotionById/{promotionId}';
+  /** Path part for operation `apiPromotionGetPromotionByIdPromotionCodeGet()` */
+  static readonly ApiPromotionGetPromotionByIdPromotionCodeGetPath = '/api/Promotion/GetPromotionById/{promotionCode}';
 
   /**
    * This method provides access to the full `HttpResponse`, allowing access to response headers.
-   * To access only the response body, use `apiPromotionGetPromotionByIdPromotionIdGet$Plain()` instead.
+   * To access only the response body, use `apiPromotionGetPromotionByIdPromotionCodeGet$Plain()` instead.
    *
    * This method doesn't expect any request body.
    */
-  apiPromotionGetPromotionByIdPromotionIdGet$Plain$Response(params: ApiPromotionGetPromotionByIdPromotionIdGet$Plain$Params, context?: HttpContext): Observable<StrictHttpResponse<PromotionResponseResultCustomModel>> {
-    return apiPromotionGetPromotionByIdPromotionIdGet$Plain(this.http, this.rootUrl, params, context);
+  apiPromotionGetPromotionByIdPromotionCodeGet$Plain$Response(params: ApiPromotionGetPromotionByIdPromotionCodeGet$Plain$Params, context?: HttpContext): Observable<StrictHttpResponse<PromotionResponseResultCustomModel>> {
+    return apiPromotionGetPromotionByIdPromotionCodeGet$Plain(this.http, this.rootUrl, params, context);
   }
 
   /**
    * This method provides access only to the response body.
-   * To access the full response (for headers, for example), `apiPromotionGetPromotionByIdPromotionIdGet$Plain$Response()` instead.
+   * To access the full response (for headers, for example), `apiPromotionGetPromotionByIdPromotionCodeGet$Plain$Response()` instead.
    *
    * This method doesn't expect any request body.
    */
-  apiPromotionGetPromotionByIdPromotionIdGet$Plain(params: ApiPromotionGetPromotionByIdPromotionIdGet$Plain$Params, context?: HttpContext): Observable<PromotionResponseResultCustomModel> {
-    return this.apiPromotionGetPromotionByIdPromotionIdGet$Plain$Response(params, context).pipe(
+  apiPromotionGetPromotionByIdPromotionCodeGet$Plain(params: ApiPromotionGetPromotionByIdPromotionCodeGet$Plain$Params, context?: HttpContext): Observable<PromotionResponseResultCustomModel> {
+    return this.apiPromotionGetPromotionByIdPromotionCodeGet$Plain$Response(params, context).pipe(
       map((r: StrictHttpResponse<PromotionResponseResultCustomModel>): PromotionResponseResultCustomModel => r.body)
     );
   }
 
   /**
    * This method provides access to the full `HttpResponse`, allowing access to response headers.
-   * To access only the response body, use `apiPromotionGetPromotionByIdPromotionIdGet$Json()` instead.
+   * To access only the response body, use `apiPromotionGetPromotionByIdPromotionCodeGet$Json()` instead.
    *
    * This method doesn't expect any request body.
    */
-  apiPromotionGetPromotionByIdPromotionIdGet$Json$Response(params: ApiPromotionGetPromotionByIdPromotionIdGet$Json$Params, context?: HttpContext): Observable<StrictHttpResponse<PromotionResponseResultCustomModel>> {
-    return apiPromotionGetPromotionByIdPromotionIdGet$Json(this.http, this.rootUrl, params, context);
+  apiPromotionGetPromotionByIdPromotionCodeGet$Json$Response(params: ApiPromotionGetPromotionByIdPromotionCodeGet$Json$Params, context?: HttpContext): Observable<StrictHttpResponse<PromotionResponseResultCustomModel>> {
+    return apiPromotionGetPromotionByIdPromotionCodeGet$Json(this.http, this.rootUrl, params, context);
   }
 
   /**
    * This method provides access only to the response body.
-   * To access the full response (for headers, for example), `apiPromotionGetPromotionByIdPromotionIdGet$Json$Response()` instead.
+   * To access the full response (for headers, for example), `apiPromotionGetPromotionByIdPromotionCodeGet$Json$Response()` instead.
    *
    * This method doesn't expect any request body.
    */
-  apiPromotionGetPromotionByIdPromotionIdGet$Json(params: ApiPromotionGetPromotionByIdPromotionIdGet$Json$Params, context?: HttpContext): Observable<PromotionResponseResultCustomModel> {
-    return this.apiPromotionGetPromotionByIdPromotionIdGet$Json$Response(params, context).pipe(
+  apiPromotionGetPromotionByIdPromotionCodeGet$Json(params: ApiPromotionGetPromotionByIdPromotionCodeGet$Json$Params, context?: HttpContext): Observable<PromotionResponseResultCustomModel> {
+    return this.apiPromotionGetPromotionByIdPromotionCodeGet$Json$Response(params, context).pipe(
       map((r: StrictHttpResponse<PromotionResponseResultCustomModel>): PromotionResponseResultCustomModel => r.body)
     );
   }

@@ -11,13 +11,13 @@ import { RequestBuilder } from '../../request-builder';
 import { BooleanResultCustomModel } from '../../models/boolean-result-custom-model';
 
 export interface ApiPromotionChangeActivePost$Json$Params {
-  promotionId?: string;
+  promotionCode?: string;
 }
 
 export function apiPromotionChangeActivePost$Json(http: HttpClient, rootUrl: string, params?: ApiPromotionChangeActivePost$Json$Params, context?: HttpContext): Observable<StrictHttpResponse<BooleanResultCustomModel>> {
   const rb = new RequestBuilder(rootUrl, apiPromotionChangeActivePost$Json.PATH, 'post');
   if (params) {
-    rb.query('promotionId', params.promotionId, {});
+    rb.query('promotionCode', params.promotionCode, {});
   }
 
   return http.request(

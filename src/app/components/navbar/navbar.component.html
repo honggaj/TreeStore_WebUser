@@ -15,10 +15,31 @@
     <a (click)="navigateTo('/giohang')">
       <i class="fas fa-shopping-cart"></i>
     </a>
-    <div class="navigation">
-      <a (click)="navigateToAccount()" style="cursor: pointer;">
-        <i class="fas fa-user"></i>  <!-- Biểu tượng tài khoản -->
-      </a>
+    <div class="dropdown-container" (click)="onContainerClick($event)">
+      <div class="navigation">
+        <a (click)="toggleDropdown()" style="cursor: pointer;">
+          <i class="fas fa-user"></i> <!-- Biểu tượng tài khoản -->
+        </a>
+      </div>
+      
+      <!-- Dropdown menu -->
+      <div *ngIf="isDropdownOpen" class="dropdown-menu" [ngClass]="{'show': isDropdownOpen}">
+        <ul>
+          <li (click)="navigateToAccount(); closeDropdown()">
+            <a>Thông tin tài khoản</a>
+          </li>
+          <li (click)="navigateTo('/donhang'); closeDropdown()">
+            <a>Đơn hàng của tôi</a>
+          </li>
+          <li (click)="logout();closeDropdown()">
+            <a>Đăng xuất</a>
+          </li>
+        </ul>
+      </div>
     </div>
+    
+    
+    
+    
   </div>
 </nav>

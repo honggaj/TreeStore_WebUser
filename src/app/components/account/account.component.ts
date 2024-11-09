@@ -5,6 +5,7 @@ import { CustomerService } from '../../api/services';
 import { CommonModule } from '@angular/common';
 import Swal from 'sweetalert2';
 
+
 @Component({
   standalone: true,
   imports: [ReactiveFormsModule, CommonModule],
@@ -23,8 +24,9 @@ export class AccountComponent implements OnInit {
     private router: Router,
     private customerService: CustomerService,
     private fb: FormBuilder
-  ) {
-    this.editAccountForm = this.fb.group({
+  ) 
+  
+    {this.editAccountForm = this.fb.group({
       fullname: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       phone: [''],
@@ -66,7 +68,7 @@ export class AccountComponent implements OnInit {
  
 
   cancel() {
-    this.router.navigate(['/account']); 
+    this.router.navigate(['/taikhoan']); 
   }
 
   onSubmit() {
