@@ -10,36 +10,46 @@
   </ul>
   <div class="right-menu">
     <ul>
+      <!-- Hiển thị nút đăng nhập nếu người dùng chưa đăng nhập -->
       <li *ngIf="!isLoggedIn" (click)="navigateTo('/dangnhap')">ĐĂNG NHẬP</li>
     </ul>
+  
+    <!-- Biểu tượng giỏ hàng -->
     <a (click)="navigateTo('/giohang')">
       <i class="fas fa-shopping-cart"></i>
     </a>
+  
+    <!-- Dropdown tài khoản -->
     <div class="dropdown-container" (click)="onContainerClick($event)">
       <div class="navigation">
-        <a (click)="toggleDropdown()" style="cursor: pointer;">
+        <!-- Gọi onAccountIconClick thay vì toggleDropdown -->
+        <a (click)="onAccountIconClick()" style="cursor: pointer;">
           <i class="fas fa-user"></i> <!-- Biểu tượng tài khoản -->
         </a>
       </div>
       
-      <!-- Dropdown menu -->
+      <!-- Dropdown Menu (Hiển thị khi đã đăng nhập) -->
       <div *ngIf="isDropdownOpen" class="dropdown-menu" [ngClass]="{'show': isDropdownOpen}">
         <ul>
+          <!-- Thông tin tài khoản -->
           <li (click)="navigateToAccount(); closeDropdown()">
             <a>Thông tin tài khoản</a>
           </li>
+  
+          <!-- Đơn hàng của tôi -->
           <li (click)="navigateTo('/donhang'); closeDropdown()">
             <a>Đơn hàng của tôi</a>
           </li>
-          <li (click)="logout();closeDropdown()">
+  
+          <!-- Đăng xuất -->
+          <li (click)="logout(); closeDropdown()">
             <a>Đăng xuất</a>
           </li>
         </ul>
       </div>
     </div>
-    
-    
-    
-    
   </div>
+  
+  
+
 </nav>

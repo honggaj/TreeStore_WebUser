@@ -1,20 +1,21 @@
 import { Component, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
-import { CommonModule } from '@angular/common'; // Import CommonModule
+import { NgIf, NgClass } from '@angular/common';  // Import cả NgIf và NgClass từ @angular/common
 import { CustomerService } from '../../api/services';
 import Swal from 'sweetalert2';
+
 @Component({
   selector: 'app-navbar',
   standalone: true,
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss'],
-  imports: [CommonModule] // Thêm CommonModule vào imports
+  imports: [NgIf, NgClass]  // Thêm NgClass vào imports
 })
 export class NavbarComponent {
   isLoggedIn: boolean = false;
-  isDropdownOpen = false;  
+  isDropdownOpen = false;
 
-  constructor(private router: Router,private customerService: CustomerService) {
+  constructor(private router: Router, private customerService: CustomerService) {
     this.checkLoginStatus();
   }
 
@@ -34,31 +35,36 @@ export class NavbarComponent {
       this.router.navigate(['/dangnhap']); // Nếu chưa đăng nhập, điều hướng đến trang đăng nhập
     }
   }
-  
+
+  onAccountIconClick() {
+    if (this.isLoggedIn) {
+      this.toggleDropdown();  // Nếu đã đăng nhập, hiển thị dropdown
+    } else {
+      this.router.navigate(['/dangnhap']);  // Nếu chưa đăng nhập, chuyển hướng đến trang đăng nhập
+    }
+  }
+
   toggleDropdown() {
     this.isDropdownOpen = !this.isDropdownOpen;
   }
-  
+
   onContainerClick(event: Event) {
-    // Dừng sự kiện click lan ra ngoài để tránh đóng menu ngay lập tức
     event.stopPropagation();
   }
-  
+
   @HostListener('document:click', ['$event'])
   onDocumentClick(event: Event) {
-    // Kiểm tra nếu nhấp bên ngoài container thì đóng dropdown
     const target = event.target as HTMLElement;
     if (!target.closest('.dropdown-container')) {
       this.closeDropdown();
     }
   }
-  
+
   closeDropdown() {
     this.isDropdownOpen = false;
   }
 
   logout() {
-    // Gọi hàm `apiCustomerLogoutPost` để đăng xuất
     this.customerService.apiCustomerLogoutPost({ }).subscribe({
       next: () => {
         // Xóa thông tin người dùng khỏi `localStorage`
