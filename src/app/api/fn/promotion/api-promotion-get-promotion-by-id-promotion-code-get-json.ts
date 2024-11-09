@@ -10,14 +10,14 @@ import { RequestBuilder } from '../../request-builder';
 
 import { PromotionResponseResultCustomModel } from '../../models/promotion-response-result-custom-model';
 
-export interface ApiPromotionGetPromotionByIdPromotionIdGet$Json$Params {
-  promotionId: string;
+export interface ApiPromotionGetPromotionByIdPromotionCodeGet$Json$Params {
+  promotionCode: string;
 }
 
-export function apiPromotionGetPromotionByIdPromotionIdGet$Json(http: HttpClient, rootUrl: string, params: ApiPromotionGetPromotionByIdPromotionIdGet$Json$Params, context?: HttpContext): Observable<StrictHttpResponse<PromotionResponseResultCustomModel>> {
-  const rb = new RequestBuilder(rootUrl, apiPromotionGetPromotionByIdPromotionIdGet$Json.PATH, 'get');
+export function apiPromotionGetPromotionByIdPromotionCodeGet$Json(http: HttpClient, rootUrl: string, params: ApiPromotionGetPromotionByIdPromotionCodeGet$Json$Params, context?: HttpContext): Observable<StrictHttpResponse<PromotionResponseResultCustomModel>> {
+  const rb = new RequestBuilder(rootUrl, apiPromotionGetPromotionByIdPromotionCodeGet$Json.PATH, 'get');
   if (params) {
-    rb.path('promotionId', params.promotionId, {});
+    rb.path('promotionCode', params.promotionCode, {});
   }
 
   return http.request(
@@ -30,4 +30,4 @@ export function apiPromotionGetPromotionByIdPromotionIdGet$Json(http: HttpClient
   );
 }
 
-apiPromotionGetPromotionByIdPromotionIdGet$Json.PATH = '/api/Promotion/GetPromotionById/{promotionId}';
+apiPromotionGetPromotionByIdPromotionCodeGet$Json.PATH = '/api/Promotion/GetPromotionById/{promotionCode}';

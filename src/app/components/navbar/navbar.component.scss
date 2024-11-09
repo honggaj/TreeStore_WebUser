@@ -1,3 +1,10 @@
+/* Biến màu sắc và các thuộc tính cơ bản */
+$light-green-color: #c8e6c9; /* Màu nền xanh lá sáng */
+$green-color: #4caf50; /* Màu xanh lá đậm */
+$hover-color: darken($green-color, 10%); /* Màu nền khi hover */
+$border-radius: 5px; /* Độ bo góc */
+$font-size: 14px; /* Kích thước chữ nhỏ hơn trong dropdown */
+
 nav {
     background-color: #ffffff; /* Màu nền nav */
     padding: 1em;
@@ -64,3 +71,62 @@ nav {
     font-size: 1.5em; /* Kích thước biểu tượng */
   }
   
+/* Container bao quanh biểu tượng tài khoản và dropdown */
+.dropdown-container {
+  position: relative;
+}
+
+/* Dropdown menu */
+.dropdown-menu {
+  position: absolute;
+  top: 40px;
+  right: 0;
+  width: 220px;
+  height: auto;
+
+  background-color: $light-green-color;
+  border-radius: $border-radius;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  z-index: 10;
+
+  display: block;
+  visibility: hidden; /* Ẩn dropdown mặc định */
+  opacity: 0;
+  transition: visibility 0s, opacity 0.3s linear;
+}
+
+.dropdown-container:hover .dropdown-menu,
+.dropdown-menu.show {
+  visibility: visible;
+  opacity: 1;
+}
+
+.dropdown-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: block;
+}
+
+.dropdown-menu li {
+  margin-bottom: 10px;
+  display: block;
+}
+
+.dropdown-menu li a {
+  text-decoration: none;
+  color: $green-color;
+  font-weight: bold;
+  font-size: $font-size;
+  padding: 8px 10px;
+  border-radius: $border-radius;
+  display: block;
+  transition: background-color 0.3s, color 0.3s;
+  margin-right: 20px;
+}
+
+.dropdown-menu li a:hover {
+  background-color: $hover-color;
+  color: white;
+}

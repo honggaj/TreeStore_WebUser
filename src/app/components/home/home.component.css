@@ -101,6 +101,7 @@ h1 {
   flex-wrap: wrap; /* Cho phép sản phẩm xuống hàng */
   margin: 0;
   gap:10px;
+  
 }
 
 .product-item {
@@ -111,7 +112,7 @@ h1 {
   width: 260px; /* Thiết lập chiều rộng cố định cho mỗi sản phẩm */
   margin: 10px; /* Khoảng cách giữa các sản phẩm */
   height: 380px;
- 
+  background-color: #C8E6C9;
 }
 .description {
   font-size: 16px; /* Kích thước chữ cho mô tả tổng quát */
@@ -137,6 +138,27 @@ h1 {
 
 h4 {
   margin: 5px 0;
+}
+
+.navigation-buttons {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.navigation-buttons button {
+  margin: 0 10px;
+  padding: 10px 15px;
+  cursor: pointer;
+  background-color: darkgreen;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.navigation-buttons button:hover {
+  background-color: #28a745;
 }
 
 
@@ -165,7 +187,7 @@ button:hover {
 .product-item:hover {
   transform: scale(1.05); /* Khi hover, sản phẩm sẽ phóng to */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Thêm bóng cho sản phẩm */
-  background-color: #a7c4b6;
+  background-color: #8fae91;
 
 }
 /* Dịch vụ */
