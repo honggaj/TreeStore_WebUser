@@ -1,11 +1,11 @@
 <div class="product-detail-container">
   <div class="product-image">
-    <img [src]="rootUrl + '/' + product.img" alt="{{  product.name  }}" />
+    <img [src]="rootUrl + '/' + product.img" alt="{{ product.name }}" />
   </div>
 
   <div class="product-info">
-    <h1 class="product-title">{{   product.name  }}</h1>
-    <p class="product-description">{{ product.description }}</p> <!-- Thay đổi nếu cần -->
+    <h1 class="product-title">{{ product.name }}</h1>
+    <p class="product-description">{{ product.description }}</p>
     <p class="product-price">{{ product.priceOutput | number }} VNĐ</p>
 
     <div class="product-quantity">
@@ -13,7 +13,28 @@
       <input type="number" id="quantity" name="quantity" min="1" value="1" />
     </div>
 
-    <button class="add-to-cart-btn" (click)="addToCart()">Thêm vào giỏ hàng</button>
-
+    <button class="add-to-cart-btn btn btn-primary" (click)="addToCart()">Thêm vào giỏ hàng</button>
+    <div class="mt-2"></div>
   </div>
+</div>
+
+<!-- Danh sách bình luận -->
+<div class="review-list">
+  <!-- Container cho nút và chữ -->
+ 
+
+  <!-- Hiển thị khi không có đánh giá -->
+  <div *ngIf="listReviewDB.length === 0" class="no-review">
+    <p>Chưa có đánh giá nào cho sản phẩm này.</p>
+  </div>
+
+  <!-- Danh sách đánh giá -->
+  <div *ngFor="let review of listReviewDB" class="review-item">
+    <p class="review-comment">{{ review.comment }}</p>
+    
+    <button class="btn-delete-review" (click)="deleteReview(review.reviewId)">Xóa</button>
+  </div>
+
+  <!-- Component nhập đánh giá -->
+  <app-review ></app-review> <!-- Chèn component nhập đánh giá tại đây -->
 </div>

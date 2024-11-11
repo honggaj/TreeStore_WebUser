@@ -108,6 +108,66 @@ button:hover {
 
 .search-input:hover {
   border-color: #ffcc00; /* Màu đường viền khi hover */
+}
+
+.search-btn {
+  background-color: rgb(16, 65, 172);
+}
+
+.search-btn:hover {
+  background-color: rgb(27, 117, 228);
+}
+
+.search-btn:active {
+  background-color: rgb(27, 117, 228);
+  transform: scale(0.95);
+  box-shadow: #ddd;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  flex-wrap: wrap; /* Cho phép phần tử trong pagination xuống hàng nếu cần */
+}
+
+.pagination button {
+  padding: 10px;
+  margin: 0 5px;
+  border: none;
+  border-radius: 3px;
+  background-color: rgb(240, 244, 34);
+  color: rgb(97, 79, 15);
+  cursor: pointer;
+}
+
+.pagination button:disabled {
+  background-color: grey;
+  cursor: not-allowed;
+}
+
+.search-container {
+  display: flex;
+  margin-bottom: 20px; /* Khoảng cách giữa thanh tìm kiếm và danh sách sản phẩm */
+  gap:5px
+}
+
+.search-input {
+  margin-left: 10px; /* Khoảng cách từ nút tìm kiếm */
+  padding: 10px 30px; /* Padding cho input */
+  border: 1px solid #ccc; /* Đường viền */
+  border-radius: 3px; /* Bo tròn các góc */
+  outline: none; /* Bỏ đường viền khi chọn */
+  transition: border-color 0.3s; /* Hiệu ứng chuyển đổi cho màu đường viền */
+}
+
+.search-input::placeholder {
+  color: #aaa; /* Màu chữ placeholder */
+}
+
+.search-input:hover {
+  border-color: #ffcc00; /* Màu đường viền khi hover */
 }.search-btn {
   background-color: rgb(16, 65, 172);
 }

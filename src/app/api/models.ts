@@ -27,6 +27,7 @@ export type { GetListOrderSpResult } from './models/get-list-order-sp-result';
 export type { GetListOrderSpResultListResultCustomModel } from './models/get-list-order-sp-result-list-result-custom-model';
 export type { GetListProductSpResult } from './models/get-list-product-sp-result';
 export type { GetListProductSpResultListResultCustomModel } from './models/get-list-product-sp-result-list-result-custom-model';
+export type { Int32ResultCustomModel } from './models/int-32-result-custom-model';
 export type { LoginCustomer } from './models/login-customer';
 export type { LoginRequest } from './models/login-request';
 export type { LoginResponse } from './models/login-response';
