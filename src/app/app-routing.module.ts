@@ -22,7 +22,10 @@ export const routes: Routes = [
   { path: 'lienhe', component: ContactComponent },
   {path:'giohang',component:CartComponent},
   {path:'dathang',component:OrderComponent},
-  {path:'xemchitiet',component :ProductDetailComponent},
+  {
+    path: 'xemchitiet/:id', // :id là tham số để truyền ID sản phẩm
+    loadComponent: () => import('./components/product-detail/product-detail.component').then((c) => c.ProductDetailComponent)
+  },
   {path:'taikhoan',component:AccountComponent},
  
 

@@ -1,46 +1,76 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Router } from '@angular/router'; // Import Router
+import { Router } from '@angular/router'; 
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-cart',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports:[FormsModule,CommonModule],
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.css']
 })
 export class CartComponent {
-  cartItems = [
-    { id: 1, name: 'Cây trúc bách hợp', price: 100000, quantity: 1, imageUrl: 'images/trucbachhop.png' },
-    { id: 2, name: 'Cây lưỡi hổ', price: 150000, quantity: 1, imageUrl: 'images/cayluoiho.png' },
-    { id: 3, name: 'Cây ngọc vân', price: 200000, quantity: 1, imageUrl: 'images/ngocvan.png' },
-  ];
+  cartItems: any[] = JSON.parse(localStorage.getItem('cartItems') || '[]'); // Lấy sản phẩm từ localStorage
 
-  constructor(private router: Router) {} // Inject Router vào constructor
+  constructor(private router: Router) {}
 
   get total() {
     return this.cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
   }
 
   removeItem(itemId: number) {
-    this.cartItems = this.cartItems.filter(item => item.id !== itemId);
+    Swal.fire({
+      title: 'Bạn có chắc chắn muốn xóa?',
+      text: 'Sản phẩm này sẽ bị xóa khỏi giỏ hàng!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Xóa',
+      cancelButtonText: 'Hủy'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // Xóa sản phẩm khỏi giỏ hàng và cập nhật lại localStorage
+        this.cartItems = this.cartItems.filter(item => item.id !== itemId);
+        localStorage.setItem('cartItems', JSON.stringify(this.cartItems));
+
+
+        Swal.fire('Đã xóa!', 'Sản phẩm đã được xóa khỏi giỏ hàng.', 'success');
+      }
+    });
   }
 
   updateQuantity(itemId: number, quantity: number) {
     const item = this.cartItems.find(item => item.id === itemId);
     if (item) {
       item.quantity = quantity;
+      localStorage.setItem('cartItems', JSON.stringify(this.cartItems)); // Cập nhật lại localStorage
     }
   }
 
   clearCart() {
-    this.cartItems = [];
+    // Xác nhận xóa toàn bộ giỏ hàng
+    Swal.fire({
+      title: 'Bạn có chắc chắn muốn xóa giỏ hàng?',
+      text: 'Tất cả sản phẩm sẽ bị xóa khỏi giỏ hàng!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Xóa hết',
+      cancelButtonText: 'Hủy'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.cartItems = []; // Xóa giỏ hàng
+        localStorage.removeItem('cartItems'); // Xóa giỏ hàng trong localStorage
+        Swal.fire('Đã xóa!', 'Giỏ hàng đã được làm trống.', 'success');
+      }
+    });
   }
 
   buyNow() {
-    // Điều hướng đến OrderComponent với cartItems trong state
-    this.router.navigate(['/dathang'], { state: { cartItems: this.cartItems } });
+    this.router.navigate(['/dathang'], { state: { items: this.cartItems } });
+  }
 
+  formatCurrency(value: number): string {
+    return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.') + 'đ';
   }
 }

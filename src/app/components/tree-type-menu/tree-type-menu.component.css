@@ -2,33 +2,26 @@
   width: 200px;
   background-color: #ffffff; /* Màu nền menu */
   border: 3px solid #ddd; /* Đường viền */
-  padding: 5px; /* Khoảng cách bên trong */
+ 
   margin-left: 60px; /* Khoảng cách bên trái */
   border-radius: 1px; /* Bo tròn các góc */
   text-align: center; /* Căn giữa nội dung */
   font-size: 20px; /* Kích thước chữ */
+  height: auto;
   font-family: Arial, sans-serif; /* Phông chữ */
 }
-
 .tree-type-menu h3 {
   margin-bottom: 10px; /* Khoảng cách dưới tiêu đề */
 }
-
-.tree-type-menu ul {
-  list-style-type: none; /* Không hiển thị dấu chấm */
-  padding: 0; /* Không có khoảng cách bên trong */
+h3{
+  padding-top: 10px;
 }
-
-.tree-type-menu li {
-  margin: 10px 0; /* Khoảng cách giữa các mục */
-}
-
 .menu-button {
   width: 100%; /* Chiều rộng đầy đủ */
   padding: 10px; /* Khoảng cách bên trong */
   font-size: 18px; /* Kích thước chữ */
   background-color: #ffffff; /* Màu nền nút */
-  border: 1px solid #ddd; /* Đường viền */
+  border: 1px solid #ffffff; /* Đường viền */
   border-radius: 4px; /* Bo tròn các góc */
   color: #333; /* Màu chữ */
   cursor: pointer; /* Con trỏ tay khi di chuột */

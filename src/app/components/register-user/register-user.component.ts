@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms'; // Thay đổi ở đây
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CustomerService } from '../../api/services';
 import { CustomerRequest } from '../../api/models';
+import Swal from 'sweetalert2';
 
 @Component({
-  standalone: true, // Khai báo Standalone Component
-  imports: [ReactiveFormsModule], // Thay đổi ở đây
+  standalone: true,
+  imports: [ReactiveFormsModule],
   selector: 'app-register-user',
   templateUrl: './register-user.component.html',
   styleUrls: ['./register-user.component.css']
@@ -19,7 +20,6 @@ export class RegisterUserComponent implements OnInit {
     private fb: FormBuilder,
     private customerService: CustomerService
   ) {
-    // Khởi tạo FormGroup
     this.registerForm = this.fb.group({
       fullName: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
@@ -41,21 +41,38 @@ export class RegisterUserComponent implements OnInit {
       }).subscribe({
         next: (response) => {
           if (response?.success) {
-            alert('Đăng ký thành công!');
+            Swal.fire({
+              icon: 'success',
+              title: 'Đăng ký thành công!',
+              showConfirmButton: false,
+              timer: 1500
+            });
             setTimeout(() => {
               this.router.navigate(['/dangnhap']);
-            }, 1000); // Chờ 1 giây
+            }, 1000);
           } else {
-            alert('Đăng ký không thành công: ' + (response?.message || 'Có lỗi xảy ra!'));
+            Swal.fire({
+              icon: 'error',
+              title: 'Đăng ký không thành công',
+              text: response?.message || 'Có lỗi xảy ra!',
+            });
           }
         },
         error: (err) => {
           console.error('Lỗi khi gọi API:', err);
-          alert('Có lỗi xảy ra, vui lòng thử lại!');
+          Swal.fire({
+            icon: 'error',
+            title: 'Lỗi',
+            text: 'Có lỗi xảy ra, vui lòng thử lại!'
+          });
         }
       });
     } else {
-      alert('Vui lòng điền đầy đủ thông tin!');
+      Swal.fire({
+        icon: 'warning',
+        title: 'Thiếu thông tin',
+        text: 'Vui lòng điền đầy đủ thông tin!'
+      });
     }
   }
 }

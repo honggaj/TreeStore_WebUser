@@ -7,5 +7,6 @@ export interface CreateOrderRequest {
   cartItems?: Array<CartItem> | null;
   customerId?: number;
   note?: string | null;
+  promotionCode?: string | null;
   promotionId?: number | null;
 }
