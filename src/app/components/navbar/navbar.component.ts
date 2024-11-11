@@ -38,7 +38,10 @@ export class NavbarComponent {
 
   onAccountIconClick() {
     if (this.isLoggedIn) {
-      this.toggleDropdown();  // Nếu đã đăng nhập, hiển thị dropdown
+      this.toggleDropdown();
+      
+      // window.location.reload();
+      // Nếu đã đăng nhập, hiển thị dropdown
     } else {
       this.router.navigate(['/dangnhap']);  // Nếu chưa đăng nhập, chuyển hướng đến trang đăng nhập
     }

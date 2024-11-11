@@ -8,13 +8,13 @@ export interface Promotion {
   description?: string | null;
   discountAmount?: number;
   endDate?: string;
-  id?: number;
   isActive?: boolean;
   minimumPurchaseAmount?: number;
   order?: Order;
   orderId?: number | null;
   programName?: string | null;
   promotionCode?: string | null;
+  promotionId?: number;
   startDate?: string;
   usageLimit?: number | null;
 }
