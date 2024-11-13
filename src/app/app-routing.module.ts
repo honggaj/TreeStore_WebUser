@@ -10,6 +10,7 @@ import { ProductDetailComponent } from './components/product-detail/product-deta
 import { AccountComponent } from './components/account/account.component';
 import { LoginUserComponent } from './components/login-user/login-user.component';
 import { RegisterUserComponent } from './components/register-user/register-user.component';
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
@@ -24,6 +25,7 @@ export const routes: Routes = [
   { path: 'lienhe', component: ContactComponent },
   {path:'giohang',component:CartComponent},
   {path:'dathang',component:OrderComponent},
+  {path:'quenmatkhau',component:ForgotPasswordComponent},
   {
     path: 'xemchitiet/:id', // :id là tham số để truyền ID sản phẩm
     loadComponent: () => import('./components/product-detail/product-detail.component').then((c) => c.ProductDetailComponent)
