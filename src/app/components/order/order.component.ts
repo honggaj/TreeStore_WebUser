@@ -21,6 +21,8 @@ export class OrderComponent implements OnInit {
   shippingInfo = { name: '', phone: '', address: '' };
   orderNote: string = ''; // Biến để lưu ghi chú đơn hàng
   promotionCode: string = ''; // Biến lưu trữ mã giảm giá
+  isPromotionValid: boolean = true; // Biến để kiểm tra tính hợp lệ của mã giảm giá
+  discountAmount: number = 0; // Giá trị giảm giá (mặc định là 0)
 
   constructor(
     private router: Router,
@@ -43,35 +45,72 @@ export class OrderComponent implements OnInit {
     this.shippingInfo.address = localStorage.getItem('address') || '';
   }
 
-  get total() {
-    return this.cartItems.reduce((acc, item) => acc + (item.price || 0) * (item.quantity || 0), 0);
+  checkPromotionCode() {
+    if (!this.promotionCode) {
+      this.isPromotionValid = true;
+      this.discountAmount = 0; // Không có mã giảm giá, không giảm giá
+      console.log('Không có mã giảm giá nhập vào.');
+      return;
+    }
+  
+    const params = { promotionCode: this.promotionCode }; // Gửi mã giảm giá trong params
+  
+    console.log('Đang kiểm tra mã giảm giá:', this.promotionCode);
+  
+    this.promotionService.apiPromotionCheckPromotionCodeGet(params).subscribe(
+      (response : any) => {
+        this.isPromotionValid = true;
+        this.discountAmount = response.discountAmount || 0; // Cập nhật discountAmount từ phản hồi
+        console.log('Mã giảm giá hợp lệ:', response);
+        Swal.fire({
+          title: 'Mã giảm giá hợp lệ',
+          text: 'Mã giảm giá của bạn đã được xác nhận.',
+          icon: 'success',
+          confirmButtonText: 'OK'
+        });
+      },
+      (error) => {
+        this.isPromotionValid = false;
+        this.discountAmount = 0; // Nếu không hợp lệ, không có giảm giá
+        console.log('Lỗi kiểm tra mã giảm giá:', error);
+        Swal.fire({
+          title: 'Mã giảm giá không hợp lệ',
+          text: 'Mã giảm giá bạn nhập không hợp lệ.',
+          icon: 'error',
+          confirmButtonText: 'OK'
+        });
+      }
+    );
   }
 
+  get total() {
+    // Tính tổng giá trị đơn hàng
+    const totalAmount = this.cartItems.reduce((acc, item) => acc + (item.price || 0) * (item.quantity || 0), 0);
+  
+    // Trừ đi discountAmount nếu có
+    return totalAmount - this.discountAmount;
+  }
+  
+
   submitOrder() {
-    // Lấy Customer ID từ localStorage và chuyển đổi sang số nguyên
     const customerId = parseInt(localStorage.getItem('customerId') || '0');
-    
-    // Kiểm tra Customer ID hợp lệ
     if (!customerId || isNaN(customerId)) {
       console.error('Customer ID không hợp lệ');
       return; // Dừng nếu Customer ID không hợp lệ
     }
     
-    // Chuyển promotionCode thành chuỗi nếu có, nếu không có mã giảm giá thì gán promotionCode = ''
     const promotionCode = this.promotionCode || ''; // Sử dụng chuỗi rỗng nếu không có mã giảm giá
     
-    // Tạo đối tượng đơn hàng
     const orderRequest: CreateOrderRequest = {
       cartItems: this.cartItems.map(item => ({
-        productId: item.productId, // ID sản phẩm
-        quantity: item.quantity // Số lượng sản phẩm
+        productId: item.productId,
+        quantity: item.quantity
       })),
-      customerId, // ID khách hàng
-      note: this.orderNote, // Ghi chú đơn hàng
-      promotionCode, // Mã khuyến mãi (sẽ là chuỗi rỗng nếu không có mã giảm giá hợp lệ)
+      customerId,
+      note: this.orderNote,
+      promotionCode
     };
     
-    // Xác nhận đặt hàng qua SweetAlert2
     Swal.fire({
       title: 'Xác nhận đặt hàng',
       text: 'Bạn có chắc chắn muốn đặt hàng?',
@@ -81,14 +120,11 @@ export class OrderComponent implements OnInit {
       cancelButtonText: 'Hủy'
     }).then((result) => {
       if (result.isConfirmed) {
-        // Gọi API để tạo đơn hàng khi người dùng xác nhận
-        console.log('Đơn hàng gửi đi:', orderRequest); // In ra đơn hàng để kiểm tra
+        console.log('Đơn hàng gửi đi:', orderRequest);
     
-        // Gọi API để tạo đơn hàng
         this.orderService.apiOrderCreatePost$Json$Response({ body: orderRequest }).subscribe(
           (response: StrictHttpResponse<BooleanResultCustomModel>) => {
-            // Xử lý phản hồi từ API
-            const responseBody = response.body; // Lấy nội dung phản hồi
+            const responseBody = response.body;
             if (responseBody.success) {
               Swal.fire({
                 title: 'Đặt hàng thành công!',
@@ -109,21 +145,19 @@ export class OrderComponent implements OnInit {
             }
           },
           error => {
-            // Xử lý lỗi khi gọi API
             Swal.fire({
               title: 'Lỗi',
               text: error?.message || 'Đã có lỗi xảy ra khi đặt hàng. Vui lòng thử lại.',
               icon: 'error',
               confirmButtonText: 'OK'
             });
-            console.error('Lỗi khi đặt hàng:', error); // Log lỗi chi tiết
+            console.error('Lỗi khi đặt hàng:', error);
           }
         );
       }
     });
   }
   
-
   formatCurrency(value: number): string {
     if (isNaN(value)) {
       console.error('Giá trị không hợp lệ');

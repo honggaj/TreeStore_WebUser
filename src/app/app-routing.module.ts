@@ -11,6 +11,8 @@ import { AccountComponent } from './components/account/account.component';
 import { LoginUserComponent } from './components/login-user/login-user.component';
 import { RegisterUserComponent } from './components/register-user/register-user.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { OrderHistoryComponent } from './components/order-history/order-history.component';
+import { OrderDetailComponent } from './components/order-detail/order-detail.component';
 
 
 export const routes: Routes = [
@@ -22,6 +24,8 @@ export const routes: Routes = [
   { path: 'lienhe', component: ContactComponent },
   {path:'giohang',component:CartComponent},
   {path:'dathang',component:OrderComponent},
+  {path: 'lichsudonhang',component:OrderHistoryComponent},
+  { path: 'order-detail/:orderId', component: OrderDetailComponent }, // Trang chi tiết đơn hàng
   {
     path: 'xemchitiet/:id', // :id là tham số để truyền ID sản phẩm
     loadComponent: () => import('./components/product-detail/product-detail.component').then((c) => c.ProductDetailComponent)
