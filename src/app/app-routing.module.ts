@@ -14,6 +14,8 @@ import { ForgotPasswordComponent } from './components/forgot-password/forgot-pas
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
+import { OtpVerificationComponent } from './components/checkEmail/checkEmail.components';
+
 
 
 export const routes: Routes = [
@@ -26,6 +28,7 @@ export const routes: Routes = [
   {path:'giohang',component:CartComponent},
   {path:'dathang',component:OrderComponent},
   {path:'quenmatkhau',component:ForgotPasswordComponent},
+  {path:'checkEmail',component:OtpVerificationComponent },
   {
     path: 'xemchitiet/:id', // :id là tham số để truyền ID sản phẩm
     loadComponent: () => import('./components/product-detail/product-detail.component').then((c) => c.ProductDetailComponent)

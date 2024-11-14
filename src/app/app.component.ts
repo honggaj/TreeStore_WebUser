@@ -17,6 +17,6 @@ export class AppComponent {
   constructor(public router: Router) {}
 
   isAuthPage(): boolean {
-    return this.router.url === '/dangnhap' || this.router.url === '/dangky' || this.router.url === '/quenmatkhau'; // Kiểm tra nếu URL là '/dangnhap' hoặc '/dangky'
+    return this.router.url === '/dangnhap' || this.router.url === '/dangky' || this.router.url === '/quenmatkhau' || this.router.url === '/checkEmail'; // Kiểm tra nếu URL là '/dangnhap' hoặc '/dangky'
   }
 }

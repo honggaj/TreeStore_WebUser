@@ -1,39 +1,67 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common'; // Import CommonModule
+import { ReactiveFormsModule } from '@angular/forms'; // Import ReactiveFormsModule
+
+import { CustomerService } from '../../api/services';
 
 @Component({
   selector: 'app-forgot-password',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule], // Add CommonModule to imports
+  imports: [CommonModule, ReactiveFormsModule], // Add ReactiveFormsModule to imports
   templateUrl: './forgot-password.component.html',
   styleUrls: ['./forgot-password.component.scss']
 })
 export class ForgotPasswordComponent implements OnInit {
   forgotPasswordForm: FormGroup;
+  errorMessage: string = '';  // Để hiển thị lỗi nếu có
+  successMessage: string = '';  // Để hiển thị thông báo thành công
 
-  constructor(private fb: FormBuilder, private router: Router) {
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private customerService: CustomerService // Inject CustomerService
+  ) {
     this.forgotPasswordForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]]
     });
   }
-  
+
   ngOnInit(): void {}
 
+  // Chuyển hướng đến trang đăng nhập
   goToLogin(): void {
     this.router.navigate(['/dangnhap']);
   }
 
-  submitForgotPassword() {
+  // Hàm xử lý submit form quên mật khẩu
+  submitForgotPassword(): void {
     if (this.forgotPasswordForm.invalid) {
       return;
     }
-    const email = this.forgotPasswordForm.get('email')?.value;
-    // Xử lý gửi email quên mật khẩu, ví dụ gọi một service API.
-    console.log('Gửi yêu cầu khôi phục mật khẩu tới: ', email);
-
-    // Sau khi gửi thành công, bạn có thể chuyển hướng người dùng
-    this.router.navigate(['/check-email']);
+  
+    const email: string = this.forgotPasswordForm.get('email')?.value ?? '';
+  
+    if (email === '') {
+      this.errorMessage = 'Email không hợp lệ';
+      return;
+    }
+  
+    this.customerService.apiCustomerForgotPasswordForgotPasswordPost$Json$Response({ email }).subscribe({
+      next: (response) => {
+        const result = response.body;
+        if (result?.success) {
+          this.successMessage = result.message ?? '';
+          this.router.navigate(['/checkEmail']); // Chuyển hướng đến trang check email
+        } else {
+          this.errorMessage = result?.message ?? 'Có lỗi xảy ra';
+        }
+      },
+      error: () => {
+        this.errorMessage = 'Đã xảy ra lỗi. Vui lòng thử lại!';
+      }
+    });
   }
+  
 }
