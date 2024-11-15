@@ -19,7 +19,7 @@
         <td>{{ item.name }}</td>
         <td>{{ formatCurrency(item.price) }}</td>
         <td>{{ item.quantity }}</td>
-        <td>{{ formatCurrency(item.price * item.quantity)}}</td>
+        <td>{{ formatCurrency(item.price * item.quantity) }}</td>
       </tr>
     </tbody>
   </table>
@@ -30,7 +30,8 @@
     <p>Số điện thoại: {{ shippingInfo.phone }}</p>
     <p>Địa chỉ: {{ shippingInfo.address }}</p>
   </div>
-  <div>
+  
+  <div class="form-container">
     <div class="form-row">
       <div class="note-container">
         <label for="note">Ghi chú</label>
@@ -40,8 +41,11 @@
       <div class="promotion-container">
         <label for="promotionCode">Mã giảm giá</label>
         <input type="text" id="promotionCode" [(ngModel)]="promotionCode" name="promotionCode" placeholder="Nhập mã giảm giá">
+        <button (click)="checkPromotionCode()" class="promotion-check-button">Áp mã</button>
+        <p *ngIf="!isPromotionValid" class="promotion-error">Mã giảm giá không hợp lệ.</p>
       </div>
     </div>
+  </div>
   
 
   <div class="order-total">

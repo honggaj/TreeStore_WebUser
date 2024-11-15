@@ -35,6 +35,11 @@ export class NavbarComponent {
       this.router.navigate(['/dangnhap']); // Nếu chưa đăng nhập, điều hướng đến trang đăng nhập
     }
   }
+  navigateToOrder(route: string){
+    
+      this.router.navigate(['/lichsudonhang']);
+    
+  }
 
   onAccountIconClick() {
     if (this.isLoggedIn) {

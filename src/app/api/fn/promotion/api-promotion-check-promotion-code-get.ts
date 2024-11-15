@@ -9,12 +9,14 @@ import { StrictHttpResponse } from '../../strict-http-response';
 import { RequestBuilder } from '../../request-builder';
 
 
-export interface ApiOrderGetRevenueLast7DaysGet$Params {
+export interface ApiPromotionCheckPromotionCodeGet$Params {
+  promotionCode?: string;
 }
 
-export function apiOrderGetRevenueLast7DaysGet(http: HttpClient, rootUrl: string, params?: ApiOrderGetRevenueLast7DaysGet$Params, context?: HttpContext): Observable<StrictHttpResponse<void>> {
-  const rb = new RequestBuilder(rootUrl, apiOrderGetRevenueLast7DaysGet.PATH, 'get');
+export function apiPromotionCheckPromotionCodeGet(http: HttpClient, rootUrl: string, params?: ApiPromotionCheckPromotionCodeGet$Params, context?: HttpContext): Observable<StrictHttpResponse<void>> {
+  const rb = new RequestBuilder(rootUrl, apiPromotionCheckPromotionCodeGet.PATH, 'get');
   if (params) {
+    rb.query('promotionCode', params.promotionCode, {});
   }
 
   return http.request(
@@ -27,4 +29,4 @@ export function apiOrderGetRevenueLast7DaysGet(http: HttpClient, rootUrl: string
   );
 }
 
-apiOrderGetRevenueLast7DaysGet.PATH = '/api/Order/GetRevenueLast7Days';
+apiPromotionCheckPromotionCodeGet.PATH = '/api/Promotion/CheckPromotionCode';

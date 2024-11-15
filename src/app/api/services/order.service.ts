@@ -31,12 +31,17 @@ import { apiOrderListDetailOrderGet$Json } from '../fn/order/api-order-list-deta
 import { ApiOrderListDetailOrderGet$Json$Params } from '../fn/order/api-order-list-detail-order-get-json';
 import { apiOrderListDetailOrderGet$Plain } from '../fn/order/api-order-list-detail-order-get-plain';
 import { ApiOrderListDetailOrderGet$Plain$Params } from '../fn/order/api-order-list-detail-order-get-plain';
+import { apiOrderListOrderByCustomerIdGet$Json } from '../fn/order/api-order-list-order-by-customer-id-get-json';
+import { ApiOrderListOrderByCustomerIdGet$Json$Params } from '../fn/order/api-order-list-order-by-customer-id-get-json';
+import { apiOrderListOrderByCustomerIdGet$Plain } from '../fn/order/api-order-list-order-by-customer-id-get-plain';
+import { ApiOrderListOrderByCustomerIdGet$Plain$Params } from '../fn/order/api-order-list-order-by-customer-id-get-plain';
 import { apiOrderListOrderGet$Json } from '../fn/order/api-order-list-order-get-json';
 import { ApiOrderListOrderGet$Json$Params } from '../fn/order/api-order-list-order-get-json';
 import { apiOrderListOrderGet$Plain } from '../fn/order/api-order-list-order-get-plain';
 import { ApiOrderListOrderGet$Plain$Params } from '../fn/order/api-order-list-order-get-plain';
 import { BooleanResultCustomModel } from '../models/boolean-result-custom-model';
 import { DetailOrderReponseResultCustomModel } from '../models/detail-order-reponse-result-custom-model';
+import { GetListOrderByCustomerIdSpResultListResultCustomModel } from '../models/get-list-order-by-customer-id-sp-result-list-result-custom-model';
 import { GetListOrderSpResultListResultCustomModel } from '../models/get-list-order-sp-result-list-result-custom-model';
 import { OrderReponseResultCustomModel } from '../models/order-reponse-result-custom-model';
 import { RevenueResponseListResultCustomModel } from '../models/revenue-response-list-result-custom-model';
@@ -138,6 +143,53 @@ export class OrderService extends BaseService {
   apiOrderListOrderGet$Json(params?: ApiOrderListOrderGet$Json$Params, context?: HttpContext): Observable<GetListOrderSpResultListResultCustomModel> {
     return this.apiOrderListOrderGet$Json$Response(params, context).pipe(
       map((r: StrictHttpResponse<GetListOrderSpResultListResultCustomModel>): GetListOrderSpResultListResultCustomModel => r.body)
+    );
+  }
+
+  /** Path part for operation `apiOrderListOrderByCustomerIdGet()` */
+  static readonly ApiOrderListOrderByCustomerIdGetPath = '/api/Order/ListOrderByCustomerId';
+
+  /**
+   * This method provides access to the full `HttpResponse`, allowing access to response headers.
+   * To access only the response body, use `apiOrderListOrderByCustomerIdGet$Plain()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  apiOrderListOrderByCustomerIdGet$Plain$Response(params?: ApiOrderListOrderByCustomerIdGet$Plain$Params, context?: HttpContext): Observable<StrictHttpResponse<GetListOrderByCustomerIdSpResultListResultCustomModel>> {
+    return apiOrderListOrderByCustomerIdGet$Plain(this.http, this.rootUrl, params, context);
+  }
+
+  /**
+   * This method provides access only to the response body.
+   * To access the full response (for headers, for example), `apiOrderListOrderByCustomerIdGet$Plain$Response()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  apiOrderListOrderByCustomerIdGet$Plain(params?: ApiOrderListOrderByCustomerIdGet$Plain$Params, context?: HttpContext): Observable<GetListOrderByCustomerIdSpResultListResultCustomModel> {
+    return this.apiOrderListOrderByCustomerIdGet$Plain$Response(params, context).pipe(
+      map((r: StrictHttpResponse<GetListOrderByCustomerIdSpResultListResultCustomModel>): GetListOrderByCustomerIdSpResultListResultCustomModel => r.body)
+    );
+  }
+
+  /**
+   * This method provides access to the full `HttpResponse`, allowing access to response headers.
+   * To access only the response body, use `apiOrderListOrderByCustomerIdGet$Json()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  apiOrderListOrderByCustomerIdGet$Json$Response(params?: ApiOrderListOrderByCustomerIdGet$Json$Params, context?: HttpContext): Observable<StrictHttpResponse<GetListOrderByCustomerIdSpResultListResultCustomModel>> {
+    return apiOrderListOrderByCustomerIdGet$Json(this.http, this.rootUrl, params, context);
+  }
+
+  /**
+   * This method provides access only to the response body.
+   * To access the full response (for headers, for example), `apiOrderListOrderByCustomerIdGet$Json$Response()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  apiOrderListOrderByCustomerIdGet$Json(params?: ApiOrderListOrderByCustomerIdGet$Json$Params, context?: HttpContext): Observable<GetListOrderByCustomerIdSpResultListResultCustomModel> {
+    return this.apiOrderListOrderByCustomerIdGet$Json$Response(params, context).pipe(
+      map((r: StrictHttpResponse<GetListOrderByCustomerIdSpResultListResultCustomModel>): GetListOrderByCustomerIdSpResultListResultCustomModel => r.body)
     );
   }
 
