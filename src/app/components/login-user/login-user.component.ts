@@ -35,6 +35,10 @@ export class LoginUserComponent implements OnInit {
   goToRegister(): void {
     this.router.navigate(['/dangky']);
   }
+  
+  goToForgotPassword(): void {
+    this.router.navigate(['/quenmatkhau']);
+  }
 
   login() {
     if (this.loginForm.valid) {

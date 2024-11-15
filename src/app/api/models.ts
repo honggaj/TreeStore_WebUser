@@ -16,11 +16,6 @@ export type { CustomerResponseListResultCustomModel } from './models/customer-re
 export type { CustomerResponseResultCustomModel } from './models/customer-response-result-custom-model';
 export type { DeactivateAccountRequest } from './models/deactivate-account-request';
 export type { DeactivateCustomerRequest } from './models/deactivate-customer-request';
-export type { DetailOrderReponse } from './models/detail-order-reponse';
-export type { DetailOrderReponseResultCustomModel } from './models/detail-order-reponse-result-custom-model';
-export type { GetDetailProductOrderSpResult } from './models/get-detail-product-order-sp-result';
-export type { GetListOrderSpResult } from './models/get-list-order-sp-result';
-export type { GetListOrderSpResultListResultCustomModel } from './models/get-list-order-sp-result-list-result-custom-model';
 export type { GetListProductSpResult } from './models/get-list-product-sp-result';
 export type { GetListProductSpResultListResultCustomModel } from './models/get-list-product-sp-result-list-result-custom-model';
 export type { Int32ResultCustomModel } from './models/int-32-result-custom-model';

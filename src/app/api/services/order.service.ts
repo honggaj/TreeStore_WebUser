@@ -99,6 +99,7 @@ export class OrderService extends BaseService {
     );
   }
 
+<<<<<<< HEAD
   /** Path part for operation `apiOrderListOrderGet()` */
   static readonly ApiOrderListOrderGetPath = '/api/Order/ListOrder';
 
@@ -240,6 +241,8 @@ export class OrderService extends BaseService {
     );
   }
 
+=======
+>>>>>>> origin/KhanhDang_ForgotPassword
   /** Path part for operation `apiOrderGetOrderByIdGet()` */
   static readonly ApiOrderGetOrderByIdGetPath = '/api/Order/GetOrderById';
 

@@ -10,11 +10,14 @@ import { ProductDetailComponent } from './components/product-detail/product-deta
 import { AccountComponent } from './components/account/account.component';
 import { LoginUserComponent } from './components/login-user/login-user.component';
 import { RegisterUserComponent } from './components/register-user/register-user.component';
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { OrderHistoryComponent } from './components/order-history/order-history.component';
 import { OrderDetailComponent } from './components/order-detail/order-detail.component';
 
 import { AppComponent } from './app.component';
+import { OtpVerificationComponent } from './components/checkEmail/checkEmail.components';
+
 
 
 export const routes: Routes = [
@@ -28,6 +31,8 @@ export const routes: Routes = [
   {path:'dathang',component:OrderComponent},
   {path: 'lichsudonhang',component:OrderHistoryComponent},
   { path: 'order-detail/:orderId', component: OrderDetailComponent }, // Trang chi tiết đơn hàng
+  {path:'quenmatkhau',component:ForgotPasswordComponent},
+  {path:'checkEmail',component:OtpVerificationComponent },
   {
     path: 'xemchitiet/:id', // :id là tham số để truyền ID sản phẩm
     loadComponent: () => import('./components/product-detail/product-detail.component').then((c) => c.ProductDetailComponent)

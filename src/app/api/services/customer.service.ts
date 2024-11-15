@@ -21,6 +21,10 @@ import { apiCustomerChangeActivePost$Plain } from '../fn/customer/api-customer-c
 import { ApiCustomerChangeActivePost$Plain$Params } from '../fn/customer/api-customer-change-active-post-plain';
 import { apiCustomerDeactivateAccountPost } from '../fn/customer/api-customer-deactivate-account-post';
 import { ApiCustomerDeactivateAccountPost$Params } from '../fn/customer/api-customer-deactivate-account-post';
+import { apiCustomerForgotPasswordForgotPasswordPost$Json } from '../fn/customer/api-customer-forgot-password-forgot-password-post-json';
+import { ApiCustomerForgotPasswordForgotPasswordPost$Json$Params } from '../fn/customer/api-customer-forgot-password-forgot-password-post-json';
+import { apiCustomerForgotPasswordForgotPasswordPost$Plain } from '../fn/customer/api-customer-forgot-password-forgot-password-post-plain';
+import { ApiCustomerForgotPasswordForgotPasswordPost$Plain$Params } from '../fn/customer/api-customer-forgot-password-forgot-password-post-plain';
 import { apiCustomerGetCurrentCustomerIdGet$Json } from '../fn/customer/api-customer-get-current-customer-id-get-json';
 import { ApiCustomerGetCurrentCustomerIdGet$Json$Params } from '../fn/customer/api-customer-get-current-customer-id-get-json';
 import { apiCustomerGetCurrentCustomerIdGet$Plain } from '../fn/customer/api-customer-get-current-customer-id-get-plain';
@@ -43,6 +47,10 @@ import { apiCustomerRegisterPost$Json } from '../fn/customer/api-customer-regist
 import { ApiCustomerRegisterPost$Json$Params } from '../fn/customer/api-customer-register-post-json';
 import { apiCustomerRegisterPost$Plain } from '../fn/customer/api-customer-register-post-plain';
 import { ApiCustomerRegisterPost$Plain$Params } from '../fn/customer/api-customer-register-post-plain';
+import { apiCustomerResetPasswordResetPasswordPost$Json } from '../fn/customer/api-customer-reset-password-reset-password-post-json';
+import { ApiCustomerResetPasswordResetPasswordPost$Json$Params } from '../fn/customer/api-customer-reset-password-reset-password-post-json';
+import { apiCustomerResetPasswordResetPasswordPost$Plain } from '../fn/customer/api-customer-reset-password-reset-password-post-plain';
+import { ApiCustomerResetPasswordResetPasswordPost$Plain$Params } from '../fn/customer/api-customer-reset-password-reset-password-post-plain';
 import { apiCustomerSearchByNameGet } from '../fn/customer/api-customer-search-by-name-get';
 import { ApiCustomerSearchByNameGet$Params } from '../fn/customer/api-customer-search-by-name-get';
 import { apiCustomerUpdateCustomerPut$Json } from '../fn/customer/api-customer-update-customer-put-json';
@@ -509,6 +517,100 @@ export class CustomerService extends BaseService {
   apiCustomerLogoutPost(params?: ApiCustomerLogoutPost$Params, context?: HttpContext): Observable<void> {
     return this.apiCustomerLogoutPost$Response(params, context).pipe(
       map((r: StrictHttpResponse<void>): void => r.body)
+    );
+  }
+
+  /** Path part for operation `apiCustomerForgotPasswordForgotPasswordPost()` */
+  static readonly ApiCustomerForgotPasswordForgotPasswordPostPath = '/api/Customer/ForgotPassword/ForgotPassword';
+
+  /**
+   * This method provides access to the full `HttpResponse`, allowing access to response headers.
+   * To access only the response body, use `apiCustomerForgotPasswordForgotPasswordPost$Plain()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  apiCustomerForgotPasswordForgotPasswordPost$Plain$Response(params?: ApiCustomerForgotPasswordForgotPasswordPost$Plain$Params, context?: HttpContext): Observable<StrictHttpResponse<StringResultCustomModel>> {
+    return apiCustomerForgotPasswordForgotPasswordPost$Plain(this.http, this.rootUrl, params, context);
+  }
+
+  /**
+   * This method provides access only to the response body.
+   * To access the full response (for headers, for example), `apiCustomerForgotPasswordForgotPasswordPost$Plain$Response()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  apiCustomerForgotPasswordForgotPasswordPost$Plain(params?: ApiCustomerForgotPasswordForgotPasswordPost$Plain$Params, context?: HttpContext): Observable<StringResultCustomModel> {
+    return this.apiCustomerForgotPasswordForgotPasswordPost$Plain$Response(params, context).pipe(
+      map((r: StrictHttpResponse<StringResultCustomModel>): StringResultCustomModel => r.body)
+    );
+  }
+
+  /**
+   * This method provides access to the full `HttpResponse`, allowing access to response headers.
+   * To access only the response body, use `apiCustomerForgotPasswordForgotPasswordPost$Json()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  apiCustomerForgotPasswordForgotPasswordPost$Json$Response(params?: ApiCustomerForgotPasswordForgotPasswordPost$Json$Params, context?: HttpContext): Observable<StrictHttpResponse<StringResultCustomModel>> {
+    return apiCustomerForgotPasswordForgotPasswordPost$Json(this.http, this.rootUrl, params, context);
+  }
+
+  /**
+   * This method provides access only to the response body.
+   * To access the full response (for headers, for example), `apiCustomerForgotPasswordForgotPasswordPost$Json$Response()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  apiCustomerForgotPasswordForgotPasswordPost$Json(params?: ApiCustomerForgotPasswordForgotPasswordPost$Json$Params, context?: HttpContext): Observable<StringResultCustomModel> {
+    return this.apiCustomerForgotPasswordForgotPasswordPost$Json$Response(params, context).pipe(
+      map((r: StrictHttpResponse<StringResultCustomModel>): StringResultCustomModel => r.body)
+    );
+  }
+
+  /** Path part for operation `apiCustomerResetPasswordResetPasswordPost()` */
+  static readonly ApiCustomerResetPasswordResetPasswordPostPath = '/api/Customer/ResetPassword/ResetPassword';
+
+  /**
+   * This method provides access to the full `HttpResponse`, allowing access to response headers.
+   * To access only the response body, use `apiCustomerResetPasswordResetPasswordPost$Plain()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  apiCustomerResetPasswordResetPasswordPost$Plain$Response(params?: ApiCustomerResetPasswordResetPasswordPost$Plain$Params, context?: HttpContext): Observable<StrictHttpResponse<StringResultCustomModel>> {
+    return apiCustomerResetPasswordResetPasswordPost$Plain(this.http, this.rootUrl, params, context);
+  }
+
+  /**
+   * This method provides access only to the response body.
+   * To access the full response (for headers, for example), `apiCustomerResetPasswordResetPasswordPost$Plain$Response()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  apiCustomerResetPasswordResetPasswordPost$Plain(params?: ApiCustomerResetPasswordResetPasswordPost$Plain$Params, context?: HttpContext): Observable<StringResultCustomModel> {
+    return this.apiCustomerResetPasswordResetPasswordPost$Plain$Response(params, context).pipe(
+      map((r: StrictHttpResponse<StringResultCustomModel>): StringResultCustomModel => r.body)
+    );
+  }
+
+  /**
+   * This method provides access to the full `HttpResponse`, allowing access to response headers.
+   * To access only the response body, use `apiCustomerResetPasswordResetPasswordPost$Json()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  apiCustomerResetPasswordResetPasswordPost$Json$Response(params?: ApiCustomerResetPasswordResetPasswordPost$Json$Params, context?: HttpContext): Observable<StrictHttpResponse<StringResultCustomModel>> {
+    return apiCustomerResetPasswordResetPasswordPost$Json(this.http, this.rootUrl, params, context);
+  }
+
+  /**
+   * This method provides access only to the response body.
+   * To access the full response (for headers, for example), `apiCustomerResetPasswordResetPasswordPost$Json$Response()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  apiCustomerResetPasswordResetPasswordPost$Json(params?: ApiCustomerResetPasswordResetPasswordPost$Json$Params, context?: HttpContext): Observable<StringResultCustomModel> {
+    return this.apiCustomerResetPasswordResetPasswordPost$Json$Response(params, context).pipe(
+      map((r: StrictHttpResponse<StringResultCustomModel>): StringResultCustomModel => r.body)
     );
   }
 
