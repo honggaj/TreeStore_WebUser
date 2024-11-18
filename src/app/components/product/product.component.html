@@ -2,10 +2,34 @@
   <app-tree-type-menu (categorySelected)="filterProductsByCategory($event)"></app-tree-type-menu>
   <div class="product-content">
     <div class="search-container">
-      <input type="text" placeholder="Tìm kiếm sản phẩm..." class="search-input" [(ngModel)]="searchTerm" (input)="onSearch()">
-      <button class="search-btn" (click)="onSearch()">Tìm kiếm</button>
+      <div class="input-group">
+        <input 
+          type="text" 
+          placeholder="Tìm kiếm sản phẩm..." 
+          class="search-input" 
+          [(ngModel)]="searchTerm">
+          
+        <input 
+          type="number" 
+          placeholder="Giá tối thiểu" 
+          class="price-input" 
+          [(ngModel)]="minPrice">
+          
+        <input 
+          type="number" 
+          placeholder="Giá tối đa" 
+          class="price-input" 
+          [(ngModel)]="maxPrice">
+      </div>
+      <button 
+        class="search-btn" 
+        (click)="onSearch()">
+        Tìm kiếm
+      </button>
     </div>
-
+    
+    
+    
     <div class="product-list">
       <ng-container *ngIf="filteredProducts && filteredProducts.length > 0; else noProducts">
         <div class="product-item" *ngFor="let product of paginatedProducts()">
@@ -14,17 +38,14 @@
           <p class="product-price">{{ product.priceOutput | number }} VNĐ</p>
           <div class="button-container">
             <button (click)="addToCart(product)">Thêm vào giỏ</button>
-            <button (click)="viewDetail(product)">Xem</button> <!-- Chuyển product vào phương thức -->
+            <button (click)="viewDetail(product)">Xem</button>
           </div>
         </div>
       </ng-container>
     </div>
-    
     <ng-template #noProducts>
       <p>Không có sản phẩm nào được tìm thấy.</p>
     </ng-template>
-    
-    <!-- Phân trang -->
     <div class="pagination">
       <button (click)="prevPage()" [disabled]="currentPage === 1">Trang trước</button>
       <span>Trang {{ currentPage }} / {{ totalPages }}</span>

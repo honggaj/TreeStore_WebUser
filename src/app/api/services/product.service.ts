@@ -35,6 +35,10 @@ import { apiProductGetProductByIdGet$Json } from '../fn/product/api-product-get-
 import { ApiProductGetProductByIdGet$Json$Params } from '../fn/product/api-product-get-product-by-id-get-json';
 import { apiProductGetProductByIdGet$Plain } from '../fn/product/api-product-get-product-by-id-get-plain';
 import { ApiProductGetProductByIdGet$Plain$Params } from '../fn/product/api-product-get-product-by-id-get-plain';
+import { apiProductGetTotalProductsTotalProductsGet$Json } from '../fn/product/api-product-get-total-products-total-products-get-json';
+import { ApiProductGetTotalProductsTotalProductsGet$Json$Params } from '../fn/product/api-product-get-total-products-total-products-get-json';
+import { apiProductGetTotalProductsTotalProductsGet$Plain } from '../fn/product/api-product-get-total-products-total-products-get-plain';
+import { ApiProductGetTotalProductsTotalProductsGet$Plain$Params } from '../fn/product/api-product-get-total-products-total-products-get-plain';
 import { apiProductListProductGet$Json } from '../fn/product/api-product-list-product-get-json';
 import { ApiProductListProductGet$Json$Params } from '../fn/product/api-product-list-product-get-json';
 import { apiProductListProductGet$Plain } from '../fn/product/api-product-list-product-get-plain';
@@ -43,6 +47,10 @@ import { apiProductSearchByNameGet$Json } from '../fn/product/api-product-search
 import { ApiProductSearchByNameGet$Json$Params } from '../fn/product/api-product-search-by-name-get-json';
 import { apiProductSearchByNameGet$Plain } from '../fn/product/api-product-search-by-name-get-plain';
 import { ApiProductSearchByNameGet$Plain$Params } from '../fn/product/api-product-search-by-name-get-plain';
+import { apiProductSearchProductsGet$Json } from '../fn/product/api-product-search-products-get-json';
+import { ApiProductSearchProductsGet$Json$Params } from '../fn/product/api-product-search-products-get-json';
+import { apiProductSearchProductsGet$Plain } from '../fn/product/api-product-search-products-get-plain';
+import { ApiProductSearchProductsGet$Plain$Params } from '../fn/product/api-product-search-products-get-plain';
 import { apiProductUpdatePut$Json } from '../fn/product/api-product-update-put-json';
 import { ApiProductUpdatePut$Json$Params } from '../fn/product/api-product-update-put-json';
 import { apiProductUpdatePut$Plain } from '../fn/product/api-product-update-put-plain';
@@ -50,6 +58,7 @@ import { ApiProductUpdatePut$Plain$Params } from '../fn/product/api-product-upda
 import { BooleanResultCustomModel } from '../models/boolean-result-custom-model';
 import { CreateCategoryRequestListResultCustomModel } from '../models/create-category-request-list-result-custom-model';
 import { GetListProductSpResultListResultCustomModel } from '../models/get-list-product-sp-result-list-result-custom-model';
+import { Int32ResultCustomModel } from '../models/int-32-result-custom-model';
 import { ProductListResultCustomModel } from '../models/product-list-result-custom-model';
 import { ProductResponseResultCustomModel } from '../models/product-response-result-custom-model';
 import { UpdateProductReponseResultCustomModel } from '../models/update-product-reponse-result-custom-model';
@@ -436,6 +445,53 @@ export class ProductService extends BaseService {
     );
   }
 
+  /** Path part for operation `apiProductSearchProductsGet()` */
+  static readonly ApiProductSearchProductsGetPath = '/api/Product/SearchProducts';
+
+  /**
+   * This method provides access to the full `HttpResponse`, allowing access to response headers.
+   * To access only the response body, use `apiProductSearchProductsGet$Plain()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  apiProductSearchProductsGet$Plain$Response(params?: ApiProductSearchProductsGet$Plain$Params, context?: HttpContext): Observable<StrictHttpResponse<GetListProductSpResultListResultCustomModel>> {
+    return apiProductSearchProductsGet$Plain(this.http, this.rootUrl, params, context);
+  }
+
+  /**
+   * This method provides access only to the response body.
+   * To access the full response (for headers, for example), `apiProductSearchProductsGet$Plain$Response()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  apiProductSearchProductsGet$Plain(params?: ApiProductSearchProductsGet$Plain$Params, context?: HttpContext): Observable<GetListProductSpResultListResultCustomModel> {
+    return this.apiProductSearchProductsGet$Plain$Response(params, context).pipe(
+      map((r: StrictHttpResponse<GetListProductSpResultListResultCustomModel>): GetListProductSpResultListResultCustomModel => r.body)
+    );
+  }
+
+  /**
+   * This method provides access to the full `HttpResponse`, allowing access to response headers.
+   * To access only the response body, use `apiProductSearchProductsGet$Json()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  apiProductSearchProductsGet$Json$Response(params?: ApiProductSearchProductsGet$Json$Params, context?: HttpContext): Observable<StrictHttpResponse<GetListProductSpResultListResultCustomModel>> {
+    return apiProductSearchProductsGet$Json(this.http, this.rootUrl, params, context);
+  }
+
+  /**
+   * This method provides access only to the response body.
+   * To access the full response (for headers, for example), `apiProductSearchProductsGet$Json$Response()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  apiProductSearchProductsGet$Json(params?: ApiProductSearchProductsGet$Json$Params, context?: HttpContext): Observable<GetListProductSpResultListResultCustomModel> {
+    return this.apiProductSearchProductsGet$Json$Response(params, context).pipe(
+      map((r: StrictHttpResponse<GetListProductSpResultListResultCustomModel>): GetListProductSpResultListResultCustomModel => r.body)
+    );
+  }
+
   /** Path part for operation `apiProductChangeActivePost()` */
   static readonly ApiProductChangeActivePostPath = '/api/Product/ChangeActive';
 
@@ -480,6 +536,53 @@ export class ProductService extends BaseService {
   apiProductChangeActivePost$Json(params?: ApiProductChangeActivePost$Json$Params, context?: HttpContext): Observable<BooleanResultCustomModel> {
     return this.apiProductChangeActivePost$Json$Response(params, context).pipe(
       map((r: StrictHttpResponse<BooleanResultCustomModel>): BooleanResultCustomModel => r.body)
+    );
+  }
+
+  /** Path part for operation `apiProductGetTotalProductsTotalProductsGet()` */
+  static readonly ApiProductGetTotalProductsTotalProductsGetPath = '/api/Product/GetTotalProducts/total-products';
+
+  /**
+   * This method provides access to the full `HttpResponse`, allowing access to response headers.
+   * To access only the response body, use `apiProductGetTotalProductsTotalProductsGet$Plain()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  apiProductGetTotalProductsTotalProductsGet$Plain$Response(params?: ApiProductGetTotalProductsTotalProductsGet$Plain$Params, context?: HttpContext): Observable<StrictHttpResponse<Int32ResultCustomModel>> {
+    return apiProductGetTotalProductsTotalProductsGet$Plain(this.http, this.rootUrl, params, context);
+  }
+
+  /**
+   * This method provides access only to the response body.
+   * To access the full response (for headers, for example), `apiProductGetTotalProductsTotalProductsGet$Plain$Response()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  apiProductGetTotalProductsTotalProductsGet$Plain(params?: ApiProductGetTotalProductsTotalProductsGet$Plain$Params, context?: HttpContext): Observable<Int32ResultCustomModel> {
+    return this.apiProductGetTotalProductsTotalProductsGet$Plain$Response(params, context).pipe(
+      map((r: StrictHttpResponse<Int32ResultCustomModel>): Int32ResultCustomModel => r.body)
+    );
+  }
+
+  /**
+   * This method provides access to the full `HttpResponse`, allowing access to response headers.
+   * To access only the response body, use `apiProductGetTotalProductsTotalProductsGet$Json()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  apiProductGetTotalProductsTotalProductsGet$Json$Response(params?: ApiProductGetTotalProductsTotalProductsGet$Json$Params, context?: HttpContext): Observable<StrictHttpResponse<Int32ResultCustomModel>> {
+    return apiProductGetTotalProductsTotalProductsGet$Json(this.http, this.rootUrl, params, context);
+  }
+
+  /**
+   * This method provides access only to the response body.
+   * To access the full response (for headers, for example), `apiProductGetTotalProductsTotalProductsGet$Json$Response()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  apiProductGetTotalProductsTotalProductsGet$Json(params?: ApiProductGetTotalProductsTotalProductsGet$Json$Params, context?: HttpContext): Observable<Int32ResultCustomModel> {
+    return this.apiProductGetTotalProductsTotalProductsGet$Json$Response(params, context).pipe(
+      map((r: StrictHttpResponse<Int32ResultCustomModel>): Int32ResultCustomModel => r.body)
     );
   }
 

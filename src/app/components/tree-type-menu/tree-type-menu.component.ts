@@ -26,7 +26,7 @@ export class TreeTypeMenuComponent implements OnInit {
       next: (rs: any) => {
         const response = rs.body;
         if (response && response.success) {
-          this.listCategoriesDB = response.data || []; // Cập nhật danh sách loại cây
+          this.listCategoriesDB = response.data?.filter((x: { isActive: any; })=>x.isActive) || []; // Cập nhật danh sách loại cây
         } else {
           console.error('Lấy danh sách danh mục thất bại:', response?.message || 'Không có thông tin thêm.');
         }
@@ -36,7 +36,6 @@ export class TreeTypeMenuComponent implements OnInit {
       }
     });
   }
-
   setActive(categoryName: string): void {
     if (!categoryName) {
       console.log('Tên loại cây là null hoặc không xác định.');

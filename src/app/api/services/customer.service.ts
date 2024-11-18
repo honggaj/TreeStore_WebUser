@@ -33,6 +33,10 @@ import { apiCustomerGetCustomerByIdGet$Json } from '../fn/customer/api-customer-
 import { ApiCustomerGetCustomerByIdGet$Json$Params } from '../fn/customer/api-customer-get-customer-by-id-get-json';
 import { apiCustomerGetCustomerByIdGet$Plain } from '../fn/customer/api-customer-get-customer-by-id-get-plain';
 import { ApiCustomerGetCustomerByIdGet$Plain$Params } from '../fn/customer/api-customer-get-customer-by-id-get-plain';
+import { apiCustomerGetTotalCustomersTotalCustomerGet$Json } from '../fn/customer/api-customer-get-total-customers-total-customer-get-json';
+import { ApiCustomerGetTotalCustomersTotalCustomerGet$Json$Params } from '../fn/customer/api-customer-get-total-customers-total-customer-get-json';
+import { apiCustomerGetTotalCustomersTotalCustomerGet$Plain } from '../fn/customer/api-customer-get-total-customers-total-customer-get-plain';
+import { ApiCustomerGetTotalCustomersTotalCustomerGet$Plain$Params } from '../fn/customer/api-customer-get-total-customers-total-customer-get-plain';
 import { apiCustomerListCustomerGet$Json } from '../fn/customer/api-customer-list-customer-get-json';
 import { ApiCustomerListCustomerGet$Json$Params } from '../fn/customer/api-customer-list-customer-get-json';
 import { apiCustomerListCustomerGet$Plain } from '../fn/customer/api-customer-list-customer-get-plain';
@@ -611,6 +615,53 @@ export class CustomerService extends BaseService {
   apiCustomerResetPasswordResetPasswordPost$Json(params?: ApiCustomerResetPasswordResetPasswordPost$Json$Params, context?: HttpContext): Observable<StringResultCustomModel> {
     return this.apiCustomerResetPasswordResetPasswordPost$Json$Response(params, context).pipe(
       map((r: StrictHttpResponse<StringResultCustomModel>): StringResultCustomModel => r.body)
+    );
+  }
+
+  /** Path part for operation `apiCustomerGetTotalCustomersTotalCustomerGet()` */
+  static readonly ApiCustomerGetTotalCustomersTotalCustomerGetPath = '/api/Customer/GetTotalCustomers/total-customer';
+
+  /**
+   * This method provides access to the full `HttpResponse`, allowing access to response headers.
+   * To access only the response body, use `apiCustomerGetTotalCustomersTotalCustomerGet$Plain()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  apiCustomerGetTotalCustomersTotalCustomerGet$Plain$Response(params?: ApiCustomerGetTotalCustomersTotalCustomerGet$Plain$Params, context?: HttpContext): Observable<StrictHttpResponse<Int32ResultCustomModel>> {
+    return apiCustomerGetTotalCustomersTotalCustomerGet$Plain(this.http, this.rootUrl, params, context);
+  }
+
+  /**
+   * This method provides access only to the response body.
+   * To access the full response (for headers, for example), `apiCustomerGetTotalCustomersTotalCustomerGet$Plain$Response()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  apiCustomerGetTotalCustomersTotalCustomerGet$Plain(params?: ApiCustomerGetTotalCustomersTotalCustomerGet$Plain$Params, context?: HttpContext): Observable<Int32ResultCustomModel> {
+    return this.apiCustomerGetTotalCustomersTotalCustomerGet$Plain$Response(params, context).pipe(
+      map((r: StrictHttpResponse<Int32ResultCustomModel>): Int32ResultCustomModel => r.body)
+    );
+  }
+
+  /**
+   * This method provides access to the full `HttpResponse`, allowing access to response headers.
+   * To access only the response body, use `apiCustomerGetTotalCustomersTotalCustomerGet$Json()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  apiCustomerGetTotalCustomersTotalCustomerGet$Json$Response(params?: ApiCustomerGetTotalCustomersTotalCustomerGet$Json$Params, context?: HttpContext): Observable<StrictHttpResponse<Int32ResultCustomModel>> {
+    return apiCustomerGetTotalCustomersTotalCustomerGet$Json(this.http, this.rootUrl, params, context);
+  }
+
+  /**
+   * This method provides access only to the response body.
+   * To access the full response (for headers, for example), `apiCustomerGetTotalCustomersTotalCustomerGet$Json$Response()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  apiCustomerGetTotalCustomersTotalCustomerGet$Json(params?: ApiCustomerGetTotalCustomersTotalCustomerGet$Json$Params, context?: HttpContext): Observable<Int32ResultCustomModel> {
+    return this.apiCustomerGetTotalCustomersTotalCustomerGet$Json$Response(params, context).pipe(
+      map((r: StrictHttpResponse<Int32ResultCustomModel>): Int32ResultCustomModel => r.body)
     );
   }
 

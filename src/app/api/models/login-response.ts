@@ -9,6 +9,7 @@ export interface LoginResponse {
   createOn?: string;
   email?: string | null;
   fullname?: string | null;
+  isActive?: boolean | null;
   phone?: string | null;
   role?: Array<string> | null;
   roleName?: string | null;

@@ -27,6 +27,10 @@ import { apiOrderGetRevenueLast7DaysGet$Json } from '../fn/order/api-order-get-r
 import { ApiOrderGetRevenueLast7DaysGet$Json$Params } from '../fn/order/api-order-get-revenue-last-7-days-get-json';
 import { apiOrderGetRevenueLast7DaysGet$Plain } from '../fn/order/api-order-get-revenue-last-7-days-get-plain';
 import { ApiOrderGetRevenueLast7DaysGet$Plain$Params } from '../fn/order/api-order-get-revenue-last-7-days-get-plain';
+import { apiOrderGetTotalOrdersTotalOrdersGet$Json } from '../fn/order/api-order-get-total-orders-total-orders-get-json';
+import { ApiOrderGetTotalOrdersTotalOrdersGet$Json$Params } from '../fn/order/api-order-get-total-orders-total-orders-get-json';
+import { apiOrderGetTotalOrdersTotalOrdersGet$Plain } from '../fn/order/api-order-get-total-orders-total-orders-get-plain';
+import { ApiOrderGetTotalOrdersTotalOrdersGet$Plain$Params } from '../fn/order/api-order-get-total-orders-total-orders-get-plain';
 import { apiOrderListDetailOrderGet$Json } from '../fn/order/api-order-list-detail-order-get-json';
 import { ApiOrderListDetailOrderGet$Json$Params } from '../fn/order/api-order-list-detail-order-get-json';
 import { apiOrderListDetailOrderGet$Plain } from '../fn/order/api-order-list-detail-order-get-plain';
@@ -43,6 +47,7 @@ import { BooleanResultCustomModel } from '../models/boolean-result-custom-model'
 import { DetailOrderReponseResultCustomModel } from '../models/detail-order-reponse-result-custom-model';
 import { GetListOrderByCustomerIdSpResultListResultCustomModel } from '../models/get-list-order-by-customer-id-sp-result-list-result-custom-model';
 import { GetListOrderSpResultListResultCustomModel } from '../models/get-list-order-sp-result-list-result-custom-model';
+import { Int32ResultCustomModel } from '../models/int-32-result-custom-model';
 import { OrderReponseResultCustomModel } from '../models/order-reponse-result-custom-model';
 import { RevenueResponseListResultCustomModel } from '../models/revenue-response-list-result-custom-model';
 
@@ -378,6 +383,53 @@ export class OrderService extends BaseService {
   apiOrderGetRevenueLast7DaysGet$Json(params?: ApiOrderGetRevenueLast7DaysGet$Json$Params, context?: HttpContext): Observable<RevenueResponseListResultCustomModel> {
     return this.apiOrderGetRevenueLast7DaysGet$Json$Response(params, context).pipe(
       map((r: StrictHttpResponse<RevenueResponseListResultCustomModel>): RevenueResponseListResultCustomModel => r.body)
+    );
+  }
+
+  /** Path part for operation `apiOrderGetTotalOrdersTotalOrdersGet()` */
+  static readonly ApiOrderGetTotalOrdersTotalOrdersGetPath = '/api/Order/GetTotalOrders/total-orders';
+
+  /**
+   * This method provides access to the full `HttpResponse`, allowing access to response headers.
+   * To access only the response body, use `apiOrderGetTotalOrdersTotalOrdersGet$Plain()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  apiOrderGetTotalOrdersTotalOrdersGet$Plain$Response(params?: ApiOrderGetTotalOrdersTotalOrdersGet$Plain$Params, context?: HttpContext): Observable<StrictHttpResponse<Int32ResultCustomModel>> {
+    return apiOrderGetTotalOrdersTotalOrdersGet$Plain(this.http, this.rootUrl, params, context);
+  }
+
+  /**
+   * This method provides access only to the response body.
+   * To access the full response (for headers, for example), `apiOrderGetTotalOrdersTotalOrdersGet$Plain$Response()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  apiOrderGetTotalOrdersTotalOrdersGet$Plain(params?: ApiOrderGetTotalOrdersTotalOrdersGet$Plain$Params, context?: HttpContext): Observable<Int32ResultCustomModel> {
+    return this.apiOrderGetTotalOrdersTotalOrdersGet$Plain$Response(params, context).pipe(
+      map((r: StrictHttpResponse<Int32ResultCustomModel>): Int32ResultCustomModel => r.body)
+    );
+  }
+
+  /**
+   * This method provides access to the full `HttpResponse`, allowing access to response headers.
+   * To access only the response body, use `apiOrderGetTotalOrdersTotalOrdersGet$Json()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  apiOrderGetTotalOrdersTotalOrdersGet$Json$Response(params?: ApiOrderGetTotalOrdersTotalOrdersGet$Json$Params, context?: HttpContext): Observable<StrictHttpResponse<Int32ResultCustomModel>> {
+    return apiOrderGetTotalOrdersTotalOrdersGet$Json(this.http, this.rootUrl, params, context);
+  }
+
+  /**
+   * This method provides access only to the response body.
+   * To access the full response (for headers, for example), `apiOrderGetTotalOrdersTotalOrdersGet$Json$Response()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  apiOrderGetTotalOrdersTotalOrdersGet$Json(params?: ApiOrderGetTotalOrdersTotalOrdersGet$Json$Params, context?: HttpContext): Observable<Int32ResultCustomModel> {
+    return this.apiOrderGetTotalOrdersTotalOrdersGet$Json$Response(params, context).pipe(
+      map((r: StrictHttpResponse<Int32ResultCustomModel>): Int32ResultCustomModel => r.body)
     );
   }
 
