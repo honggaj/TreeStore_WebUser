@@ -6,6 +6,7 @@ import { ApiConfiguration } from '../../api/api-configuration';
 import { GetListProductSpResult, Product } from '../../api/models';
 import { ProductService } from '../../api/services';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-home',
@@ -17,6 +18,9 @@ import { Router } from '@angular/router';
 export class HomeComponent implements OnInit {
   listProducts: GetListProductSpResult[] = [];
   currentIndex: number = 0;
+  cartItems: any[] = JSON.parse(localStorage.getItem('cartItems') || '[]');
+  quantity: number = 1; // Khai báo số lượng
+
 
   constructor(
     private router: Router,
@@ -64,4 +68,41 @@ export class HomeComponent implements OnInit {
       this.listProducts[(this.currentIndex + 3) % this.listProducts.length],
     ];
   }
+
+  viewDetail(product: GetListProductSpResult): void {
+    // Chuyển hướng đến trang chi tiết sản phẩm và truyền thông tin sản phẩm
+    this.router.navigate(['/xemchitiet', product.productId]); // Thay đổi product.id thành ID của sản phẩm
+  }
+
+  addToCart(product: GetListProductSpResult) {
+    const item = {
+      productId: product.productId,
+      name: product.productName,
+      price: product.priceOutput,
+      quantity: this.quantity, // Số lượng hiện tại muốn thêm
+      imageUrl: this.rootUrl + '/' + product.img
+    };
+  
+    // Tìm xem sản phẩm này đã tồn tại trong giỏ hàng chưa
+    const existingItem = this.cartItems.find(cartItem => cartItem.productId === item.productId);
+    if (existingItem) {
+      existingItem.quantity += this.quantity; // Cộng dồn số lượng
+    } else {
+      this.cartItems.push(item); // Thêm mới sản phẩm vào giỏ hàng nếu chưa có
+    }
+  
+    // Cập nhật giỏ hàng vào localStorage
+    localStorage.setItem('cartItems', JSON.stringify(this.cartItems));
+  
+  
+  
+    // Sử dụng SweetAlert2 để hiển thị thông báo
+    Swal.fire({
+      title: 'Thành công!',
+      text: 'Sản phẩm đã được thêm vào giỏ hàng!',
+      icon: 'success',
+      confirmButtonText: 'OK'
+    });
+  }
+  
 }
