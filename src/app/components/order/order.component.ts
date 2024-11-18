@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { OrderService } from '../../api/services';
 import { CreateOrderRequest } from '../../api/models';
@@ -19,15 +19,17 @@ import { CommonModule } from '@angular/common';
 export class OrderComponent implements OnInit {
   cartItems: any[] = [];
   shippingInfo = { name: '', phone: '', address: '' };
-  orderNote: string = ''; // Biến để lưu ghi chú đơn hàng
-  promotionCode: string = ''; // Biến lưu trữ mã giảm giá
-  isPromotionValid: boolean = true; // Biến để kiểm tra tính hợp lệ của mã giảm giá
-  discountAmount: number = 0; // Giá trị giảm giá (mặc định là 0)
+  orderNote: string = ''; 
+  promotionCode: string = ''; 
+  isPromotionValid: boolean = true; 
+  discountAmount: number = 0; 
+  finalAmount: number = 0; 
 
   constructor(
     private router: Router,
     private orderService: OrderService,
-    private promotionService: PromotionService // Inject service tìm mã giảm giá
+    private promotionService: PromotionService, 
+    private cdr: ChangeDetectorRef 
   ) {}
 
   ngOnInit() {
@@ -53,43 +55,48 @@ export class OrderComponent implements OnInit {
       return;
     }
   
-    const params = { promotionCode: this.promotionCode }; // Gửi mã giảm giá trong params
+    const totalAmount = this.cartItems.reduce(
+      (acc, item) => acc + (item.price || 0) * (item.quantity || 0),
+      0
+    ); // Tính tổng tiền từ giỏ hàng
   
-    console.log('Đang kiểm tra mã giảm giá:', this.promotionCode);
-  
-    this.promotionService.apiPromotionCheckPromotionCodeGet(params).subscribe(
-      (response : any) => {
+    this.promotionService.apiPromotionCheckPromotionCodePost$Json$Response({body: {promotionCode: this.promotionCode, totalAmount}}).subscribe(
+      (rs: any) => {
+        const response = rs.body.data;
         this.isPromotionValid = true;
         this.discountAmount = response.discountAmount || 0; // Cập nhật discountAmount từ phản hồi
-        console.log('Mã giảm giá hợp lệ:', response);
+        this.finalAmount = response.finalAmount; // Lấy finalAmount từ phản hồi
+        // Cập nhật finalAmount và hiển thị
+        // this.finalAmount = finalAmount; // Cập nhật giá trị finalAmount
+        // this.cdr.detectChanges();  // Gọi để Angular cập nhật giao diện ngay lập tức
+        
         Swal.fire({
           title: 'Mã giảm giá hợp lệ',
-          text: 'Mã giảm giá của bạn đã được xác nhận.',
+          text: 'Áp mã thành công',
           icon: 'success',
           confirmButtonText: 'OK'
         });
       },
       (error) => {
-        this.isPromotionValid = false;
-        this.discountAmount = 0; // Nếu không hợp lệ, không có giảm giá
         console.log('Lỗi kiểm tra mã giảm giá:', error);
-        Swal.fire({
-          title: 'Mã giảm giá không hợp lệ',
-          text: 'Mã giảm giá bạn nhập không hợp lệ.',
-          icon: 'error',
-          confirmButtonText: 'OK'
-        });
+        this.isPromotionValid = false;
+        this.discountAmount = 0; // Không có giảm giá nếu có lỗi
+        this.finalAmount = totalAmount; // Trả lại giá trị totalAmount nếu có lỗi
+        this.cdr.detectChanges();  // Cập nhật lại giao diện sau khi có lỗi
       }
     );
   }
-
   get total() {
-    // Tính tổng giá trị đơn hàng
-    const totalAmount = this.cartItems.reduce((acc, item) => acc + (item.price || 0) * (item.quantity || 0), 0);
+    const totalAmount = this.cartItems.reduce(
+      (acc, item) => acc + (item.price || 0) * (item.quantity || 0),
+      0
+    ); // Tính tổng tiền từ giỏ hàng
   
-    // Trừ đi discountAmount nếu có
-    return totalAmount - this.discountAmount;
+    // Nếu có mã giảm giá hợp lệ và finalAmount đã được tính, trả về finalAmount đã trừ giảm giá
+    return this.finalAmount > 0 ? this.finalAmount : totalAmount; 
   }
+
+  
   
 
   submitOrder() {
@@ -98,9 +105,9 @@ export class OrderComponent implements OnInit {
       console.error('Customer ID không hợp lệ');
       return; // Dừng nếu Customer ID không hợp lệ
     }
-    
+
     const promotionCode = this.promotionCode || ''; // Sử dụng chuỗi rỗng nếu không có mã giảm giá
-    
+
     const orderRequest: CreateOrderRequest = {
       cartItems: this.cartItems.map(item => ({
         productId: item.productId,
@@ -110,7 +117,7 @@ export class OrderComponent implements OnInit {
       note: this.orderNote,
       promotionCode
     };
-    
+
     Swal.fire({
       title: 'Xác nhận đặt hàng',
       text: 'Bạn có chắc chắn muốn đặt hàng?',
@@ -121,7 +128,7 @@ export class OrderComponent implements OnInit {
     }).then((result) => {
       if (result.isConfirmed) {
         console.log('Đơn hàng gửi đi:', orderRequest);
-    
+
         this.orderService.apiOrderCreatePost$Json$Response({ body: orderRequest }).subscribe(
           (response: StrictHttpResponse<BooleanResultCustomModel>) => {
             const responseBody = response.body;
@@ -157,7 +164,7 @@ export class OrderComponent implements OnInit {
       }
     });
   }
-  
+
   formatCurrency(value: number): string {
     if (isNaN(value)) {
       console.error('Giá trị không hợp lệ');

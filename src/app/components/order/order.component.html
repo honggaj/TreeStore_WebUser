@@ -46,10 +46,20 @@
       </div>
     </div>
   </div>
+
+  <!-- Hiển thị tổng tiền và giá trị giảm giá -->
+  <div class="order-total">
+    <h3 style="margin-bottom: 10px;">
+      Tổng cộng: {{ formatCurrency(total) }}
+    </h3>
+  
+    <!-- Hiển thị thông tin giảm giá nếu có -->
+    <p *ngIf="discountAmount > 0">
+      Giảm giá: {{ formatCurrency(discountAmount) }}
+    </p>
   
 
-  <div class="order-total">
-    <h3 style="margin-bottom: 10px;">Tổng cộng: {{ formatCurrency(total) }}</h3>
+  
     <button (click)="submitOrder()" class="submit-button">Xác nhận đơn hàng</button>
   </div>
 </div>

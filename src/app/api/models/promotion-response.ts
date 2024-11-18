@@ -7,6 +7,7 @@ export interface PromotionResponse {
   description?: string | null;
   discountAmount?: number;
   endDate?: string;
+  finalAmount?: number;
   isActive?: boolean;
   minimumPurchaseAmount?: number;
   orderId?: number | null;
