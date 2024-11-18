@@ -43,8 +43,8 @@
         <h4>{{ product.name }}</h4>
         <p class="product-price">Giá: {{ product.priceOutput | number }} VND</p>
         <!-- Đổi chỗ nút "Xem" và "Thêm vào giỏ" -->
-        <button class="add-to-cart-btn">Thêm vào giỏ</button>
-        <button class="view-btn">Xem</button>
+        <button class="add-to-cart-btn" (click)="addToCart(product)">Thêm vào giỏ</button>
+        <button class="view-btn" (click)="viewDetail(product)">Xem</button>
       </div>
     </div>
     <div class="navigation-buttons">
