@@ -18,8 +18,7 @@
     border-radius: 8px; /* Bo góc */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Đổ bóng cho form */
   }
-  
-
+ 
 form {
     max-width: 400px;
     margin: 0 auto;

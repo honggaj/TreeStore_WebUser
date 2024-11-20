@@ -55,9 +55,9 @@ export class ReviewComponent implements OnInit {
                 productId: this.editReviewUser.get('productid')?.value || null,
                 comment: this.editReviewUser.get('comment')?.value || null,
             };
-
+    
             console.log('Đối tượng mới gửi lên:', newReview);
-
+    
             this.reviewService.apiReviewCreateReviewPost$Json$Response({ body: newReview }).subscribe({
                 next: (rs) => {
                     const message = rs.body.message || '';
@@ -68,7 +68,8 @@ export class ReviewComponent implements OnInit {
                             text: message,
                             confirmButtonText: 'OK'
                         }).then(() => {
-                            this.router.navigate(['/components/home']);
+                            // Không điều hướng đi đâu, vẫn giữ trang và form
+                            this.editReviewUser.reset();  // Làm sạch form nếu muốn
                         });
                     } else {
                         Swal.fire({
@@ -93,7 +94,7 @@ export class ReviewComponent implements OnInit {
             console.log('Form không hợp lệ');
         }
     }
-
+    
     getCustomerId(): number | undefined {
         const customerId = localStorage.getItem('customerId');
         return customerId ? Number(customerId) : undefined;

@@ -1,10 +1,25 @@
-/* Cấu trúc cho danh sách đơn hàng */
-.order-history {
+/* Cảnh báo khi không có đơn hàng */
+.alert-warning {
+  background-color: #fff3cd;
+  color: #856404;
+  border: 1px solid #ffeeba;
+  padding: 15px;
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 1.25rem;
+  border-radius: 5px;
+}
+
+/* Cấu trúc danh sách đơn hàng */
+.history {
   padding: 20px;
 }
 
-.table-container {
-  margin-top: 20px;
+.table-wrapper {
+  width: 80%;          /* Chiều rộng tối đa của bảng */
+  margin: 0 auto;      /* Căn giữa bảng */
+  overflow-x: auto;    /* Cho phép cuộn ngang nếu bảng rộng */
+ 
 }
 
 .table {
@@ -15,70 +30,64 @@
 .table th, .table td {
   padding: 15px;
   text-align: center;
-  border: 1px solid #ddd;
 }
 
 .table th {
-  background-color: #f4f4f4;
+  background-color: #85ab77;
   font-weight: bold;
 }
 
+
+.table td {
+  background-color: #f0fde1;
+  font-weight: bold;
+}
 .table tbody tr:nth-child(odd) {
-  background-color: #f9f9f9; /* Màu nền cho các hàng lẻ */
+  background-color: #f9f9f9;
 }
 
 .table tbody tr:hover {
-  background-color: #e9e9e9; /* Màu nền khi hover */
+  background-color: #e9e9e9;
 }
 
-/* Tạo màu sắc cho trạng thái của đơn hàng */
+/* Các trạng thái đơn hàng */
 .status-waiting {
-  color: #ffc107; /* Màu vàng cho 'Đang chờ' */
+  color: #ffc107;
 }
 
 .status-processing {
-  color: #ffc107; /* Màu vàng cho 'Đang xử lý' và 'Chuyển hàng' */
+  color: #ff9800;
 }
 
 .status-completed {
-  color: #28a745; /* Màu xanh lá cho 'Đã giao hàng' */
+  color: #28a745;
 }
 
 .status-canceled {
-  color: #dc3545; /* Màu đỏ cho 'Đã hủy' */
+  color: #dc3545;
 }
 
-/* Cải thiện độ tương phản cho các ô */
-.table td {
-  font-size: 14px;
+/* Các nút */
+.btn {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  position: relative;
 }
 
-.table td, .table th {
-  vertical-align: middle;
+
+.btn:hover {
+  background-color: #0056b3;
 }
 
-/* Bảo vệ bảng khỏi việc chiếm quá nhiều không gian trên màn hình */
-.table-wrapper {
-  width: 80%;          /* Chiều rộng tối đa của bảng */
-  margin: 0 auto;      /* Căn giữa bảng */
-  overflow-x: auto;    /* Cho phép cuộn ngang nếu bảng rộng */
-}
 
-/* Chỉnh sửa bảng để thu gọn kích thước */
-.table-sm th, .table-sm td {
-  padding: 0.5rem;  /* Giảm padding để bảng nhỏ gọn hơn */
-  font-size: 0.875rem;  /* Giảm kích thước font chữ */
-}
-
-/* Thu nhỏ kích thước các nút trong bảng */
+/* Sửa đổi kích thước nút */
 .btn-sm {
-  padding: 0.25rem 0.5rem;  /* Giảm kích thước của nút */
-  font-size: 0.875rem;  /* Giảm kích thước font chữ của nút */
-}
-
-/* Tạo thẻ cảnh báo khi không có đơn hàng */
-.alert-warning {
-  margin: 20px 0;
-  text-align: center;
-  font-size: 1.25rem;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.875rem;
 }

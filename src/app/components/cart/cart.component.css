@@ -1,10 +1,12 @@
 .cart-container {
-  max-width: 80%;
+  max-width: 100%;
   margin: 0 auto;
   padding: 20px;
   background-color: #f9f9f9;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  position: relative;
+  min-height: 90vh;
 }
 
 h2 {
@@ -30,15 +32,12 @@ h2 {
   border-top: 1px solid #ddd; /* Đường viền trên cho tiêu đề */
 }
 
-.cart-table tr:hover {
-  background-color: #f1f1f1; /* Thay đổi màu nền khi hover trên hàng */
-}
 
 
 .cart-total {
   margin-top: 20px;
-  padding-bottom: 20px;
   text-align: right;
+  padding-bottom: 20px;
 }
 
 .delete-button {
@@ -47,11 +46,13 @@ h2 {
   color: white;
   border: none;
   border-radius: 2px;
+  margin-top: 20px;
   cursor: pointer;
   transition: background-color 0.3s;
 }
 
 .delete-button:hover {
+  
   background-color: #d06966;
 }
 .cart-table input[type="number"] {
@@ -61,13 +62,13 @@ h2 {
 
 
 .product-image {
-  width: 50px; /* Chiều rộng của hình ảnh */
+  width: 150px; /* Chiều rộng của hình ảnh */
   height: auto; /* Giữ tỉ lệ hình ảnh */
-  border-radius: 5px; /* Bo góc cho hình ảnh */
+  border-radius: 2px; /* Bo góc cho hình ảnh */
 }
 .buy-button {
   padding: 10px;
-
+  margin-top: 20px;
   color: rgb(20, 137, 74);
   border: 1px solid rgb(4, 68, 39);
   border-radius: 2px;
