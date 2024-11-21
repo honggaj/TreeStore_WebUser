@@ -1,7 +1,7 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { OrderService } from '../../api/services';
-import { CreateOrderRequest } from '../../api/models';
+import { CreateOrderRequest, Int32ResultCustomModel } from '../../api/models';
 import { BooleanResultCustomModel } from '../../api/models';
 import { FormsModule } from '@angular/forms';
 import { StrictHttpResponse } from '../../api/strict-http-response';
@@ -130,7 +130,7 @@ export class OrderComponent implements OnInit {
         console.log('Đơn hàng gửi đi:', orderRequest);
 
         this.orderService.apiOrderCreatePost$Json$Response({ body: orderRequest }).subscribe(
-          (response: StrictHttpResponse<BooleanResultCustomModel>) => {
+          (response: StrictHttpResponse<Int32ResultCustomModel>) => {
             const responseBody = response.body;
             if (responseBody.success) {
               Swal.fire({
@@ -140,7 +140,10 @@ export class OrderComponent implements OnInit {
                 confirmButtonText: 'OK'
               }).then(() => {
                 localStorage.removeItem('cartItems'); // Xóa giỏ hàng
-                this.router.navigate(['/success']); // Chuyển đến trang thành công
+                // this.router.navigate(['/success']); // Chuyển đến trang thành công
+                this.router.navigate(['/payment'], {
+                  queryParams: { orderId : responseBody.data, totalAmount: this.total }
+                });
               });
             } else {
               Swal.fire({

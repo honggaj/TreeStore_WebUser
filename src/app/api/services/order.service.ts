@@ -66,7 +66,7 @@ export class OrderService extends BaseService {
    *
    * This method sends `application/*+json` and handles request body of type `application/*+json`.
    */
-  apiOrderCreatePost$Plain$Response(params?: ApiOrderCreatePost$Plain$Params, context?: HttpContext): Observable<StrictHttpResponse<BooleanResultCustomModel>> {
+  apiOrderCreatePost$Plain$Response(params?: ApiOrderCreatePost$Plain$Params, context?: HttpContext): Observable<StrictHttpResponse<Int32ResultCustomModel>> {
     return apiOrderCreatePost$Plain(this.http, this.rootUrl, params, context);
   }
 
@@ -76,9 +76,9 @@ export class OrderService extends BaseService {
    *
    * This method sends `application/*+json` and handles request body of type `application/*+json`.
    */
-  apiOrderCreatePost$Plain(params?: ApiOrderCreatePost$Plain$Params, context?: HttpContext): Observable<BooleanResultCustomModel> {
+  apiOrderCreatePost$Plain(params?: ApiOrderCreatePost$Plain$Params, context?: HttpContext): Observable<Int32ResultCustomModel> {
     return this.apiOrderCreatePost$Plain$Response(params, context).pipe(
-      map((r: StrictHttpResponse<BooleanResultCustomModel>): BooleanResultCustomModel => r.body)
+      map((r: StrictHttpResponse<Int32ResultCustomModel>): Int32ResultCustomModel => r.body)
     );
   }
 
@@ -88,7 +88,7 @@ export class OrderService extends BaseService {
    *
    * This method sends `application/*+json` and handles request body of type `application/*+json`.
    */
-  apiOrderCreatePost$Json$Response(params?: ApiOrderCreatePost$Json$Params, context?: HttpContext): Observable<StrictHttpResponse<BooleanResultCustomModel>> {
+  apiOrderCreatePost$Json$Response(params?: ApiOrderCreatePost$Json$Params, context?: HttpContext): Observable<StrictHttpResponse<Int32ResultCustomModel>> {
     return apiOrderCreatePost$Json(this.http, this.rootUrl, params, context);
   }
 
@@ -98,9 +98,9 @@ export class OrderService extends BaseService {
    *
    * This method sends `application/*+json` and handles request body of type `application/*+json`.
    */
-  apiOrderCreatePost$Json(params?: ApiOrderCreatePost$Json$Params, context?: HttpContext): Observable<BooleanResultCustomModel> {
+  apiOrderCreatePost$Json(params?: ApiOrderCreatePost$Json$Params, context?: HttpContext): Observable<Int32ResultCustomModel> {
     return this.apiOrderCreatePost$Json$Response(params, context).pipe(
-      map((r: StrictHttpResponse<BooleanResultCustomModel>): BooleanResultCustomModel => r.body)
+      map((r: StrictHttpResponse<Int32ResultCustomModel>): Int32ResultCustomModel => r.body)
     );
   }
 

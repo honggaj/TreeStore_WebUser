@@ -17,8 +17,12 @@ import { OrderDetailComponent } from './components/order-detail/order-detail.com
 
 import { AppComponent } from './app.component';
 import { OtpVerificationComponent } from './components/checkEmail/checkEmail.components';
+import { PaymentComponent } from './components/payment/payment/payment.component';
+import { PaymentCallbackComponent } from './components/payment/payment-callback/payment-callback.component';
+import { PaymentSuccessComponent } from './components/payment/payment-success/payment-success.component';
 
-
+import { NgxLoadingModule } from 'ngx-loading'; // Import NgxLoadingModule
+import { PaymentFailedComponent } from './components/payment/payment-failed/payment-failed.component';
 
 export const routes: Routes = [
   {path:'dangnhap',component:LoginUserComponent},
@@ -43,6 +47,10 @@ export const routes: Routes = [
    },
 
   { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: 'payment', component: PaymentComponent },
+  { path: 'payment-success', component: PaymentSuccessComponent },
+  { path: 'payment-failed', component: PaymentFailedComponent },
+  { path: 'payment-callback', component: PaymentCallbackComponent },
   { path: '**', redirectTo: '/home' }, // Đảm bảo trang không tìm thấy sẽ điều hướng về home
 ];
 
@@ -51,9 +59,7 @@ export const routes: Routes = [
     
   imports: [RouterModule.forRoot(routes),
     FormsModule ,
-    ReactiveFormsModule,
-  
-
+    ReactiveFormsModule,  
   ],
   exports: [RouterModule ],
 })

@@ -8,14 +8,14 @@ import { filter, map } from 'rxjs/operators';
 import { StrictHttpResponse } from '../../strict-http-response';
 import { RequestBuilder } from '../../request-builder';
 
-import { BooleanResultCustomModel } from '../../models/boolean-result-custom-model';
 import { CreateOrderRequest } from '../../models/create-order-request';
+import { Int32ResultCustomModel } from '../../models/int-32-result-custom-model';
 
 export interface ApiOrderCreatePost$Plain$Params {
       body?: CreateOrderRequest
 }
 
-export function apiOrderCreatePost$Plain(http: HttpClient, rootUrl: string, params?: ApiOrderCreatePost$Plain$Params, context?: HttpContext): Observable<StrictHttpResponse<BooleanResultCustomModel>> {
+export function apiOrderCreatePost$Plain(http: HttpClient, rootUrl: string, params?: ApiOrderCreatePost$Plain$Params, context?: HttpContext): Observable<StrictHttpResponse<Int32ResultCustomModel>> {
   const rb = new RequestBuilder(rootUrl, apiOrderCreatePost$Plain.PATH, 'post');
   if (params) {
     rb.body(params.body, 'application/*+json');
@@ -26,7 +26,7 @@ export function apiOrderCreatePost$Plain(http: HttpClient, rootUrl: string, para
   ).pipe(
     filter((r: any): r is HttpResponse<any> => r instanceof HttpResponse),
     map((r: HttpResponse<any>) => {
-      return r as StrictHttpResponse<BooleanResultCustomModel>;
+      return r as StrictHttpResponse<Int32ResultCustomModel>;
     })
   );
 }

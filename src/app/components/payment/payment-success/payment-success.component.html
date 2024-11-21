@@ -1,0 +1,15 @@
+<div class="success-container">
+    <div class="icon-container">
+      <img src="https://img.icons8.com/ios/452/checkmark.png" alt="Success" class="success-icon">
+    </div>
+    <h2 class="success-title">Thanh toán thành công!</h2>
+    <p class="success-message">Cảm ơn bạn đã mua hàng. Đơn hàng của bạn đã được xác nhận và đang được xử lý.</p>
+    <div class="order-summary">
+      <h3>Thông tin đơn hàng</h3>
+      <p><strong>Mã đơn hàng:</strong> {{ orderId }}</p>
+      <p><strong>Tổng số tiền:</strong> {{ totalAmount }} VND</p>
+      <p><strong>Phương thức thanh toán:</strong> {{ paymentMethod }}</p>
+    </div>
+    <button class="btn btn-primary" (click)="goToHome()">Quay lại trang chủ</button>
+  </div>
+  

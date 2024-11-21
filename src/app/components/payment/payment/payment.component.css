@@ -1,0 +1,96 @@
+/* General styling for the payment container */
+.payment-container {
+    max-width: 800px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+    font-family: 'Roboto', sans-serif;
+    color: #333;
+  }
+  
+  .payment-header {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 30px;
+    color: #007bff;
+  }
+  
+  .summary-header {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: #444;
+  }
+  
+  .label {
+    font-weight: 600;
+    color: #444;
+  }
+  
+  /* Styling for the order summary section */
+  .order-summary {
+    margin-bottom: 30px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: inset 0px 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .amount-summary {
+    margin-top: 10px;
+    font-size: 1.1rem;
+    color: #555;
+  }
+  
+  /* Styling the buttons */
+  .payment-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: space-between;
+    margin-bottom: 30px;
+  }
+  
+  .btn {
+    padding: 12px 30px;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+  }
+  
+  .btn-confirm {
+    background-color: #007bff;
+    color: white;
+    transition: background-color 0.3s;
+  }
+  
+  .btn-confirm:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Styling for Paypal button container */
+  #paypal-button-container {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+  }
+  
+  /* Responsive design for smaller screens */
+  @media (max-width: 768px) {
+    .payment-container {
+      padding: 15px;
+    }
+  
+    .payment-buttons {
+      flex-direction: column;
+      gap: 10px;
+    }
+  
+    .btn {
+      width: 100%;
+    }
+  }
+  

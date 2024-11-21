@@ -1,0 +1,23 @@
+<div class="payment-container">
+    <h2 class="text-center payment-header">Thanh toán đơn hàng</h2>
+    
+    <div class="order-summary">
+      <h4 class="summary-header">Chi tiết đơn hàng</h4>
+      <p><strong class="label">Mã đơn hàng:</strong> {{ orderId }}</p>
+      
+      <div class="amount-summary">
+        <p><strong class="label">Tổng số tiền (VNĐ):</strong> {{ totalAmount }} VNĐ</p>
+        <p><strong class="label">Tổng số tiền (USD):</strong> {{ totalAmountInUSD }} USD</p>
+      </div>
+  
+      <p><strong class="label">Phương thức thanh toán:</strong> {{ paymentMethod }}</p>
+    </div>
+  
+    <div class="payment-buttons">
+      <button class="btn btn-confirm" (click)="confirmPayment()">Xác nhận thanh toán COD</button>
+      <button class="btn btn-confirm" (click)="confirmPaymentPaypal()">Xác nhận thanh toán Paypal</button>
+    </div>
+    
+    <div id="paypal-button-container"></div>
+  </div>
+  
