@@ -87,38 +87,32 @@ export class ProductComponent implements OnInit {
     // Chuyển hướng đến trang chi tiết sản phẩm và truyền thông tin sản phẩm
     this.router.navigate(['/xemchitiet', product.productId]); // Thay đổi product.id thành ID của sản phẩm
   }
-
-  addToCart(product: GetListProductSpResult) {
+  addToCart(product: GetListProductSpResult): void {
     const item = {
-      productId: product.productId,
+      id: product.productId,
       name: product.productName,
       price: product.priceOutput,
-      quantity: this.quantity, // Số lượng hiện tại muốn thêm
+      quantity: 1, // Default số lượng là 1
       imageUrl: this.rootUrl + '/' + product.img,
     };
-
-    // Tìm xem sản phẩm này đã tồn tại trong giỏ hàng chưa
-    const existingItem = this.cartItems.find(
-      (cartItem) => cartItem.productId === item.productId
-    );
+  
+    const existingItem = this.cartItems.find((cartItem) => cartItem.id === item.id);
     if (existingItem) {
-      existingItem.quantity += this.quantity; // Cộng dồn số lượng
+      existingItem.quantity += item.quantity;
     } else {
-      this.cartItems.push(item); // Thêm mới sản phẩm vào giỏ hàng nếu chưa có
+      this.cartItems.push(item);
     }
-
-    // Cập nhật giỏ hàng vào localStorage
+  
     localStorage.setItem('cartItems', JSON.stringify(this.cartItems));
-
-    // Sử dụng SweetAlert2 để hiển thị thông báo
+  
     Swal.fire({
       title: 'Thành công!',
       text: 'Sản phẩm đã được thêm vào giỏ hàng!',
       icon: 'success',
       confirmButtonText: 'OK',
     });
-   
   }
+  
   onSearch(): void {
     // Tạo object chứa các tham số tìm kiếm
     const params: any = {};
