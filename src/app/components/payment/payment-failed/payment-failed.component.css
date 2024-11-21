@@ -1,0 +1,83 @@
+.failure-container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #f5c6cb;
+    background-color: #f8d7da;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  .icon-container {
+    margin-bottom: 20px;
+  }
+  
+  .failure-icon {
+    width: 80px;
+    height: 80px;
+  }
+  
+  .failure-title {
+    font-size: 24px;
+    color: #721c24;
+    margin-bottom: 10px;
+  }
+  
+  .failure-message {
+    font-size: 18px;
+    color: #856404;
+    margin-bottom: 20px;
+  }
+  
+  .order-summary {
+    margin-top: 20px;
+    text-align: left;
+  }
+  
+  .order-summary h3 {
+    font-size: 20px;
+    color: #343a40;
+    margin-bottom: 10px;
+  }
+  
+  .order-summary p {
+    font-size: 16px;
+    color: #495057;
+  }
+  
+  .btn-primary {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #dc3545;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn-primary:hover {
+    background-color: #c82333;
+  }
+  
+  .btn-secondary {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #6c757d;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn-secondary:hover {
+    background-color: #5a6268;
+  }
+  .failure-container .btn {
+    position: relative; /* Đảm bảo z-index có hiệu lực */
+    z-index: 10; /* Đưa nút lên trên các thành phần khác */
+}
