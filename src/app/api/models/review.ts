@@ -7,7 +7,7 @@ import { Product } from '../models/product';
 export interface Review {
   comment?: string | null;
   createOn?: string;
-  customer?: Customer;
+  customer?: string;
   customerId?: number;
   isActive?: boolean | null;
   product?: Product;

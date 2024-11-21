@@ -1,127 +1,65 @@
-
 .contact-container {
-  max-width: 100%;
-  margin: 0 auto;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center; /* Căn giữa nội dung */
   background-color: rgb(249, 243, 243);
-  height: 100vh;
-  z-index: 2;
- 
-}
-h2{
-  text-align: center;
-  font-size: 36px;
-  padding-top: 80px;
-}
-/* Bố cục 2 cột cho phần nội dung liên hệ */
-.contact-content {
   display: flex;
-  justify-content: space-between; /* Giữa các cột */
-  gap: 20px; /* Khoảng cách giữa hai cột */
-  width: 90%;
-  height: 550px;
-
+  justify-content: center;
+  
+  height: 88vh;
+  box-sizing: border-box;
+  position: relative;
 }
 
-/* Phần cột bên trái (tiêu đề và form) */
-.contact-form-container {
-  flex: 1 1 50%;
-  max-width: 50%;
- align-items: center;
-margin-top: 50px;
-  padding: 0px 50px;
-  background: white;
-  justify-content: center;
-  border-radius: 10px;
-  z-index: 3;
+.contact-content {
+  padding: 30px 40px;
+  display: flex;
+  gap: 20px; /* Khoảng cách giữa hai cột */
+  width: 100%;
+  height: 300px;
   
 }
 
-/* Phần cột bên phải (bản đồ) */
-.map-container {
-  flex:1  80%;
-  max-width: 100%;
-  height: 400px;
-  display: flex;
-  justify-content: center; /* Căn giữa bản đồ */
-  z-index: 3;
-
+.contact-info-container {
+  flex: 1; /* Cột trái chiếm 1 phần */
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* Đảm bảo form chiếm hết chiều ngang bên trong cột */
-form {
-  width: 100%;
- 
-}
-
-.form-group {
+.contact-info-container h2 {
   margin-bottom: 20px;
-  width: 100%; /* Đảm bảo các trường chiếm hết chiều ngang của form */
+  color: #2f6627;
+  text-align: center;
 }
 
-/* Căn chỉnh label và input trong form */
-label {
-  font-weight: bold;
-  font-size: 14px;
-  color: #333;
-  margin-bottom: 5px;
-  text-align: left; /* Căn trái label */
-  width: 80%; /* Chiều rộng 100% */
-}
-
-input, textarea {
-  padding: 10px;
-  font-size: 14px;
-  border: 1px solid #ccc;
-  border-radius: 2px;
-  outline: none;
-  transition: border-color 0.3s ease;
-  width: 100%; /* Chiều rộng 100% */
-}
-
-
-
-/* Nút gửi căn giữa */
-.submit-button-container {
-  margin-top: 20px;
-  display: flex;
-  justify-content: center; /* Căn trái nút gửi */
-}
-
-/* Nút gửi */
-button[type="submit"] {
-  background-color: #14654b;
-  color: white;
-  padding: 10px 20px;
+.shop-info p {
+  margin: 10px 0;
   font-size: 16px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
 }
 
-button[type="submit"]:hover {
-  background-color: #45a049; /* Đổi màu khi hover */
+.shop-info strong {
+  color: #2f6627;
 }
 
-.error {
-  color: red;
-  font-size: 12px;
-  margin-top: 5px;
+.shop-info a {
+  color: #2f6627;
+  text-decoration: none;
 }
 
-/* Media Query cho màn hình nhỏ */
-@media (max-width: 768px) {
-  .contact-content {
-    flex-direction: column; /* Xếp chồng khi màn hình nhỏ */
-    align-items: center; /* Căn giữa các phần */
-  }
-
-  .contact-form-container, .map-container {
-    max-width: 100%; /* Chiều rộng tối đa 100% */
-  }
+.shop-info a:hover {
+  text-decoration: underline;
 }
 
+.map-container {
+  flex: 2; /* Cột phải chiếm 2 phần */
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  height: 500px;
+}
+
+.map-container iframe {
+  width: 100%;
+  height: 100%;
+}

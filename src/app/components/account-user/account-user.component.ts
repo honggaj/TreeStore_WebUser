@@ -67,10 +67,6 @@ export class AccountComponent implements OnInit {
   // Thêm phương thức để xử lý việc tải lên file avatar
  
 
-  cancel() {
-    this.router.navigate(['/taikhoan']); 
-  }
-
   onSubmit() {
     if (this.editAccountForm.valid) {
       const updatedAccount = {
