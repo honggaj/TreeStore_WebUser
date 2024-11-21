@@ -1,102 +1,121 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 import { BannerSliderComponent } from '../banner-slider/banner-slider.component';
 import { ImageSliderComponent } from '../image-slider/image-slider.component';
-import { ApiConfiguration } from '../../api/api-configuration';
-import { GetListProductSpResult, Product } from '../../api/models';
 import { ProductService } from '../../api/services';
-import { Router } from '@angular/router';
+import { GetListProductSpResult, ProductResponse } from '../../api/models';
+import { ApiConfiguration } from '../../api/api-configuration';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, BannerSliderComponent, ImageSliderComponent],
+  imports: [BannerSliderComponent, ImageSliderComponent, CommonModule, FormsModule],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-  listProducts: GetListProductSpResult[] = [];
-  currentIndex: number = 0;
+  products: GetListProductSpResult[] = [];
+  filteredProducts: GetListProductSpResult[] = [];
+  currentPage: number = 1;
+  itemsPerPage: number = 4; // Số sản phẩm trên mỗi trang là 4
+  searchTerm: string = '';
+  selectedCategory: string = '';
   cartItems: any[] = JSON.parse(localStorage.getItem('cartItems') || '[]');
-  quantity: number = 1; // Khai báo số lượng
-
+  quantity: number = 1;
 
   constructor(
     private router: Router,
     private productService: ProductService,
-    protected config: ApiConfiguration,
+    private config: ApiConfiguration
   ) {}
 
   ngOnInit(): void {
-    this.loadProducts();
+    this.listProducts();
   }
 
   get rootUrl(): string {
     return this.config.rootUrl;
   }
 
-  loadProducts(): void {
-    this.productService.apiProductListProductGet$Json$Response().subscribe((rs) => {
-      const response = rs.body;
-      if (response.success && Array.isArray(response.data)) {
-        this.listProducts = response.data;
-        this.currentIndex = 0; // Reset to first slide
-      } else {
-        console.log('Lấy dữ liệu danh sách sản phẩm thất bại');
+  listProducts(): void {
+    this.productService.apiProductListProductGet$Json$Response().subscribe(
+      (rs) => {
+        const response = rs.body;
+        if (response?.success) {
+          this.products = response.data ?? [];
+          this.filteredProducts = this.products;
+        } else {
+          this.products = [];
+          this.filteredProducts = [];
+        }
       }
-    });
+    );
+  }
+
+  paginatedProducts(): GetListProductSpResult[] {
+    const startIndex = Math.max(0, this.filteredProducts.length - this.currentPage * this.itemsPerPage);
+    return this.filteredProducts.slice(startIndex, startIndex + this.itemsPerPage).reverse();
   }
   
-  // Slide management methods
-  nextSlide(): void {
-    this.currentIndex = (this.currentIndex + 1) % this.listProducts.length;
-  }
 
-  previousSlide(): void {
-    this.currentIndex = (this.currentIndex - 1 + this.listProducts.length) % this.listProducts.length;
-  }
-
-  getDisplayedProducts(): Product[] {
-    if (this.listProducts.length === 0) {
-      return [];
+  nextPage(): void {
+    if (this.currentPage < this.totalPages) {
+      this.currentPage++;
     }
-    return [
-      this.listProducts[this.currentIndex],
-      this.listProducts[(this.currentIndex + 1) % this.listProducts.length],
-      this.listProducts[(this.currentIndex + 2) % this.listProducts.length],
-      this.listProducts[(this.currentIndex + 3) % this.listProducts.length],
-    ];
+  }
+
+  prevPage(): void {
+    if (this.currentPage > 1) {
+      this.currentPage--;
+    }
+  }
+
+  get totalPages(): number {
+    return Math.ceil(this.filteredProducts.length / this.itemsPerPage);
   }
 
   viewDetail(product: GetListProductSpResult): void {
-    // Chuyển hướng đến trang chi tiết sản phẩm và truyền thông tin sản phẩm
-    this.router.navigate(['/xemchitiet', product.productId]); // Thay đổi product.id thành ID của sản phẩm
+    this.router.navigate(['/xemchitiet', product.productId]);
   }
 
-  addToCart(product: GetListProductSpResult) {
+  onSearch(): void {
+    this.filteredProducts = this.searchTerm.trim()
+      ? this.products.filter(product =>
+          product.productName?.toLowerCase().includes(this.searchTerm.toLowerCase())
+        )
+      : this.products;
+    this.currentPage = 1;
+  }
+
+  filterProductsByCategory(category: string): void {
+    this.selectedCategory = category;
+    this.filteredProducts = this.products.filter(product =>
+      product.categoryName === this.selectedCategory
+    );
+    this.currentPage = 1;
+  }
+
+  addToCart(product: GetListProductSpResult): void {
     const item = {
-      productId: product.productId,
+      id: product.productId,
       name: product.productName,
       price: product.priceOutput,
-      quantity: this.quantity, // Số lượng hiện tại muốn thêm
+      quantity: this.quantity,
       imageUrl: this.rootUrl + '/' + product.img
     };
   
-    // Tìm xem sản phẩm này đã tồn tại trong giỏ hàng chưa
-    const existingItem = this.cartItems.find(cartItem => cartItem.productId === item.productId);
+    const existingItem = this.cartItems.find(cartItem => cartItem.id === item.id);
     if (existingItem) {
-      existingItem.quantity += this.quantity; // Cộng dồn số lượng
+      existingItem.quantity += item.quantity;
     } else {
-      this.cartItems.push(item); // Thêm mới sản phẩm vào giỏ hàng nếu chưa có
+      this.cartItems.push(item);
     }
   
-    // Cập nhật giỏ hàng vào localStorage
     localStorage.setItem('cartItems', JSON.stringify(this.cartItems));
-  
-  
-  
-    // Sử dụng SweetAlert2 để hiển thị thông báo
+
     Swal.fire({
       title: 'Thành công!',
       text: 'Sản phẩm đã được thêm vào giỏ hàng!',

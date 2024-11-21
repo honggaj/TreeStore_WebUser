@@ -6,9 +6,9 @@
     <!-- Thông tin khách hàng -->
     <div class="customer-info">
       <h2>Thông tin Khách hàng</h2>
-      <p><strong>Tên khách hàng:</strong> {{ orderDetail?.nameCustomer || 'Không có' }}</p>
-      <p><strong>Địa chỉ:</strong> {{ orderDetail?.address || 'Không có' }}</p>
-      <p><strong>Trạng thái:</strong> {{ getStateDescription(orderDetail?.stateId || 0) }}</p> <!-- Hiển thị trạng thái -->
+      <p>Tên khách hàng: {{ orderDetail?.nameCustomer || 'Không có' }}</p>
+      <p>Địa chỉ:{{ orderDetail?.address || 'Không có' }}</p>
+      <p>Trạng thái:{{ getStateDescription(orderDetail?.stateId || 0) }}</p> <!-- Hiển thị trạng thái -->
     </div>
   
     <!-- Danh sách sản phẩm trong đơn hàng -->
@@ -31,7 +31,7 @@
             </td>
             <td>{{ product.name || 'Không có tên' }}</td>
             <td>{{ product.quantity || 0 }}</td>
-            <td>{{ product.price }}</td>
+            <td>{{ product.price |number}} VNĐ</td>
           </tr>
         </tbody>
         

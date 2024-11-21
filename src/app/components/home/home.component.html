@@ -1,7 +1,8 @@
 <div class="trang-chu">
-
+ 
   <!-- Banner Section -->
-  <app-banner-slider></app-banner-slider>
+  <app-banner-slider> </app-banner-slider>
+
 
 
 
@@ -11,8 +12,58 @@
     <img class="image" src="images/anh4.png">
   </div>
 
+  
+  <div class="anhnguoiphunu">
+    <div class="woman">
+      <div class="text-gioithieu1">
+        <p><i class="fas fa-leaf"></i> Cây cảnh không chỉ là một phần của trang trí mà còn mang lại rất nhiều lợi ích thiết thực cho không gian sống. Đầu tiên, cây cảnh giúp làm sạch không khí, hấp thụ các chất độc hại như formaldehyde, benzene và trichloroethylene, từ đó cải thiện chất lượng không khí trong nhà. Các nghiên cứu đã chứng minh rằng sự hiện diện của cây xanh giúp giảm căng thẳng và lo âu, tạo ra một môi trường thư giãn, giúp tinh thần luôn thoải mái. Bên cạnh đó, cây cảnh còn tăng cường độ ẩm trong không gian sống, giúp hạn chế các vấn đề về da khô, đặc biệt trong mùa đông. Đặt cây cảnh trong phòng làm việc hay phòng khách không chỉ giúp không gian trở nên sinh động mà còn giúp cải thiện năng suất làm việc và giảm bớt mệt mỏi sau những giờ dài làm việc.</p>
+        <p><i class="fas fa-leaf"></i> Cây cảnh còn mang lại nhiều lợi ích về mặt phong thủy, giúp gia chủ thu hút tài lộc và may mắn. Mỗi loại cây lại có một ý nghĩa khác nhau, ví dụ như cây kim tiền mang lại sự thịnh vượng, cây phát tài giúp gia tăng tài lộc, trong khi cây trúc mang lại sự bình an, may mắn. Việc đặt cây cảnh trong nhà không chỉ là để trang trí mà còn là một cách để tạo ra sự hài hòa, cân bằng trong không gian sống, giúp gia chủ luôn cảm thấy bình yên và thuận lợi trong công việc cũng như cuộc sống. Cây cảnh có thể làm dịu đi những năng lượng tiêu cực trong nhà, đồng thời thu hút sự thịnh vượng và tài lộc, đặc biệt khi được đặt ở những vị trí hợp phong thủy trong nhà như gần cửa ra vào hoặc trong phòng khách.</p>
+        </div>
+      
+    </div>
+    <div class="image-woman">
+      <img src="images/woman-tree.png" alt="Ảnh minh họa" class="animated-image">
+    </div>
+  </div>
+
+
+
+ <div class="ne">
+  <div style="display: flex; justify-content: center; align-items: center;">
+    <img src="images/icon-leaf.png" alt="Tên cây 1" style="width: 100px; height: auto; padding-top: 70px;">
+  </div>
+  <h2>Sản phẩm mới</h2>
+ </div>
+  <div class="sanphamnoibat">
+    <button (click)="prevPage()" class="nav-button">
+      <i class="fas fa-arrow-left"></i>
+    </button>
+    <div class="product-list">
+      <ng-container *ngIf="filteredProducts && filteredProducts.length > 0">
+        <div class="product-item" *ngFor="let product of paginatedProducts()">
+          <img [src]="rootUrl + '/' + product.img" alt="{{ product.productName }}" />
+          <h4>{{ product.productName }}</h4>
+          <p class="product-price">{{ product.priceOutput | number }} VNĐ</p>
+          <div class="button-container">
+            <button (click)="addToCart(product)">Thêm vào giỏ</button>
+            <button (click)="viewDetail(product)">Xem</button>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+
+    <button (click)="nextPage()" class="nav-button">
+      <i class="fas fa-arrow-right"></i>
+
+    </button>
+  </div>
+
+
+
+
+
   <div class="gioithieu">
-    <div class="text-gioithieu">
+    <div class="text-gioithieu1">
       <p><i class="fas fa-leaf"></i> Cây cảnh giúp làm sạch không khí và tạo không gian xanh.</p>
       <p><i class="fas fa-leaf"></i> Chăm sóc cây cảnh giúp giảm căng thẳng và tăng cường sức khỏe tinh thần.</p>
       <p><i class="fas fa-seedling"></i> Cây cảnh có thể trang trí cho ngôi nhà hoặc văn phòng thêm phần sinh động.</p>
@@ -20,7 +71,7 @@
     <div class="image-gioithieu">
       <img src="images/icon_cay.png" alt="Center Image" class="moving-image">
     </div>
-    <div class="text-gioithieu">
+    <div class="text-gioithieu2">
       <p><i class="fas fa-water"></i> Nhiều loại cây cảnh có khả năng thanh lọc các chất độc hại trong không khí.</p>
       <p><i class="fas fa-hand-holding-heart"></i> Chọn cây cảnh phù hợp có thể mang lại tài lộc và phong thủy tốt cho
         gia chủ.</p>
@@ -28,42 +79,8 @@
     </div>
   </div>
 
-  <div style="display: flex; justify-content: center; align-items: center;">
-    <img src="images/icon-leaf.png" alt="Tên cây 1" style="width: 100px; height: auto; padding-top: 70px;">
-  </div>
 
-
-
-  <!-- Giao diện sản phẩm mới được sửa -->
-  <div class="sanphamnoibat">
-    <h1>Sản phẩm mới</h1>
-    <div class="product-list">
-      <div *ngFor="let product of getDisplayedProducts()" class="product-item" [class.mySlides]="true">
-        <img [src]="rootUrl + '/' + product.img" alt="{{ product.name }}">
-        <h4>{{ product.name }}</h4>
-        <p class="product-price">Giá: {{ product.priceOutput | number }} VND</p>
-        <!-- Đổi chỗ nút "Xem" và "Thêm vào giỏ" -->
-        <button class="add-to-cart-btn" (click)="addToCart(product)">Thêm vào giỏ</button>
-        <button class="view-btn" (click)="viewDetail(product)">Xem</button>
-      </div>
-    </div>
-    <div class="navigation-buttons">
-      <button (click)="previousSlide()" class="arrow-btn" [disabled]="currentIndex === 0" aria-label="Previous products">
-        <i class="fas fa-chevron-left"></i>
-      </button>
-      <button (click)="nextSlide()" class="arrow-btn" [disabled]="currentIndex >= listProducts.length - 4" aria-label="Next products">
-        <i class="fas fa-chevron-right"></i>
-      </button>
-    </div>
-</div>
-
-  
-
-  
-  
-
-
-
+ 
 
 
   <!-- Thông tin dịch vụ -->
@@ -88,18 +105,13 @@
 
 
   <div class="banner-sale">
-    <img src="images/luonsong.png" alt="Sale Banner" class="banner-image">
+   
     <div class="floating-image-container">
       <img src="images/luonsongne.png" alt="Sale Badge" class="floating-image">
       <span class="floating-text">Săn sale ngay!!</span>
     </div>
 
   </div>
-
-
-
-
-
 
 
   <!-- Footer -->

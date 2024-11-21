@@ -1,9 +1,10 @@
+
 .tree-type-menu {
   width: 200px;
   background-color: #ffffff; /* Màu nền menu */
-  border: 3px solid #ddd; /* Đường viền */
- 
-  margin-left: 60px; /* Khoảng cách bên trái */
+  border:1px solid rgb(228, 203, 203);
+  position: relative;
+  margin-left: 40px; /* Khoảng cách bên trái */
   border-radius: 1px; /* Bo tròn các góc */
   text-align: center; /* Căn giữa nội dung */
   font-size: 20px; /* Kích thước chữ */
@@ -11,10 +12,8 @@
   font-family: Arial, sans-serif; /* Phông chữ */
 }
 .tree-type-menu h3 {
+  padding-top: 20px;
   margin-bottom: 10px; /* Khoảng cách dưới tiêu đề */
-}
-h3{
-  padding-top: 10px;
 }
 
 .menu-button {
@@ -23,8 +22,6 @@ h3{
   font-size: 18px; /* Kích thước chữ */
   background-color: #ffffff; /* Màu nền nút */
   border: 1px solid #ffffff; /* Đường viền */
-  border-radius: 4px; /* Bo tròn các góc */
-  color: #333; /* Màu chữ */
   cursor: pointer; /* Con trỏ tay khi di chuột */
   transition: background-color 0.3s, color 0.3s, transform 0.1s; /* Hiệu ứng chuyển tiếp */
 }

@@ -2,36 +2,21 @@
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  background-color: rgb(230, 253, 230);
 
 }
 
-.chat-icon {
-  position: fixed; /* Định vị biểu tượng chat */
-  top: 20%; /* Cách dưới 20% */
-  right: 20px; /* Cách bên phải 20px */
-  background-color: #fff; /* Nền trắng cho biểu tượng */
-  border-radius: 50%; /* Tạo hình tròn */
-  padding: 10px; /* Padding cho biểu tượng */
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Đổ bóng cho biểu tượng */
-  cursor: pointer; /* Hiển thị con trỏ như nút */
-  transition: transform 0.3s ease; /* Hiệu ứng chuyển tiếp */
-  z-index: 2; /* Thêm z-index cho biểu tượng chat */
-}
-.chat-icon:hover {
-  transform: scale(1.1); /* Phóng to khi hover */
-}
-
-.chat-icon i {
-  font-size: 24px; /* Kích thước biểu tượng */
-  color: #229e6a; /* Màu cho biểu tượng */
-}
 
 .image-list{
   width: 100%;
   height: auto;
   text-align: center;
+  align-items: center;
+  z-index: 2;
 
-padding-bottom: 40px;
+padding: 40px 0px;
 
 }
 .image-list .image{
@@ -40,29 +25,92 @@ padding-bottom: 40px;
   margin: 0 30px;
   
 }
+.anhnguoiphunu {
+  display: flex;
+  align-items: center;
+  max-width: 100%;
+height: auto;  
+  padding: 20px;
+  background-color: rgb(186, 229, 186);
+ 
+}
+
+.woman {
+  flex: 1;
+  padding: 20px;
+  padding-left: 100px;
+}
+
+.image-woman{
+ padding-right: 100px;
+
+}
+.image-woman img{
+  width: 400px;
+  height: 400px;
+}
+.animated-image {
+ 
+  animation: woman 2s infinite alternate ease-in-out;
+}
+
+@keyframes woman {
+  0% {
+    transform: translateY(-20px); /* Di chuyển lên */
+  }
+ 
+  100% {
+    transform: translateY(20px); /* Quay lại vị trí ban đầu */
+  }
+}
+
+
+
+
+
+
+
+
 
 .gioithieu {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: linear-gradient(135deg, rgb(202, 215, 202), rgb(73, 159, 73)); /* Gradient từ xanh nhạt đến xanh đậm hơn */
+
+  
+  background:transparent;
   margin-top: 0px;
 }
 
-.text-gioithieu p {
- padding: 30px;
- border-radius: 25px;
- 
- 
- background-color: #e9efec;
- margin: 20px 100px;
+.text-gioithieu1 p,
+.text-gioithieu2 p {
+  padding: 30px;
+  border-radius: 25px;
+  background-color: #66d49d;
+  margin: 20px 100px;
+  transition: transform 0.5s ease;
 }
 
-.text-gioithieu text-gioithieu1{
-  background-color: #333;
-  width: 100px;
-  height: 100px;
+/* Tạo vị trí ban đầu bên trái cho text-gioithieu1 */
+.text-gioithieu1 p {
+  transform: translateX(-100px);
 }
+
+/* Tạo vị trí ban đầu bên phải cho text-gioithieu2 */
+.text-gioithieu2 p {
+  transform: translateX(100px);
+}
+
+/* Khi hover vào .text-gioithieu1 p, di chuyển từ trái vào */
+.text-gioithieu1 p:hover {
+  transform: translateX(0);
+}
+
+/* Khi hover vào .text-gioithieu2 p, di chuyển từ phải vào */
+.text-gioithieu2 p:hover {
+  transform: translateX(0);
+}
+
 
 .image-gioithieu img {
   width: 250px; /* Adjust the size as needed */
@@ -83,36 +131,58 @@ padding-bottom: 40px;
 
 
 
-
-.sanphamnoibat {
-  padding: 10px 30px;
-}
-
 /* Sản phẩm nổi bật */
 h1 {
   font-size: 24px;
   text-align: center;
   margin-bottom: 20px;
+
 }
+.sanphamnoibat {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+ 
+  gap: 10px;
+}
+
 
 .product-list {
   display: flex;
-  justify-content: center;
+  justify-content: start;
   flex-wrap: wrap; /* Cho phép sản phẩm xuống hàng */
   margin: 0;
-  gap:10px;
-  
+  position: relative;
+  padding-bottom: 20px;
+  gap: 20px; /* Khoảng cách giữa các sản phẩm */
 }
 
 .product-item {
   border: 1px solid #ddd;
   padding: 5px;
   text-align: center;
+  background-color:rgb(213, 251, 233);
   transition: transform 0.3s ease, box-shadow 0.3s ease; /* Thêm hiệu ứng chuyển động mượt */
-  width: 260px; /* Thiết lập chiều rộng cố định cho mỗi sản phẩm */
+  width: 230px; /* Thiết lập chiều rộng cố định cho mỗi sản phẩm */
   margin: 10px; /* Khoảng cách giữa các sản phẩm */
-  height: 380px;
-  background-color: #C8E6C9;
+  height: 350px;
+}
+
+.nav-button {
+  padding: 10px;
+  cursor: pointer;
+  background-color: rgb(12, 95, 52); /* Màu chữ cho giá sản phẩm */
+  color: #fff;
+  border: none;
+  border-radius: 65px;
+  transition: background-color 0.3s ease;
+}
+
+.nav-button:hover {
+  background-color: rgb(47, 149, 96); /* Màu chữ cho giá sản phẩm */
+}
+h2{
+  text-align: center;
 }
 .description {
   font-size: 16px; /* Kích thước chữ cho mô tả tổng quát */
@@ -121,6 +191,7 @@ h1 {
   padding: 0px 350px;
   margin-bottom: 20px; /* Khoảng cách dưới mô tả tổng quát */
 }
+
 
 .product-item p.product-price {
   font-size: 16px; /* Kích thước chữ cho giá sản phẩm */
@@ -131,34 +202,13 @@ h1 {
 }
 
 .product-item img {
-  width: 200px;
-  height: 250px;
+  width: 150px;
+  height: 200px;
   margin-bottom: 10px;
 }
 
 h4 {
   margin: 5px 0;
-}
-
-.navigation-buttons {
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
-}
-
-.navigation-buttons button {
-  margin: 0 10px;
-  padding: 10px 15px;
-  cursor: pointer;
-  background-color: darkgreen;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
-}
-
-.navigation-buttons button:hover {
-  background-color: #28a745;
 }
 
 
@@ -186,9 +236,7 @@ button:hover {
 
 .product-item:hover {
   transform: scale(1.05); /* Khi hover, sản phẩm sẽ phóng to */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Thêm bóng cho sản phẩm */
-  background-color: #8fae91;
-
+  box-shadow: 0px 4px 8px rgba(23, 222, 152, 0.2); /* Thêm bóng cho sản phẩm */
 }
 /* Dịch vụ */
 
@@ -196,11 +244,11 @@ button:hover {
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
-  background-color: #229e6a;
   margin: 0 auto;
-  padding: 20px;
-  padding-top: 40px;
-  margin-top: 70px;
+  padding-top: 20px;
+  background-color: rgb(186, 229, 186);
+padding: 40px 0px
+ 
 }
 
 .dichvu-item {
@@ -212,6 +260,8 @@ button:hover {
   background-color: #eaeaea;
   border-radius: 8px;
   text-align: center;
+  position: relative;
+  cursor: pointer;
   transition: transform 0.2s, background-color 0.2s; /* Thêm hiệu ứng chuyển đổi */
 }
 
@@ -237,23 +287,21 @@ button:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
-  z-index: 1; /* Thêm z-index cho banner */
 }
-
+.nav-button{
+  z-index: 2;
+}
 .banner-image {
   width: 100%;
   height: 100%;
+  z-index: -2;
+
  
 }
 
 .floating-image-container {
-  position: absolute;
-  top: 120px;
-  left: 20px;
+
   display: flex;
-  align-items: center;
-  justify-content: center;
   animation: float 2s infinite alternate ease-in-out;
 }
 
@@ -284,7 +332,7 @@ button:hover {
     transform: scale(1);
   }
   100% {
-    transform: scale(1.2);
+    transform: scale(1.5);
   }
 }
 
@@ -292,7 +340,7 @@ button:hover {
 
 
 .footer {
-  background: linear-gradient(to bottom right, #229e6a, #23925b); /* Gradient từ trên trái đến dưới phải */
+  background-color: #23925b;
   color: #ffffff;
   
  

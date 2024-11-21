@@ -1,43 +1,47 @@
-/* Container chung */
-.order-detail {
-    max-width: 900px; /* Đặt chiều rộng tối đa */
-    margin: 20px auto; /* Căn giữa và tạo khoảng cách */
+/* CSS cho Loading Spinner */
+.loading-spinner {
+    text-align: center;
+    font-size: 1.25rem;
     padding: 20px;
-    border-radius: 8px;
+    color: #007bff;
+    font-weight: bold;
+    background-color: #f0f8ff;
+    border-radius: 5px;
+  }
+  
+  /* CSS cho phần thông tin đơn hàng */
+  .order-detail {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 20px;
     background-color: #f9f9f9;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   }
   
-  /* Thông tin khách hàng */
-  .customer-info {
-    margin-bottom: 30px;
-  }
-  
-  .customer-info h2 {
-    font-size: 1.5em;
-    margin-bottom: 10px;
+  h2, h3 {
+    text-align: center;
     color: #333;
+  }
+  
+  /* CSS cho thông tin khách hàng */
+  .customer-info {
+    margin-bottom: 20px;
+    font-size: 1.1rem;
   }
   
   .customer-info p {
-    font-size: 1.1em;
-    color: #555;
+    margin: 10px 0;
+    font-size: 25px
   }
   
   .customer-info strong {
-    font-weight: bold;
     color: #333;
   }
   
-  /* Bảng sản phẩm */
+  /* CSS cho phần danh sách sản phẩm */
   .order-products {
     margin-top: 20px;
-  }
-  
-  .order-products h3 {
-    font-size: 1.5em;
-    margin-bottom: 15px;
-    color: #333;
   }
   
   .product-table {
@@ -47,69 +51,47 @@
   }
   
   .product-table th, .product-table td {
-    padding: 10px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
+    padding: 12px;
+    text-align: center;
+    border: 1px solid #ddd;
+    font-size: 1rem;
   }
   
   .product-table th {
-    background-color: #f1f1f1;
-    color: #555;
-  }
-  
-  .product-table td {
-    font-size: 1.1em;
+    background-color: #f4f4f4;
   }
   
   .product-table img {
     border-radius: 5px;
-    max-width: 50px;
-    max-height: 50px;
   }
   
-  /* Trạng thái đơn hàng */
-  .no-data, .loading-spinner {
-    text-align: center;
-    font-size: 1.2em;
-    color: #888;
-  }
-  
+  /* CSS cho phần không có dữ liệu */
   .no-data {
+    text-align: center;
+    font-size: 1.25rem;
+    color: #dc3545;
     padding: 20px;
-    background-color: #fff5f5;
-    border: 1px solid #f5d0d0;
-    border-radius: 8px;
+    background-color: #fff3cd;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
   
-  .loading-spinner {
-    padding: 20px;
-    background-color: #e7f7ff;
-    border: 1px solid #d3e7f9;
-    border-radius: 8px;
-  }
-  
-  /* Cải thiện giao diện của trạng thái */
-  .customer-info p strong {
-    color: #007bff; /* Màu cho trạng thái */
-  }
-  
-  /* Responsive - Điều chỉnh giao diện cho màn hình nhỏ */
-  @media screen and (max-width: 768px) {
-    .order-detail {
-      padding: 15px;
-      max-width: 100%;
+  /* CSS cho responsive layout */
+  @media (max-width: 768px) {
+    .product-table {
+      font-size: 0.9rem;
     }
   
     .product-table th, .product-table td {
-      font-size: 1em;
+      padding: 8px;
     }
   
-    .customer-info h2 {
-      font-size: 1.3em;
+    .loading-spinner, .no-data {
+      font-size: 1rem;
     }
   
-    .order-products h3 {
-      font-size: 1.3em;
+    .order-detail {
+      padding: 10px;
     }
   }
   

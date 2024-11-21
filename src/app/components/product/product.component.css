@@ -1,26 +1,35 @@
 .product-container {
   display: flex; /* Sử dụng Flexbox để bố trí */
-  background-color: #f9f9f9;
-  padding: 30px 0px;
+ background-color: white;
   width: 100%;
   height: auto;
+  
+
 }
 
 app-tree-type-menu {
   padding-top: 0px;
+ 
   flex: 1; /* Chiếm 1 phần của không gian */
 }
 
 .product-content {
-  padding-left: 20px;
-  flex: 5; /* Chiếm 3 phần của không gian */
+ border:1px solid rgb(228, 203, 203);
+ margin-right: 40px;
+ background-color: #f9f9f9;
+  flex:5; /* Chiếm 3 phần của không gian */
+ 
+ 
 }
 
 .product-list {
   display: flex;
+  padding-left: 20px;
   justify-content: start;
   flex-wrap: wrap; /* Cho phép sản phẩm xuống hàng */
   margin: 0;
+  
+  position: relative;
   gap: 20px; /* Khoảng cách giữa các sản phẩm */
 }
 
@@ -31,7 +40,9 @@ app-tree-type-menu {
   transition: transform 0.3s ease, box-shadow 0.3s ease; /* Thêm hiệu ứng chuyển động mượt */
   width: 230px; /* Thiết lập chiều rộng cố định cho mỗi sản phẩm */
   margin: 10px; /* Khoảng cách giữa các sản phẩm */
-  height: 350px;
+  height: 330px;
+  cursor: pointer;
+  color: rgb(12, 95, 52); /* Màu chữ cho giá sản phẩm */
 }
 
 .description {
@@ -43,7 +54,7 @@ app-tree-type-menu {
 
 .product-item p.product-price {
   font-size: 16px; /* Kích thước chữ cho giá sản phẩm */
-  color: rgb(12, 95, 52); /* Màu chữ cho giá sản phẩm */
+ color:  rgb(12, 95, 52); /* Màu chữ cho giá sản phẩm */
   padding: 0px;    /* Không có khoảng cách bên trong */
   margin: 0;       /* Không có khoảng cách bên ngoài */
   text-align: center; /* Căn giữa cho giá sản phẩm */
@@ -53,7 +64,8 @@ app-tree-type-menu {
   width: 150px;
   height: 200px;
   margin-bottom: 10px;
-  mix-blend-mode:darken  ;
+  position: relative;
+
 }
 
 h4 {
@@ -82,54 +94,19 @@ button:hover {
 }
 
 .product-item:hover {
-  transform: scale(1.05); /* Khi hover, sản phẩm sẽ phóng to */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Thêm bóng cho sản phẩm */
-  background-color: #a7c4b6;
-}
-
-.search-container {
-  display: flex;
-  margin-bottom: 20px; /* Khoảng cách giữa thanh tìm kiếm và danh sách sản phẩm */
-  gap:5px
-}
-
-.search-input {
-  margin-left: 10px; /* Khoảng cách từ nút tìm kiếm */
-  padding: 10px 30px; /* Padding cho input */
-  border: 1px solid #ccc; /* Đường viền */
-  border-radius: 3px; /* Bo tròn các góc */
-  outline: none; /* Bỏ đường viền khi chọn */
-  transition: border-color 0.3s; /* Hiệu ứng chuyển đổi cho màu đường viền */
-}
-
-.search-input::placeholder {
-  color: #aaa; /* Màu chữ placeholder */
-}
-
-.search-input:hover {
-  border-color: #ffcc00; /* Màu đường viền khi hover */
-}
-
-.search-btn {
-  background-color: rgb(16, 65, 172);
-}
-
-.search-btn:hover {
-  background-color: rgb(27, 117, 228);
-}
-
-.search-btn:active {
-  background-color: rgb(27, 117, 228);
-  transform: scale(0.95);
-  box-shadow: #ddd;
+  transform: scale(1.10); /* Khi hover, sản phẩm sẽ phóng to */
+  box-shadow: 0px 8px 20px rgba(23, 222, 152, 0.7); /* Thêm bóng cho sản phẩm */
 }
 
 .pagination {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 20px;
+  padding: 20px;
   flex-wrap: wrap; /* Cho phép phần tử trong pagination xuống hàng nếu cần */
+  position: relative;
+  background-color: #f9f9f9;
+  padding-bottom: 10px;
 }
 
 .pagination button {
@@ -137,9 +114,12 @@ button:hover {
   margin: 0 5px;
   border: none;
   border-radius: 3px;
-  background-color: rgb(240, 244, 34);
-  color: rgb(97, 79, 15);
+  background-color: rgb(162, 164, 33);
+  color:white;
   cursor: pointer;
+}
+.pagination button:hover{
+  background-color: #ffcc00;
 }
 
 .pagination button:disabled {
@@ -147,71 +127,13 @@ button:hover {
   cursor: not-allowed;
 }
 
-.search-container {
-  display: flex;
-  margin-bottom: 20px; /* Khoảng cách giữa thanh tìm kiếm và danh sách sản phẩm */
-  gap:5px
-}
-
-.search-input {
-  margin-left: 10px; /* Khoảng cách từ nút tìm kiếm */
-  padding: 10px 30px; /* Padding cho input */
-  border: 1px solid #ccc; /* Đường viền */
-  border-radius: 3px; /* Bo tròn các góc */
-  outline: none; /* Bỏ đường viền khi chọn */
-  transition: border-color 0.3s; /* Hiệu ứng chuyển đổi cho màu đường viền */
-}
-
-.search-input::placeholder {
-  color: #aaa; /* Màu chữ placeholder */
-}
-
-.search-input:hover {
-  border-color: #ffcc00; /* Màu đường viền khi hover */
-}.search-btn {
-  background-color: rgb(16, 65, 172);
-}
-
-.search-btn:hover {
-  background-color: rgb(27, 117, 228);
-}
-
-.search-btn:active {
-  background-color: rgb(27, 117, 228);
-  transform: scale(0.95);
-  box-shadow: #ddd;
-}
-
-.pagination {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 20px;
-  flex-wrap: wrap; /* Cho phép phần tử trong pagination xuống hàng nếu cần */
-}
-
-.pagination button {
-  padding: 10px;
-  margin: 0 5px;
-  border: none;
-  border-radius: 3px;
-  background-color: rgb(240, 244, 34);
-  color: rgb(97, 79, 15);
-  cursor: pointer;
-}
-
-.pagination button:disabled {
-  background-color: grey;
-  cursor: not-allowed;
-}
 .search-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 20px;
-  background-color: #f9f9f9;
-  border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  position: relative;
+ 
 }
 
 .input-group {
@@ -234,21 +156,21 @@ button:hover {
   border-color: #4CAF50;
 }
 
+.search-input::placeholder ,.price-input::placeholder {
+  color: #aaa; /* Màu chữ placeholder */
+}
+
+
 .search-btn {
-  padding: 10px 20px;
-  font-size: 16px;
-  background-color: #4CAF50;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+  background-color: rgb(16, 65, 172);
 }
 
 .search-btn:hover {
-  background-color: #45a049;
+  background-color: rgb(27, 117, 228);
 }
 
 .search-btn:active {
-  transform: scale(0.98);
+  background-color: rgb(27, 117, 228);
+  transform: scale(0.95);
+  box-shadow: #ddd;
 }

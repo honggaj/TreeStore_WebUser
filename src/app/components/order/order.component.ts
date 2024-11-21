@@ -105,9 +105,9 @@ export class OrderComponent implements OnInit {
       console.error('Customer ID không hợp lệ');
       return; // Dừng nếu Customer ID không hợp lệ
     }
-
+  
     const promotionCode = this.promotionCode || ''; // Sử dụng chuỗi rỗng nếu không có mã giảm giá
-
+  
     const orderRequest: CreateOrderRequest = {
       cartItems: this.cartItems.map(item => ({
         productId: item.productId,
@@ -117,7 +117,7 @@ export class OrderComponent implements OnInit {
       note: this.orderNote,
       promotionCode
     };
-
+  
     Swal.fire({
       title: 'Xác nhận đặt hàng',
       text: 'Bạn có chắc chắn muốn đặt hàng?',
@@ -128,7 +128,7 @@ export class OrderComponent implements OnInit {
     }).then((result) => {
       if (result.isConfirmed) {
         console.log('Đơn hàng gửi đi:', orderRequest);
-
+  
         this.orderService.apiOrderCreatePost$Json$Response({ body: orderRequest }).subscribe(
           (response: StrictHttpResponse<Int32ResultCustomModel>) => {
             const responseBody = response.body;
@@ -167,7 +167,7 @@ export class OrderComponent implements OnInit {
       }
     });
   }
-
+  
   formatCurrency(value: number): string {
     if (isNaN(value)) {
       console.error('Giá trị không hợp lệ');

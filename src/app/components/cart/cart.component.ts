@@ -13,7 +13,6 @@ import Swal from 'sweetalert2';
 })
 export class CartComponent {
   cartItems: any[] = JSON.parse(localStorage.getItem('cartItems') || '[]'); // Lấy sản phẩm từ localStorage
-
   constructor(private router: Router) {}
 
   get total() {
@@ -21,6 +20,7 @@ export class CartComponent {
   }
 
   removeItem(itemId: number) {
+    // Hiển thị xác nhận xóa bằng SweetAlert2
     Swal.fire({
       title: 'Bạn có chắc chắn muốn xóa?',
       text: 'Sản phẩm này sẽ bị xóa khỏi giỏ hàng!',
@@ -34,7 +34,7 @@ export class CartComponent {
         this.cartItems = this.cartItems.filter(item => item.id !== itemId);
         localStorage.setItem('cartItems', JSON.stringify(this.cartItems));
 
-
+        // Thông báo sau khi xóa thành công
         Swal.fire('Đã xóa!', 'Sản phẩm đã được xóa khỏi giỏ hàng.', 'success');
       }
     });

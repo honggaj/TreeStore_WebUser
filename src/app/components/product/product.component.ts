@@ -117,6 +117,7 @@ export class ProductComponent implements OnInit {
       icon: 'success',
       confirmButtonText: 'OK',
     });
+   
   }
   onSearch(): void {
     // Tạo object chứa các tham số tìm kiếm
