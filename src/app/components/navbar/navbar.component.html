@@ -3,24 +3,27 @@
   <div class="logo">
     <img src="images/logolala.png" alt="Logo" />
   </div>
-  <ul>
+  <ul class="content-menu">
     <li (click)="navigateTo('/home')">TRANG CHỦ</li>
     <li (click)="navigateTo('/gioithieu')">GIỚI THIỆU</li>
     <li (click)="navigateTo('/sanpham')">SẢN PHẨM</li>
     <li (click)="navigateTo('/lienhe')">LIÊN HỆ</li>
   </ul>
   <div class="right-menu">
-    <ul>
+    
       <!-- Hiển thị nút đăng nhập nếu người dùng chưa đăng nhập -->
-      <li *ngIf="!isLoggedIn" (click)="navigateTo('/dangnhap')">ĐĂNG NHẬP</li>
-    </ul>
+     <a  *ngIf="!isLoggedIn" (click)="navigateTo('/dangnhap')">ĐĂNG NHẬP</a>
+       <button (click)="toggleDarkMode()" class="theme-toggle">
+        <i [class]="isDarkMode ? 'fas fa-sun' : 'fas fa-moon'"></i>
+      </button>
   
+   
     <!-- Biểu tượng giỏ hàng -->
-    <a (click)="navigateTo('/giohang')">
+    <a (click)="navigateTo('/giohang')" class="cart-icon">
       <i class="fas fa-shopping-cart"></i>
+      <span *ngIf="cartCount > 0" class="cart-count">{{ cartCount }}</span>
     </a>
-  
-    <!-- Dropdown tài khoản -->
+  <!-- Dropdown tài khoản -->
     <div class="dropdown-container" (click)="onContainerClick($event)">
       <div class="navigation">
         <!-- Gọi onAccountIconClick thay vì toggleDropdown -->
@@ -49,6 +52,8 @@
         </ul>
       </div>
     </div>
+
+   
   </div>
   
   

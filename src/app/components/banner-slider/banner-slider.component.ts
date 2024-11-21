@@ -73,4 +73,7 @@ export class BannerSliderComponent implements OnInit, OnDestroy {
   viewProduct() {
     this.router.navigate(['/sanpham']);
   }
+  viewLienHe() {
+    this.router.navigate(['/lienhe']);
+  }
 }

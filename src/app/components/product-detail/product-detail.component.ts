@@ -58,23 +58,29 @@ export class ProductDetailComponent implements OnInit {
 
   addToCart() {
     const item = {
-      id: this.productId,
-      name: this.product.name,
-      price: this.product.priceOutput,
-      quantity: this.quantity,
-      imageUrl: this.rootUrl + '/' + this.product.img
+        id: this.productId,
+        name: this.product.name,
+        price: this.product.priceOutput,
+        quantity: this.quantity,
+        imageUrl: this.rootUrl + '/' + this.product.img
     };
 
     const existingItem = this.cartItems.find(cartItem => cartItem.id === item.id);
     if (existingItem) {
-      existingItem.quantity += item.quantity;
+        existingItem.quantity += item.quantity;
     } else {
-      this.cartItems.push(item);
+        this.cartItems.push(item);
     }
 
     localStorage.setItem('cartItems', JSON.stringify(this.cartItems));
-    alert('Sản phẩm đã được thêm vào giỏ hàng!');
-  }
+
+    Swal.fire({
+        title: 'Thành công!',
+        text: 'Sản phẩm đã được thêm vào giỏ hàng!',
+        icon: 'success',
+        confirmButtonText: 'OK'
+    });
+}
 
   loadReviews(): void {
     const params = { productId: this.productId };

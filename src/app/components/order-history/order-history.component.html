@@ -1,37 +1,38 @@
-<div *ngIf="orders.length === 0" class="alert alert-warning">
+<div *ngIf="orders.length === 0" class="alert-warning">
   Bạn chưa có đơn hàng nào.
 </div>
 
 <!-- Bảng danh sách đơn hàng -->
-<div class="table-wrapper">
-  <table class="table table-bordered table-striped table-sm">
-    <thead>
-      <tr>
-        <th>Ngày đặt</th>
-        <th>Trạng thái</th>
-        <th>Tổng giá</th>
-        <th>Thao tác</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let order of orders">
-        <td>{{ order.orderDate || 'Chưa có ngày đặt' }}</td>
-        <td [ngClass]="{
-          'status-waiting': order.state === 0,
-          'status-processing': order.state === 1 || order.state === 2,
-          'status-completed': order.state === 3,
-          'status-canceled': order.state === 4
-        }">
-          {{ getStateText(order.state) }}
-        </td>
-        <td>{{ order.totalAmount | currency:'VND':'symbol':'1.0-0' }}</td>
-        <td>
-          <button *ngIf="order.orderId" (click)="viewOrder(order.orderId)" class="btn btn-primary btn-sm">
-            Chi Tiết
-          </button>
-                
-        </td>
-      </tr>
-    </tbody>
-  </table>
+<div class="history">
+  <div class="table-wrapper">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Ngày đặt</th>
+          <th>Trạng thái</th>
+          <th>Tổng giá</th>
+          <th>Thao tác</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let order of orders">
+          <td>{{ order.orderDate || 'Chưa có ngày đặt' }}</td>
+          <td [ngClass]="{
+            'status-waiting': order.state === 0,
+            'status-processing': order.state === 1 || order.state === 2,
+            'status-completed': order.state === 3,
+            'status-canceled': order.state === 4
+          }">
+            {{ getStateText(order.state) }}
+          </td>
+          <td>{{ order.totalAmount | number }} VNĐ</td>
+          <td>
+            <button *ngIf="order.orderId" (click)="viewOrder(order.orderId)" class="btn">
+              Chi Tiết
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>

@@ -94,3 +94,8 @@
     }
   }
   
+
+  .payment-buttons button {
+    position: relative; /* Ensure the z-index works */
+    z-index: 10; /* Increase the z-index to bring the buttons to the front */
+  }

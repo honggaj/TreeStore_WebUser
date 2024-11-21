@@ -1,10 +1,11 @@
-.order-container {
-  max-width: 80%;
+.cart-container {
+  max-width: 100%;
   margin: 0 auto;
   padding: 20px;
   background-color: #f9f9f9;
-  border-radius: 10px;
+  border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  position: relative;
 }
 
 h2 {
@@ -12,28 +13,32 @@ h2 {
   margin-bottom: 20px;
 }
 
-.order-table {
-  width: 100%;
-  margin-bottom: 20px;
-  border-collapse: collapse; /* Thêm để bỏ khoảng cách giữa các ô */
+.cart-table {
+  width: 100%; /* Đảm bảo bảng sử dụng toàn bộ chiều rộng của .cart-container */
+  border-collapse: collapse;
 }
 
-.order-table th,
-.order-table td {
-  border: none; /* Bỏ viền bên, chỉ giữ viền dưới */
-  border-bottom: 1px solid #ddd; /* Chỉ có đường viền dưới */
+.cart-table th,
+.cart-table td {
+ border:none;
   padding: 10px;
-  text-align: center;
+  border-bottom: 1px solid #ddd; /* Chỉ có đường viền dưới */
+  text-align: center; /* Căn giữa nội dung trong ô */
 }
 
-.order-table th {
-  border-bottom: 1px solid #ddd; /* Chỉ có đường viền dưới cho header */
-  background-color: #f1f1f1;
+.cart-table th {
+  border-bottom: 1px solid #ddd; /* Chỉ có đường viền dưới */
+  border-top: 1px solid #ddd; /* Đường viền trên cho tiêu đề */
 }
 
-.order-table td {
-  border-bottom: 1px solid #ddd; /* Chỉ có đường viền dưới cho các ô dữ liệu */
+
+
+.cart-total {
+  margin-top: 20px;
+  text-align: right;
+  padding-bottom: 20px;
 }
+
 
 .product-image {
   width: 50px;
@@ -43,6 +48,8 @@ h2 {
 
 .shipping-info {
   margin: 20px 0;
+  padding-left: 10px;
+  font-size: 25px;
 }
 
 .shipping-info h3 {
@@ -230,10 +237,23 @@ textarea:focus {
   max-width: 100px;
   height: auto;
 }
+.promotion-check-button{
+  background-color: rgb(151, 207, 151);
+padding:10px 15px;
+border-radius: 2px;
+cursor: pointer;
+color:white;
+border:none;
+}
+.promotion-check-button:hover{
+  background-color: rgb(48, 100, 48);
 
-
-
-
-
-
-
+}
+.promotion-check-button:active{
+  transform: scale(0.95);
+  box-shadow: rgb(90, 224, 90);
+}
+.promotion-check-button.active{
+  transform: scale(0.95);
+  box-shadow: rgb(90, 224, 90);
+}
