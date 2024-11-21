@@ -67,6 +67,10 @@ export class AccountComponent implements OnInit {
   // Thêm phương thức để xử lý việc tải lên file avatar
  
 
+  cancel() {
+    this.router.navigate(['/taikhoan']); 
+  }
+
   onSubmit() {
     if (this.editAccountForm.valid) {
       const updatedAccount = {
@@ -75,20 +79,35 @@ export class AccountComponent implements OnInit {
         phone: this.editAccountForm.get('phone')?.value,
         email: this.editAccountForm.get('email')?.value,
         address: this.editAccountForm.get('address')?.value,
-       
-   // Lấy tên file avatar
       };
   
-
+      // Kiểm tra nếu không có thay đổi
+      const isChanged =
+        updatedAccount.fullname !== this.customerDB.fullname ||
+        updatedAccount.phone !== this.customerDB.phone ||
+        updatedAccount.email !== this.customerDB.email ||
+        updatedAccount.address !== this.customerDB.address;
+  
+      if (!isChanged) {
+        Swal.fire({
+          icon: 'info',
+          title: 'Không có gì thay đổi',
+          text: 'Bạn chưa thay đổi thông tin nào!',
+          confirmButtonText: 'OK'
+        });
+        return;
+      }
+  
+      // Gửi yêu cầu cập nhật nếu có thay đổi
       this.customerService.apiCustomerUpdateCustomerPut$Json$Response({ body: updatedAccount }).subscribe({
         next: (rs) => {
           if (rs.body.success) {
+            // Cập nhật localStorage nếu cập nhật thành công
             localStorage.setItem('fullname', updatedAccount.fullname);
             localStorage.setItem('email', updatedAccount.email);
-            localStorage.setItem('phone', updatedAccount.phone);
-            localStorage.setItem('address', updatedAccount.address);
-          
-           
+            localStorage.setItem('phone', updatedAccount.phone || '');
+            localStorage.setItem('address', updatedAccount.address || '');
+  
             Swal.fire({
               icon: 'success',
               title: 'Cập nhật thành công',
@@ -124,4 +143,5 @@ export class AccountComponent implements OnInit {
       });
     }
   }
-}
+  
+} 
