@@ -105,19 +105,18 @@ export class OrderComponent implements OnInit {
       console.error('Customer ID không hợp lệ');
       return; // Dừng nếu Customer ID không hợp lệ
     }
-  
     const promotionCode = this.promotionCode || ''; // Sử dụng chuỗi rỗng nếu không có mã giảm giá
   
     const orderRequest: CreateOrderRequest = {
       cartItems: this.cartItems.map(item => ({
-        productId: item.productId,
+        productId: item.id,
         quantity: item.quantity
       })),
       customerId,
       note: this.orderNote,
       promotionCode
     };
-  
+    console.log(this.cartItems,"this.cartItemsthis.cartItemsthis.cartItems");
     Swal.fire({
       title: 'Xác nhận đặt hàng',
       text: 'Bạn có chắc chắn muốn đặt hàng?',
