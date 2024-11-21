@@ -64,4 +64,9 @@
   button:hover {
     background-color: #0056b3;
   }
+
+  .success-container .btn {
+    position: relative; /* Ensure the z-index works */
+    z-index: 10; /* Increase the z-index to bring the button to the front */
+  }
   
