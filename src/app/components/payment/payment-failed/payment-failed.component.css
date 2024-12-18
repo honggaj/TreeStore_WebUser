@@ -1,0 +1,61 @@
+.payment-failed-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #ff7e5f, #feb47b);
+    color: #fff;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  .payment-failed-message {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 20px 30px;
+    border-radius: 10px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+  }
+  
+  .payment-failed-message h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+  }
+  
+  .payment-failed-message p {
+    font-size: 1.2rem;
+    line-height: 1.5;
+    margin-bottom: 10px;
+  }
+  
+  .payment-failed-message .paypal {
+    color: #0070ba;
+    font-weight: bold;
+    text-decoration: underline;
+  }
+  
+  .payment-failed-message .cod {
+    color: #27ae60;
+    font-weight: bold;
+    text-decoration: underline;
+  }
+  
+  .payment-failed-message p:last-child {
+    margin-bottom: 0;
+  }
+  
+  @media (max-width: 768px) {
+    .payment-failed-message {
+      padding: 15px 20px;
+    }
+  
+    .payment-failed-message h1 {
+      font-size: 2rem;
+    }
+  
+    .payment-failed-message p {
+      font-size: 1rem;
+    }
+  }
+  
