@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ProductService, ReviewService } from '../../api/services';
+import { CustomerService, ProductService, ReviewService } from '../../api/services';
 import { BooleanResultCustomModel, ProductResponse, Review } from '../../api/models';
 import { CommonModule } from '@angular/common';
 import { ApiConfiguration } from '../../api/api-configuration';
@@ -24,13 +24,15 @@ export class ProductDetailComponent implements OnInit {
   quantity: number = 1;
   listReviewDB: Review[] = [];
   cartItems: any[] = JSON.parse(localStorage.getItem('cartItems') || '[]');
+ 
 
   constructor(
     private route: ActivatedRoute, 
     private router: Router, 
     private productService: ProductService, 
     private reviewService: ReviewService,
-    private config: ApiConfiguration
+    private config: ApiConfiguration,
+    private customerService: CustomerService,
   ) {
     this.rootUrl = config.rootUrl;
   }
@@ -82,26 +84,47 @@ export class ProductDetailComponent implements OnInit {
     });
 }
 
-  loadReviews(): void {
-    const params = { productId: this.productId };
+loadReviews(): void {
+  const params = { productId: this.productId };
 
-    // Gọi API để lấy danh sách đánh giá theo productId
-    this.reviewService.apiReviewGetReviewsByProductIdProductIdGet$Json$Response(params).subscribe(
-        (rs) => {
-            const response = rs.body;
+  // Gọi API lấy danh sách review
+  this.reviewService.apiReviewGetReviewsByProductIdProductIdGet$Json$Response(params).subscribe(
+    (rs) => {
+      const response = rs.body;
 
-            if (response && response.success) { // Kiểm tra `success`
-                this.listReviewDB = response.data ?? []; // Nếu response.data là null, gán mảng rỗng
-                console.log('Danh sách review:', this.listReviewDB); // In ra danh sách review
-            } else {
-                console.log('Lấy danh sách review thất bại!');
-            }
-        },
-        error => {
-            console.error('Lỗi khi lấy danh sách review:', error);
-        }
-    );
-  }
+      if (response && response.success) {
+        this.listReviewDB = response.data ?? [];
+
+        // Kết hợp dữ liệu từ bảng Customer
+        this.listReviewDB.forEach((review) => {
+          if (review.customerId) {
+            this.customerService.apiCustomerGetCustomerByIdGet$Json$Response({ customerId: review.customerId }).subscribe(
+              (customerResponse) => {
+                if (customerResponse.body.success) {
+                  review.customer = customerResponse.body.data?.fullname ?? 'Người dùng ẩn danh';
+
+                } else {
+                  review.customer = 'Người dùng ẩn danh';
+                }
+              },
+              (error) => {
+                console.error('Lỗi khi lấy thông tin khách hàng:', error);
+              }
+            );
+          }
+        });
+
+        console.log('Danh sách review sau khi gắn tên khách hàng:', this.listReviewDB);
+      } else {
+        console.error('Lấy danh sách review thất bại!');
+      }
+    },
+    (error) => {
+      console.error('Lỗi khi lấy danh sách review:', error);
+    }
+  );
+}
+
 
   deleteReview(reviewId: number | undefined): void {
     if (!reviewId || reviewId <= 0) { 

@@ -92,7 +92,12 @@ li:hover {
   cursor: pointer;
   font-size: 20px;
   color: rgb(0, 0, 0);
+ i{
+   --fa-animation-direction: reverse;
+   animation: fa-spin 3s linear infinite;
+ }
 }
+
 
 
 .logocay{

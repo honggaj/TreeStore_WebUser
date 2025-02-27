@@ -30,9 +30,10 @@
 
   <!-- Danh sách đánh giá -->
   <div *ngFor="let review of listReviewDB" class="review-item">
-    <p class="review-comment">{{ review.comment }}</p>
+    <p><strong>{{ review.customer || 'Người dùng ẩn danh' }}</strong>:   {{ review.comment }}</p>
+   
     
-    <button class="btn-delete-review" (click)="deleteReview(review.reviewId)">Xóa</button>
+   <!-- <button class="btn-delete-review" (click)="deleteReview(review.reviewId)">Xóa</button>-->
   </div>
 
   <!-- Component nhập đánh giá -->

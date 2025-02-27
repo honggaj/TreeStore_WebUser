@@ -67,10 +67,14 @@ export class ReviewComponent implements OnInit {
                             title: 'Thêm mới bình luận thành công',
                             text: message,
                             confirmButtonText: 'OK'
+                            
                         }).then(() => {
                             // Không điều hướng đi đâu, vẫn giữ trang và form
                             this.editReviewUser.reset();  // Làm sạch form nếu muốn
+                            window.location.reload();
+                            
                         });
+                        
                     } else {
                         Swal.fire({
                             icon: 'error',
@@ -79,6 +83,7 @@ export class ReviewComponent implements OnInit {
                             confirmButtonText: 'OK'
                         });
                     }
+                    
                 },
                 error: (error) => {
                     console.error('Có lỗi xảy ra:', error);

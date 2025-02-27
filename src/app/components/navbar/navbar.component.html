@@ -13,15 +13,19 @@
     
       <!-- Hiển thị nút đăng nhập nếu người dùng chưa đăng nhập -->
      <a  *ngIf="!isLoggedIn" (click)="navigateTo('/dangnhap')">ĐĂNG NHẬP</a>
-       <button (click)="toggleDarkMode()" class="theme-toggle">
-        <i [class]="isDarkMode ? 'fas fa-sun' : 'fas fa-moon'"></i>
-      </button>
+     <button (click)="toggleDarkMode()" class="theme-toggle">
+      <i 
+        [class]="isDarkMode ? 'fas fa-sun ' : 'fas fa-moon '"
+       >
+      </i>
+    </button>
+    
   
    
     <!-- Biểu tượng giỏ hàng -->
     <a (click)="navigateTo('/giohang')" class="cart-icon">
-      <i class="fas fa-shopping-cart"></i>
-      <span *ngIf="cartCount > 0" class="cart-count">{{ cartCount }}</span>
+      <i class="fas fa-shopping-cart " style=></i>
+      <span *ngIf="cartCount > 0" class="cart-count fa-beat">{{ cartCount }}</span>
     </a>
   <!-- Dropdown tài khoản -->
     <div class="dropdown-container" (click)="onContainerClick($event)">
