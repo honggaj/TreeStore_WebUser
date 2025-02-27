@@ -2,9 +2,22 @@
   <div class="slide fade">
     <div class="main-image-wrapper">
       <img [src]="getCurrentImage()" alt="Banner" class="main-image" />
-      <img [src]="getCurrentOverlayImage()" [ngClass]="getOverlayClass()" alt="Overlay Image" class="overlay-image" /> <!-- Lớp overlay khác nhau cho từng ảnh -->
-    </div>
-    <button (click)="viewProduct()" class="buy-now-btn">Mua hàng ngay</button>
-    <button (click)="viewLienHe()" class="voucher-btn">Liên hệ</button>
+      <img
+      [src]="getCurrentOverlayImage()"
+      [ngClass]="getOverlayClass()"
+      alt="Overlay Image"
+      class="overlay-image"
+    />
+</div>
+<div class="text">
+  <img src="images/logolala.png" alt="">
+  <h3>Không gian xanh quanh ta</h3>
+  <p>
+    Hãy để <span class="highlight">LALA</span> giúp bạn trang trí ngôi nhà
+    không gian xanh hoàn hảo.
+  </p>
+  <button (click)="viewProduct()" class="buy-now-btn">Mua hàng ngay</button>
+  <button (click)="viewLienHe()" class="voucher-btn">Liên hệ</button>
+</div>
   </div>
 </div>

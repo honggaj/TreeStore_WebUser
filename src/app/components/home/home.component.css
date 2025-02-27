@@ -11,20 +11,52 @@
 
 .image-list{
   width: 100%;
-  height: auto;
-  text-align: center;
+  display: flex;
+  justify-content: center;
   align-items: center;
-  z-index: 2;
-
-padding: 40px 0px;
-
+  gap: 20px;
+  padding: 50px;
 }
-.image-list .image{
+
+.image-container {
+  position: relative; /* Cần có để button bám vào */
+  display: inline-block;
   width: 300px;
   height: 300px;
-  margin: 0 30px;
-  
 }
+
+.image-container .image {
+  width: 100%;  /* Đảm bảo ảnh không bị méo */
+  height: 100%;
+  object-fit: cover; /* Giữ nguyên tỉ lệ ảnh */
+  border-radius: 10px;
+}
+
+.image-container .btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(33, 64, 33, 0.874);
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: bold;
+  /* opacity: 0;  Ẩn button ban đầu */
+  transition: opacity 0.3s, background-color 0.3s;
+}
+
+.image-container:hover .btn {
+  opacity: 1;  /* Hiện button khi hover */
+}
+
+.image-container .btn:hover {
+  background-color: rgba(0, 100, 0, 0.9);
+}
+
 .anhnguoiphunu {
   display: flex;
   align-items: center;
@@ -338,41 +370,108 @@ padding: 40px 0px
 
 
 
-
 .footer {
-  background-color: #23925b;
+  background: linear-gradient(to right, #245336, #549a7d); /* Hiệu ứng gradient */
   color: #ffffff;
-  
- 
+  padding: 50px 0;
+  font-family: 'Poppins', sans-serif;
 }
 
 .footer-container {
   display: flex;
-  justify-content:space-around;
-  max-width: 100%;
-  
+  justify-content: space-between;
+  flex-wrap: wrap;
+  max-width: 1400px;
   margin: 0 auto;
-  padding: 0 20px;
-
 }
 
 .footer-section {
-  
-  min-width: 200px;
-  margin: 10px;
+  flex: 1;
+  min-width: 250px;
+  margin: 20px;
 }
 
 .footer-section h3 {
+  font-size: 22px;
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border-bottom: 3px solid #1abc9c; /* Gạch chân xanh đẹp */
+  display: inline-block;
+  font-weight: 600;
+}
+
+.footer-section p {
+  font-size: 16px;
+  line-height: 1.6;
+  opacity: 0.9;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-section ul li {
   margin-bottom: 10px;
 }
 
-.footer-section p, .footer-section a {
-  color: #d2e6dc;
+.footer-section ul li a {
+  color: #ffffff;
   text-decoration: none;
+  transition: 0.3s;
+  font-size: 16px;
 }
 
-.footer-section a:hover {
-  color:  #084c2a;
+.footer-section ul li a:hover {
+  color: #1abc9c;
+  text-decoration: underline;
+}
+
+/* Mạng xã hội */
+.social-media {
+  display: flex;
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.social-media a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: #1abc9c;
+  color: #ffffff;
+  border-radius: 50%;
+  font-size: 20px;
+  transition: 0.3s ease;
+}
+
+.social-media a:hover {
+  background: #16a085;
+  transform: scale(1.1);
+}
+
+/* Copyright */
+.footer-bottom {
+  text-align: center;
+  margin-top: 30px;
+  padding-top: 15px;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .social-media {
+    justify-content: center;
+  }
 }
 
 .social-media {
@@ -383,10 +482,10 @@ padding: 40px 0px
 .social-media li {
   margin: 5px 0;
 }
-
+/* 
 .footer-bottom {
   text-align: center;
   padding: 10px 0;
   background-color: #222;
   margin-top: 20px;
-}
+} */
